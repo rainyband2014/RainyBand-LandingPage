@@ -14,7 +14,7 @@ const contactButtons = [
   <Container>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
       <!-- Left Column -->
-      <div class="flex flex-col">
+      <div class="flex flex-col reveal">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">
           Để lại thông tin để Rainy Band tư vấn và báo giá phù hợp
         </h2>
@@ -27,7 +27,7 @@ const contactButtons = [
           {contactButtons.map(btn => (
             <a 
               href={btn.href} 
-              class="inline-flex items-center justify-center px-5 py-2.5 bg-transparent border border-white/30 hover:border-white hover:bg-white/10 text-white text-sm font-medium rounded-full transition-colors"
+              class="inline-flex items-center justify-center px-5 py-2.5 bg-transparent border border-white/30 hover:border-white hover:bg-white/10 text-white text-sm font-medium rounded-full transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               {btn.label}
             </a>
@@ -36,7 +36,7 @@ const contactButtons = [
       </div>
 
       <!-- Right Column -->
-      <div class="bg-neutral-surface rounded-3xl p-6 md:p-8 lg:p-10 shadow-xl">
+      <div class="bg-neutral-surface rounded-3xl p-6 md:p-8 lg:p-10 shadow-xl reveal" data-delay="200">
         <BookingForm client:visible />
       </div>
     </div>

@@ -17,8 +17,10 @@ import { musicians } from '../../data/musicians';
     class="flex overflow-x-auto gap-5 pb-6 scrollbar-hide snap-x snap-mandatory px-1"
     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
   >
-    {musicians.map(musician => (
-      <MusicianCard {...musician} />
+    {musicians.map((musician, index) => (
+      <div class="reveal" data-delay={index * 100}>
+        <MusicianCard {...musician} />
+      </div>
     ))}
   </div>
 

@@ -183,16 +183,12 @@ export default function BookingForm() {
         ></textarea>
       </div>
 
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         disabled={isSubmitting}
-        className={`w-full py-4 mt-2 font-bold rounded-xl transition-colors text-base ${
-          isSubmitting 
-            ? 'bg-neutral-text/20 text-neutral-text/50 cursor-not-allowed' 
-            : 'bg-brand-600 hover:bg-brand-700 text-white'
-        }`}
+        className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3.5 px-4 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:hover:scale-100 disabled:active:scale-100 mt-2"
       >
-        {isSubmitting ? 'Đang gửi...' : 'Gửi yêu cầu booking'}
+        {isSubmitting ? 'Đang gửi...' : 'Gửi yêu cầu'}
       </button>
     </form>
   );

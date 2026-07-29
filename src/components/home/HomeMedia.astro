@@ -1,0 +1,25 @@
+---
+import Container from '../shared/Container.astro';
+import Badge from '../shared/Badge.astro';
+import HomeMediaCarousel from './HomeMediaCarousel';
+---
+
+<section id="media" class="w-full py-16 md:py-24 bg-neutral-bg">
+  <Container>
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-4">
+      <div>
+        <Badge label="MEDIA" tone="light" class="mb-4" />
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight reveal">
+          Khoảnh khắc đáng nhớ
+        </h2>
+      </div>
+      <a href="/showcase" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2 reveal" data-delay="100">
+        Xem toàn bộ Showcase &rarr;
+      </a>
+    </div>
+
+    <div class="reveal" data-delay="200">
+      <HomeMediaCarousel client:visible />
+    </div>
+  </Container>
+</section>

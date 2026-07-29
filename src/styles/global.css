@@ -23,4 +23,96 @@
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* TODO: thay --font-display bằng font serif/display chính thức sau khi chọn xong */
+/* TODO: thay --font-display bằng font serif/display chính thức sau khi chọn xong *//* Animations & Utilities */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms cubic-bezier(0.25, 1, 0.5, 1), transform 700ms cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  .hover-media-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .hover-media-container img {
+    transition: transform 400ms ease-out;
+  }
+  
+  .hover-media-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 400ms ease-out;
+    pointer-events: none;
+  }
+  
+  @media (hover: hover) {
+    .hover-media-container:hover img {
+      transform: scale(1.05);
+    }
+    .hover-media-container:hover .hover-media-overlay {
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      box-shadow: 0 0 0 0 rgba(35, 90, 109, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(35, 90, 109, 0);
+    }
+    100% {
+      transform: scale(0.8);
+      box-shadow: 0 0 0 0 rgba(35, 90, 109, 0);
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse-ring {
+      animation: none !important;
+    }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none !important;
+    }
+  }
+}

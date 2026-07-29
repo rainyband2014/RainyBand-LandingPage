@@ -15,17 +15,29 @@ const logos = Array.from({ length: 6 }, (_, i) => ({
       Đối tác đã đồng hành cùng Rainy Band
     </h2>
     
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-      {logos.map(logo => (
-        <div class="flex items-center justify-center">
-          <!-- TODO: thay bằng logo SVG/PNG thật của từng đối tác, kèm alt text mô tả tên đối tác -->
-          <img 
-            src={logo.url} 
-            alt={logo.alt} 
-            class="opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain w-[120px] h-[48px]"
-          />
-        </div>
-      ))}
+    <div class="relative flex overflow-hidden w-full select-none gap-8 md:gap-12 mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)">
+      <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12">
+        {logos.map(logo => (
+          <div class="flex items-center justify-center flex-shrink-0">
+            <img 
+              src={logo.url} 
+              alt={logo.alt} 
+              class="opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain w-[120px] h-[48px]"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12" aria-hidden="true">
+        {logos.map(logo => (
+          <div class="flex items-center justify-center flex-shrink-0">
+            <img 
+              src={logo.url} 
+              alt={logo.alt} 
+              class="opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain w-[120px] h-[48px]"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   </Container>
 </section>
