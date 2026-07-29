@@ -26,7 +26,19 @@ File: `coreTeam.ts`
 - Nếu thêm field mới hoặc đổi cấu trúc, cần nhờ dev/agent cập nhật lại component tương ứng để tránh lỗi hiển thị.
 
 ## Cấu hình Booking Form
-Để nhận dữ liệu booking từ form trên trang chủ về Google Sheets:
-1. Copy file `.env.example` thành file `.env` ở thư mục gốc của dự án.
-2. Dán URL của Google Apps Script Web App vào biến `PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL`.
-3. Khởi động lại dev server bằng cách bấm `Ctrl+C` để tắt server hiện tại, sau đó chạy lại lệnh `npm run dev`. Astro chỉ nạp các biến môi trường từ `.env` khi khởi động.
+Dữ liệu gửi từ Booking Form được chuyển qua một Cloudflare Pages Function (tại `/functions/api/booking.ts`) trước khi gửi lên Google Sheets Web App. Điều này cung cấp 2 lớp bảo vệ:
+1. **Validate server-side:** Kiểm tra dữ liệu (regex SĐT, email hợp lệ, ngày hợp lệ...) ở phía server.
+2. **Honeypot chống spam:** Một field ẩn được thêm vào form để gài bẫy bot, tự động chặn các request spam.
+
+### Hướng dẫn cấu hình URL đích (Google Sheets)
+Vì lý do bảo mật, URL của Google Apps Script Web App **không lộ** ở client, mà được cấu hình dưới dạng biến môi trường của server Cloudflare.
+
+**Khởi chạy ở Local Dev (wrangler):**
+- Tạo file `.dev.vars` ở thư mục gốc của project (đã được đưa vào `.gitignore`).
+- Thêm biến `GOOGLE_SHEETS_WEBHOOK_URL=DÁN_URL_CỦA_BẠN_VÀO_ĐÂY`.
+
+**Khi deploy lên Cloudflare Pages:**
+- Truy cập vào Dashboard của project trên Cloudflare.
+- Mở mục **Settings > Environment variables**.
+- Thêm biến `GOOGLE_SHEETS_WEBHOOK_URL` và dán URL thật vào phần Production (có thể cả Preview).
+- Lưu lại và redeploy để Function nhận biến mới.

@@ -20,10 +20,17 @@ export default function BookingForm() {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  
+  // Honeypot field
+  const [website, setWebsite] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'website') {
+      setWebsite(value);
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
     if (error) setError('');
     if (success) setSuccess(false);
   };
@@ -31,21 +38,9 @@ export default function BookingForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const webhookUrl = import.meta.env.PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL;
-    if (!webhookUrl) {
-      console.error('PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL chưa được cấu hình trong .env');
-      setError('Hệ thống đang bảo trì, vui lòng liên hệ trực tiếp qua Zalo hoặc Hotline.');
-      return;
-    }
-
-    // Validate
+    // Validate cơ bản ở client (chi tiết sẽ do server lo)
     if (!formData.phoneOrZalo.trim() && !formData.email.trim()) {
       setError('Vui lòng nhập ít nhất Số điện thoại/Zalo hoặc Email để chúng tôi có thể liên hệ.');
-      return;
-    }
-
-    if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
-      setError('Email không đúng định dạng.');
       return;
     }
 
@@ -53,7 +48,7 @@ export default function BookingForm() {
     setError('');
 
     try {
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/booking', {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
@@ -63,12 +58,15 @@ export default function BookingForm() {
           email: formData.email,
           eventType: formData.showType,
           eventDate: formData.expectedDate,
-          note: formData.notes
+          note: formData.notes,
+          website: website // field ẩn để server bắt honeypot
         })
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Có lỗi xảy ra.');
       }
 
       setSuccess(true);
@@ -79,9 +77,10 @@ export default function BookingForm() {
         expectedDate: '',
         notes: ''
       });
-    } catch (err) {
+      setWebsite('');
+    } catch (err: any) {
       console.error('Error submitting form:', err);
-      setError('Có lỗi xảy ra, vui lòng thử lại hoặc liên hệ trực tiếp qua Zalo/Hotline.');
+      setError(err.message || 'Có lỗi xảy ra, vui lòng thử lại hoặc liên hệ trực tiếp qua Zalo/Hotline.');
     } finally {
       setIsSubmitting(false);
     }
@@ -89,6 +88,19 @@ export default function BookingForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
+      {/* Field honeypot chống bot ẩn với người dùng */}
+      <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+        <label htmlFor="website">Trang web của bạn (để trống)</label>
+        <input 
+          type="text" 
+          id="website" 
+          name="website" 
+          tabIndex={-1} 
+          value={website} 
+          onChange={handleChange} 
+          autoComplete="off" 
+        />
+      </div>
       {success && (
         <div className="p-4 bg-brand-100 text-brand-800 rounded-xl text-sm font-medium">
           Gửi yêu cầu thành công! Đội ngũ Rainy Band sẽ liên hệ với bạn trong thời gian sớm nhất.
