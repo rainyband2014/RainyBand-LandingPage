@@ -63,6 +63,30 @@ const bioParagraphs = musician.fullBio.split('\n').filter((p: string) => p.trim(
           <Button href="/#booking" variant="primary" size="md">
             Đặt lịch có {musician.name}
           </Button>
+
+          {musician.videos && musician.videos.length > 0 && (
+            <div className="mt-12 pt-8 border-t border-neutral-text/10">
+              <h3 className="text-xl font-display font-bold text-brand-900 mb-6">Video demo</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {musician.videos.map(video => (
+                  <div className="group cursor-pointer">
+                    <div className="relative aspect-video rounded-xl overflow-hidden shadow-sm mb-3">
+                      <!-- TODO: thêm click để xem video -->
+                      <img src={video.thumbnailUrl} alt={video.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-sm">
+                          <span className="text-white text-lg ml-1 leading-none">▸</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-sm font-medium text-neutral-text line-clamp-2 group-hover:text-brand-600 transition-colors">
+                      {video.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

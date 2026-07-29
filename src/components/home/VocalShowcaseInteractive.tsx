@@ -82,15 +82,16 @@ export default function VocalShowcaseInteractive() {
           </div>
 
           <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-neutral-text/10">
-            {[1, 2].map((i) => (
-              <div key={i} className="relative aspect-video rounded-xl overflow-hidden group cursor-pointer shadow-sm">
+            {selectedVocalist.videos?.slice(0, 2).map((video) => (
+              <div key={video.id} className="relative aspect-video rounded-xl overflow-hidden group cursor-pointer shadow-sm">
                 {/* TODO: thay bằng thumbnail video thật */}
-                <img src="https://placehold.co/300x200/123240/123240" alt="Video placeholder" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={video.thumbnailUrl} alt={video.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                   <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-sm">
                     <span className="text-white text-lg ml-1 leading-none">▸</span>
                   </div>
                 </div>
+                {/* TODO: chức năng play video thật */}
               </div>
             ))}
           </div>
