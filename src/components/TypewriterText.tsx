@@ -3,9 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 interface Props {
   paragraphs: string[];
   typingSpeed?: number;
+  className?: string;
+  textClassName?: string;
 }
 
-export default function TypewriterText({ paragraphs, typingSpeed = 15 }: Props) {
+export default function TypewriterText({ paragraphs, typingSpeed = 15, className = "space-y-4 mb-10", textClassName = "text-base md:text-lg text-neutral-text leading-relaxed" }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState<string[]>(Array(paragraphs.length).fill(''));
@@ -71,7 +73,7 @@ export default function TypewriterText({ paragraphs, typingSpeed = 15 }: Props) 
   }, [isVisible, currentParagraphIndex, paragraphs, typingSpeed]);
 
   return (
-    <div ref={containerRef} className="space-y-4 mb-10">
+    <div ref={containerRef} className={className}>
       {paragraphs.map((fullText, index) => {
         const isCurrentParagraph = index === currentParagraphIndex;
         const isCompleted = index < currentParagraphIndex;
@@ -80,7 +82,7 @@ export default function TypewriterText({ paragraphs, typingSpeed = 15 }: Props) 
         // Render full text invisibly for screen readers / layout stability,
         // overlay the typed text on top.
         return (
-          <div key={index} className="relative text-base md:text-lg text-neutral-text leading-relaxed">
+          <div key={index} className={`relative ${textClassName}`}>
             <p className="opacity-0 pointer-events-none" aria-hidden="true">
               {fullText}
             </p>

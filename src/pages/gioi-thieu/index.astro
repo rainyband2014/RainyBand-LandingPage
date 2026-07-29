@@ -3,6 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Container from '../../components/shared/Container.astro';
 import Badge from '../../components/shared/Badge.astro';
 import Button from '../../components/shared/Button.astro';
+import TypewriterText from '../../components/TypewriterText';
 import { companyInfo } from '../../data/companyInfo';
 ---
 
@@ -14,9 +15,12 @@ import { companyInfo } from '../../data/companyInfo';
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
         Rainy Band — Hành trình từ {companyInfo.foundedYear}
       </h1>
-      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl">
-        {companyInfo.foundedStory}
-      </p>
+      <TypewriterText 
+        paragraphs={[companyInfo.foundedStory]} 
+        className="max-w-3xl" 
+        textClassName="text-base md:text-xl text-neutral-muted leading-relaxed" 
+        client:visible 
+      />
     </Container>
   </section>
 
