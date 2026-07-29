@@ -44,6 +44,23 @@
     }
   }
 
+  .reveal-line {
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 1000ms cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+  .reveal-line.is-revealed {
+    transform: scaleY(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-line {
+      transform: scaleY(1) !important;
+      transition: none !important;
+    }
+  }
+
   .hover-media-container {
     overflow: hidden;
     position: relative;
