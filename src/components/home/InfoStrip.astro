@@ -1,0 +1,35 @@
+---
+import Container from '../shared/Container.astro';
+
+const items = [
+  {
+    title: "Gu nhạc",
+    description: "Từ US/UK Hits, V-Pop, Indie Việt đến Acoustic Covers, Ballad, nhạc xưa và Jazz nhẹ nhàng."
+  },
+  {
+    title: "Cách chơi",
+    description: "Chuyên nghiệp, linh hoạt theo yêu cầu, trang phục và tiết mục phù hợp từng loại sự kiện."
+  },
+  {
+    title: "Định vị",
+    description: "Không chạy theo giá rẻ. Ưu tiên chất lượng âm thanh và cảm xúc trong từng buổi diễn."
+  }
+];
+---
+
+<section class="w-full py-12 md:py-16 bg-neutral-bg border-t border-neutral-text/10">
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      {items.map(item => (
+        <div class="flex flex-col">
+          <h3 class="text-lg md:text-xl font-display font-bold text-neutral-text mb-2">
+            {item.title}
+          </h3>
+          <p class="text-sm md:text-base text-neutral-muted leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
