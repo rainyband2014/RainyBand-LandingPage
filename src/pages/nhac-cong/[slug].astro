@@ -7,6 +7,8 @@ import TypewriterText from '../../components/TypewriterText';
 import { musicians } from '../../data/musicians';
 import type { Musician } from '../../data/musicians';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   return musicians.map((musician) => ({
     params: { slug: musician.slug },
@@ -19,6 +21,11 @@ interface Props {
 }
 
 const { musician } = Astro.props;
+
+if (!musician) {
+  return Astro.redirect('/404');
+}
+
 const bioParagraphs = musician.fullBio.split('\n').filter((p: string) => p.trim() !== '');
 ---
 
