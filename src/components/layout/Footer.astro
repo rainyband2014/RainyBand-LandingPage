@@ -1,0 +1,66 @@
+---
+import Container from '../shared/Container.astro';
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { label: 'YouTube', href: '#' },
+  { label: 'TikTok', href: '#' },
+  { label: 'Facebook', href: '#' },
+  { label: 'Instagram', href: '#' },
+];
+
+const contactButtons = [
+  { label: 'Gọi', href: '#' },
+  { label: 'Zalo', href: '#' },
+  { label: 'Email', href: '#' },
+  { label: 'Book Âm thanh', href: '#' },
+];
+---
+
+<footer class="w-full pt-16 pb-8 bg-neutral-surface border-t border-neutral-text/10">
+  <Container>
+    <div class="flex flex-col md:flex-row justify-between gap-10 mb-12">
+      <!-- Left Column -->
+      <div class="flex flex-col max-w-sm">
+        <a href="/" class="text-2xl font-bold font-display text-brand-900 tracking-tight mb-4 inline-block">
+          Rainy Band
+          <!-- TODO: thay bằng logo SVG thật sau này -->
+        </a>
+        <p class="text-sm md:text-base text-neutral-muted leading-relaxed">
+          Ban nhạc acoustic tại TP.HCM, phục vụ café, sự kiện, tiệc cưới và các buổi tiệc riêng với đội hình linh hoạt.
+        </p>
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex flex-col items-start md:items-end">
+        <!-- TODO: thay href thật -->
+        <div class="flex flex-wrap gap-4 md:gap-6 mb-6">
+          {socialLinks.map(link => (
+            <a href={link.href} class="text-sm font-medium text-neutral-muted hover:text-brand-600 transition-colors">
+              {link.label}
+            </a>
+          ))}
+        </div>
+        
+        <!-- TODO: thay href thật -->
+        <div class="flex flex-wrap gap-3">
+          {contactButtons.map(btn => (
+            <a 
+              href={btn.href} 
+              class="inline-flex items-center justify-center px-4 py-2 bg-neutral-bg hover:bg-brand-100 hover:text-brand-800 text-neutral-text text-xs font-medium rounded-full transition-colors border border-neutral-text/5"
+            >
+              {btn.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full text-center md:text-left border-t border-neutral-text/10 pt-8">
+      <p class="text-xs text-neutral-muted">
+        © {currentYear} Rainy Band. All rights reserved.
+      </p>
+    </div>
+  </Container>
+</footer>

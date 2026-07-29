@@ -1,0 +1,18 @@
+---
+import Container from '../shared/Container.astro';
+import Badge from '../shared/Badge.astro';
+import MusicianCarousel from './MusicianCarousel.astro';
+---
+
+<section class="w-full py-16 md:py-24 bg-neutral-bg">
+  <Container>
+    <div class="mb-8 md:mb-12">
+      <Badge label="NHẠC CÔNG" tone="dark" class="mb-4" />
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
+        Đội ngũ nhạc công
+      </h2>
+    </div>
+
+    <MusicianCarousel />
+  </Container>
+</section>

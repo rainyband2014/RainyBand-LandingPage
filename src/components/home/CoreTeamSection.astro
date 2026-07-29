@@ -2,23 +2,17 @@
 import Container from '../shared/Container.astro';
 import Badge from '../shared/Badge.astro';
 import CoreTeam from './CoreTeam.astro';
-import MusicianCarousel from './MusicianCarousel.astro';
 ---
 
 <section class="w-full py-16 md:py-24 bg-neutral-bg">
   <Container>
     <div class="mb-12 md:mb-16">
-      <Badge label="ĐỘI HÌNH" tone="dark" class="mb-4" />
+      <Badge label="ĐỘI NGŨ" tone="dark" class="mb-4" />
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
-        Chắc tay, kinh nghiệm
+        Đội ngũ nòng cốt
       </h2>
     </div>
 
     <CoreTeam />
-    
-    <div class="mt-16 md:mt-24 pt-16 md:pt-24 border-t border-neutral-text/10">
-      <h3 class="text-2xl md:text-3xl font-display font-bold text-brand-900 mb-8 tracking-tight">Đội ngũ nhạc công</h3>
-      <MusicianCarousel />
-    </div>
   </Container>
 </section>
