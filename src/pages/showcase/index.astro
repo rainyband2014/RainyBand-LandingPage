@@ -2,18 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Container from '../../components/shared/Container.astro';
 import Badge from '../../components/shared/Badge.astro';
-
-const mediaItems = [
-  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/123240/123240' },
-  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/0a1720/0a1720' },
-  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/1a4655/1a4655' },
-  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/0e222c/0e222c' },
-  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/2f7288/2f7288' },
-  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/235a6d/235a6d' },
-  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/4a8fa3/4a8fa3' },
-  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/123240/123240' },
-  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/0a1720/0a1720' },
-];
+import { showcaseItems } from '../../data/showcaseItems';
 ---
 
 <PageLayout title="Showcase - Rainy Band">
@@ -32,13 +21,36 @@ const mediaItems = [
   <!-- TODO: thêm lightbox hoặc trang chi tiết media khi có nội dung thật -->
   <section class="w-full py-12 md:py-20 bg-neutral-bg">
     <Container>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-        {mediaItems.map((item, index) => (
-          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-3 mb-10" id="showcase-filters">
+        <button 
+          data-filter="all" 
+          class="px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase transition-colors bg-brand-600 text-white"
+        >
+          Tất cả
+        </button>
+        <button 
+          data-filter="image" 
+          class="px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase transition-colors bg-neutral-surface border border-neutral-text/10 text-neutral-text hover:bg-neutral-text/5"
+        >
+          Ảnh
+        </button>
+        <button 
+          data-filter="video" 
+          class="px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase transition-colors bg-neutral-surface border border-neutral-text/10 text-neutral-text hover:bg-neutral-text/5"
+        >
+          Video
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5" id="showcase-grid">
+        {showcaseItems.map((item) => (
+          <div class="showcase-item relative aspect-[4/5] rounded-2xl overflow-hidden group cursor-pointer shadow-sm" data-type={item.type}>
             <!-- TODO: thay bằng ảnh/video thật -->
             <img 
-              src={item.imageUrl} 
-              alt={`Rainy Band media ${index + 1}`}
+              src={item.thumbnailUrl} 
+              alt={item.title}
+              title={item.title}
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
@@ -56,3 +68,34 @@ const mediaItems = [
     </Container>
   </section>
 </PageLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = document.querySelectorAll('#showcase-filters button');
+    const items = document.querySelectorAll('.showcase-item');
+
+    filters.forEach(filterBtn => {
+      filterBtn.addEventListener('click', () => {
+        const filterValue = filterBtn.getAttribute('data-filter');
+
+        // Update active class on buttons
+        filters.forEach(btn => {
+          if (btn === filterBtn) {
+            btn.className = "px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase transition-colors bg-brand-600 text-white";
+          } else {
+            btn.className = "px-5 py-2 rounded-full text-sm font-bold tracking-wider uppercase transition-colors bg-neutral-surface border border-neutral-text/10 text-neutral-text hover:bg-neutral-text/5";
+          }
+        });
+
+        // Filter items
+        items.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-type') === filterValue) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>
