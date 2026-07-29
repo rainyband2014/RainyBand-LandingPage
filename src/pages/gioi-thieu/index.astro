@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Container from '../../components/shared/Container.astro';
 import Badge from '../../components/shared/Badge.astro';
-import CoreTeam from '../../components/home/CoreTeam.astro';
+import Button from '../../components/shared/Button.astro';
 import { companyInfo } from '../../data/companyInfo';
 ---
 
@@ -50,18 +50,20 @@ import { companyInfo } from '../../data/companyInfo';
     </Container>
   </section>
 
-  <!-- Core Team -->
+  <!-- CTA Đội ngũ -->
   <section class="w-full py-16 md:py-24 bg-neutral-surface">
     <Container>
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
-        <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight mb-4">
           Những người đứng sau Rainy Band
         </h2>
-        <a href="/doi-ngu" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2 whitespace-nowrap">
-          Xem chi tiết từng thành viên &rarr;
-        </a>
+        <p class="text-base md:text-lg text-neutral-muted leading-relaxed mb-8">
+          Đội ngũ nòng cốt gồm Founder và hai Quản lý đã đồng hành cùng band qua từng cột mốc, từ những buổi diễn café đầu tiên đến các sân khấu sự kiện lớn hôm nay.
+        </p>
+        <Button href="/doi-ngu" variant="primary">
+          Xem chi tiết đội ngũ
+        </Button>
       </div>
-      <CoreTeam />
     </Container>
   </section>
 </PageLayout>
