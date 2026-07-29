@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Container from '../components/shared/Container.astro';
+import Button from '../components/shared/Button.astro';
+---
+
+<PageLayout title="404 - Không tìm thấy trang | Rainy Band">
+  <section class="w-full py-24 md:py-32 bg-neutral-bg flex items-center justify-center min-h-[70vh]">
+    <Container class="text-center">
+      <h1 class="text-6xl md:text-8xl font-display font-bold text-brand-900 mb-6 tracking-tight">
+        404
+      </h1>
+      <h2 class="text-2xl md:text-3xl font-bold text-neutral-text mb-6">
+        Không tìm thấy trang này
+      </h2>
+      <p class="text-neutral-muted text-lg max-w-lg mx-auto mb-10 leading-relaxed">
+        Có vẻ như trang bạn đang tìm kiếm không tồn tại, đã bị xóa hoặc thay đổi đường dẫn.
+      </p>
+      
+      <Button href="/" variant="primary" size="lg">
+        Quay lại trang chủ
+      </Button>
+    </Container>
+  </section>
+</PageLayout>

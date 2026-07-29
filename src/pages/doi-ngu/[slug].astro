@@ -6,6 +6,8 @@ import Button from '../../components/shared/Button.astro';
 import { coreTeam } from '../../data/coreTeam';
 import type { CoreTeamMember } from '../../data/coreTeam';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   return coreTeam.map((member) => ({
     params: { slug: member.slug },
@@ -18,6 +20,10 @@ interface Props {
 }
 
 const { member } = Astro.props;
+
+if (!member) {
+  return Astro.redirect('/404');
+}
 
 // Tách fullBio thành các đoạn dựa trên line break
 const bioParagraphs = member.fullBio.split('\n').filter((p: string) => p.trim() !== '');
