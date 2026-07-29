@@ -28,7 +28,10 @@ if (!service) {
 const descriptionParagraphs = service.longDescription.split('\n').filter((p: string) => p.trim() !== '');
 ---
 
-<PageLayout title={`${service.title} - Rainy Band`}>
+<PageLayout
+  title={`${service.title} | Rainy Band`}
+  description={`Dịch vụ ${service.title} của Rainy Band. ${service.longDescription.substring(0, 120)}...`}
+>
   <section class="w-full py-16 md:py-24 bg-neutral-bg">
     <Container>
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16">

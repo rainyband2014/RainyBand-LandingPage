@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Cập nhật domain sau khi mua domain chính thức
+Sitemap: https://rainyband.rainyband2014.workers.dev/sitemap-index.xml

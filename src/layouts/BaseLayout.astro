@@ -3,20 +3,55 @@ import '../styles/global.css';
 
 interface Props {
 	title?: string;
+	description?: string;
+	ogImage?: string;
+	noindex?: boolean;
 }
 
-const { title = "Rainy Band - Acoustic & Vocal" } = Astro.props;
+const DEFAULT_TITLE = "Rainy Band — Ban nhạc Acoustic & Vocal cho sự kiện của bạn";
+const DEFAULT_DESCRIPTION = "Rainy Band cung cấp ban nhạc acoustic, vocal và nhạc công chuyên nghiệp cho quán café, sự kiện doanh nghiệp, tiệc cưới tại TP.HCM. Đặt lịch ngay!";
+const DEFAULT_OG_IMAGE = "/og-default.jpg";
+
+const { 
+	title = DEFAULT_TITLE, 
+	description = DEFAULT_DESCRIPTION,
+	ogImage = DEFAULT_OG_IMAGE,
+	noindex = false,
+} = Astro.props;
+
+// Resolve og:image to absolute URL
+const ogImageAbsolute = new URL(ogImage, Astro.site).href;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
 <html lang="vi">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Rainy Band cung cấp ban nhạc acoustic, vocal và nhạc công chuyên nghiệp." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO -->
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageAbsolute} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:site_name" content="Rainy Band" />
+		<meta property="og:locale" content="vi_VN" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageAbsolute} />
 	</head>
 	<body class="bg-neutral-bg text-neutral-text font-sans antialiased">
 		<slot />

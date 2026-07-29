@@ -29,7 +29,10 @@ if (!musician) {
 const bioParagraphs = musician.fullBio.split('\n').filter((p: string) => p.trim() !== '');
 ---
 
-<PageLayout title={`${musician.name} - ${musician.instrumentGroup} | Rainy Band`}>
+<PageLayout
+  title={`${musician.name} - ${musician.instrumentGroup} | Rainy Band`}
+  description={`${musician.name} — ${musician.instrument}, ${musician.experienceYears} năm kinh nghiệm tại Rainy Band. ${musician.fullBio.substring(0, 120)}...`}
+>
   <section class="w-full py-16 md:py-24 bg-neutral-bg">
     <Container>
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
