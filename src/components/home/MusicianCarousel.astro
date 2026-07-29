@@ -1,0 +1,48 @@
+---
+import MusicianCard from './MusicianCard.astro';
+import { musicians } from '../../data/musicians';
+---
+
+<div class="relative w-full group mt-6">
+  <button 
+    id="btn-prev-musician"
+    class="hidden md:flex absolute left-0 top-[40%] -translate-y-1/2 -ml-5 z-10 w-10 h-10 items-center justify-center rounded-full bg-neutral-surface shadow-md border border-neutral-text/10 text-neutral-text hover:text-brand-600 hover:border-brand-300 transition-colors opacity-0 group-hover:opacity-100"
+    aria-label="Scroll left"
+  >
+    &larr;
+  </button>
+  
+  <div 
+    id="musician-carousel"
+    class="flex overflow-x-auto gap-5 pb-6 scrollbar-hide snap-x snap-mandatory px-1"
+    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+  >
+    {musicians.map(musician => (
+      <MusicianCard {...musician} />
+    ))}
+  </div>
+
+  <button 
+    id="btn-next-musician"
+    class="hidden md:flex absolute right-0 top-[40%] -translate-y-1/2 -mr-5 z-10 w-10 h-10 items-center justify-center rounded-full bg-neutral-surface shadow-md border border-neutral-text/10 text-neutral-text hover:text-brand-600 hover:border-brand-300 transition-colors opacity-0 group-hover:opacity-100"
+    aria-label="Scroll right"
+  >
+    &rarr;
+  </button>
+</div>
+
+<script>
+  const carousel = document.getElementById('musician-carousel');
+  const btnPrev = document.getElementById('btn-prev-musician');
+  const btnNext = document.getElementById('btn-next-musician');
+
+  if (carousel && btnPrev && btnNext) {
+    btnPrev.addEventListener('click', () => {
+      carousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    
+    btnNext.addEventListener('click', () => {
+      carousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+  }
+</script>

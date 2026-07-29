@@ -1,0 +1,10 @@
+---
+import CoreTeamCard from './CoreTeamCard.astro';
+import { coreTeam } from '../../data/coreTeam';
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+  {coreTeam.map(member => (
+    <CoreTeamCard {...member} />
+  ))}
+</div>
