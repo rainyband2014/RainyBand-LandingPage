@@ -1,0 +1,58 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/shared/Container.astro';
+import Badge from '../../components/shared/Badge.astro';
+
+const mediaItems = [
+  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/123240/123240' },
+  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/0a1720/0a1720' },
+  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/1a4655/1a4655' },
+  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/0e222c/0e222c' },
+  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/2f7288/2f7288' },
+  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/235a6d/235a6d' },
+  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/4a8fa3/4a8fa3' },
+  { type: 'video' as const, imageUrl: 'https://placehold.co/600x750/123240/123240' },
+  { type: 'image' as const, imageUrl: 'https://placehold.co/600x750/0a1720/0a1720' },
+];
+---
+
+<PageLayout title="Showcase - Rainy Band">
+  <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
+    <Container>
+      <Badge label="SHOWCASE" tone="dark" class="mb-4" />
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+        Media của Rainy Band
+      </h1>
+      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl">
+        Hình ảnh và video từ các buổi biểu diễn, sự kiện và hậu trường của Rainy Band.
+      </p>
+    </Container>
+  </section>
+
+  <!-- TODO: thêm lightbox hoặc trang chi tiết media khi có nội dung thật -->
+  <section class="w-full py-12 md:py-20 bg-neutral-bg">
+    <Container>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+        {mediaItems.map((item, index) => (
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+            <!-- TODO: thay bằng ảnh/video thật -->
+            <img 
+              src={item.imageUrl} 
+              alt={`Rainy Band media ${index + 1}`}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+
+            {item.type === 'video' && (
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-sm group-hover:scale-110 transition-transform">
+                  <span class="text-white text-xl ml-1 leading-none">▸</span>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+</PageLayout>
