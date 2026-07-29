@@ -1,6 +1,7 @@
 ---
 import Container from '../shared/Container.astro';
 import Button from '../shared/Button.astro';
+import MobileMenu from '../MobileMenu';
 
 const currentPath = Astro.url.pathname;
 
@@ -48,14 +49,8 @@ const navItems = [
         Đặt lịch ngay
       </Button>
 
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden p-2 text-neutral-text hover:text-brand-600" aria-label="Menu">
-        <!-- Hamburger Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-        <!-- TODO: sẽ làm mobile menu ở bước sau -->
-      </button>
+      <!-- Mobile Menu (React Island) -->
+      <MobileMenu navItems={navItems} currentPath={currentPath} client:load />
     </div>
   </Container>
 </header>
