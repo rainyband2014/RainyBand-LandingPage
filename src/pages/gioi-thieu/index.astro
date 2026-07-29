@@ -11,23 +11,27 @@ import { companyInfo } from '../../data/companyInfo';
   <!-- Hero nhỏ -->
   <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
     <Container>
-      <Badge label="GIỚI THIỆU" tone="dark" class="mb-4" />
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+      <div class="reveal">
+        <Badge label="GIỚI THIỆU" tone="dark" class="mb-4" />
+      </div>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6 reveal" data-delay="100">
         Rainy Band — Hành trình từ {companyInfo.foundedYear}
       </h1>
-      <TypewriterText 
-        paragraphs={[companyInfo.foundedStory]} 
-        className="max-w-3xl" 
-        textClassName="text-base md:text-xl text-neutral-muted leading-relaxed" 
-        client:visible 
-      />
+      <div class="reveal" data-delay="200">
+        <TypewriterText 
+          paragraphs={[companyInfo.foundedStory]} 
+          className="max-w-3xl" 
+          textClassName="text-base md:text-xl text-neutral-muted leading-relaxed" 
+          client:visible 
+        />
+      </div>
     </Container>
   </section>
 
   <!-- Timeline -->
   <section class="w-full py-12 md:py-20 bg-neutral-bg border-t border-neutral-text/10">
     <Container>
-      <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 mb-10 md:mb-14 tracking-tight">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 mb-10 md:mb-14 tracking-tight reveal">
         Các cột mốc quan trọng
       </h2>
 
@@ -58,15 +62,17 @@ import { companyInfo } from '../../data/companyInfo';
   <section class="w-full py-16 md:py-24 bg-neutral-surface">
     <Container>
       <div class="max-w-2xl">
-        <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight mb-4">
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight mb-4 reveal">
           Những người đứng sau Rainy Band
         </h2>
-        <p class="text-base md:text-lg text-neutral-muted leading-relaxed mb-8">
+        <p class="text-base md:text-lg text-neutral-muted leading-relaxed mb-8 reveal" data-delay="100">
           Đội ngũ nòng cốt gồm Founder và hai Quản lý đã đồng hành cùng band qua từng cột mốc, từ những buổi diễn café đầu tiên đến các sân khấu sự kiện lớn hôm nay.
         </p>
-        <Button href="/doi-ngu" variant="primary">
-          Xem chi tiết đội ngũ
-        </Button>
+        <div class="reveal" data-delay="200">
+          <Button href="/doi-ngu" variant="primary">
+            Xem chi tiết đội ngũ
+          </Button>
+        </div>
       </div>
     </Container>
   </section>
