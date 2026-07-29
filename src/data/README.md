@@ -24,3 +24,9 @@ File: `coreTeam.ts`
 - **KHÔNG** xóa hoặc đổi tên field (key) trong object, chỉ đổi giá trị của field.
 - Sau khi sửa file, lưu lại — trang dev sẽ tự reload.
 - Nếu thêm field mới hoặc đổi cấu trúc, cần nhờ dev/agent cập nhật lại component tương ứng để tránh lỗi hiển thị.
+
+## Cấu hình Booking Form
+Để nhận dữ liệu booking từ form trên trang chủ về Google Sheets:
+1. Copy file `.env.example` thành file `.env` ở thư mục gốc của dự án.
+2. Dán URL của Google Apps Script Web App vào biến `PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL`.
+3. Khởi động lại dev server bằng cách bấm `Ctrl+C` để tắt server hiện tại, sau đó chạy lại lệnh `npm run dev`. Astro chỉ nạp các biến môi trường từ `.env` khi khởi động.

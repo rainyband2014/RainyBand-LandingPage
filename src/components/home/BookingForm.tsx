@@ -19,6 +19,7 @@ export default function BookingForm() {
 
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -27,9 +28,16 @@ export default function BookingForm() {
     if (success) setSuccess(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    const webhookUrl = import.meta.env.PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL;
+    if (!webhookUrl) {
+      console.error('PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL chưa được cấu hình trong .env');
+      setError('Hệ thống đang bảo trì, vui lòng liên hệ trực tiếp qua Zalo hoặc Hotline.');
+      return;
+    }
+
     // Validate
     if (!formData.phoneOrZalo.trim() && !formData.email.trim()) {
       setError('Vui lòng nhập ít nhất Số điện thoại/Zalo hoặc Email để chúng tôi có thể liên hệ.');
@@ -41,18 +49,42 @@ export default function BookingForm() {
       return;
     }
 
-    // TODO: Thực hiện gọi API lưu thông tin booking ở đây
-    console.log('Form submitted:', formData);
-    
-    // Giả lập thành công
-    setSuccess(true);
-    setFormData({
-      phoneOrZalo: '',
-      email: '',
-      showType: 'Café acoustic',
-      expectedDate: '',
-      notes: ''
-    });
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          phone: formData.phoneOrZalo,
+          email: formData.email,
+          eventType: formData.showType,
+          eventDate: formData.expectedDate,
+          note: formData.notes
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setSuccess(true);
+      setFormData({
+        phoneOrZalo: '',
+        email: '',
+        showType: 'Café acoustic',
+        expectedDate: '',
+        notes: ''
+      });
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setError('Có lỗi xảy ra, vui lòng thử lại hoặc liên hệ trực tiếp qua Zalo/Hotline.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,9 +173,14 @@ export default function BookingForm() {
 
       <button 
         type="submit" 
-        className="w-full py-4 mt-2 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition-colors text-base"
+        disabled={isSubmitting}
+        className={`w-full py-4 mt-2 font-bold rounded-xl transition-colors text-base ${
+          isSubmitting 
+            ? 'bg-neutral-text/20 text-neutral-text/50 cursor-not-allowed' 
+            : 'bg-brand-600 hover:bg-brand-700 text-white'
+        }`}
       >
-        Gửi yêu cầu booking
+        {isSubmitting ? 'Đang gửi...' : 'Gửi yêu cầu booking'}
       </button>
     </form>
   );
