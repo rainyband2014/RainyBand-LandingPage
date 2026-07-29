@@ -4,14 +4,16 @@ import type { CoreTeamMember } from '../../data/coreTeam';
 
 interface Props extends CoreTeamMember {}
 
-const { slug, name, roleLabel, bio, imageUrl } = Astro.props;
+const { slug, name, roleLabel, bio, images, class: className } = Astro.props;
+
+const rootClasses = className ?? 'block flex flex-col group no-underline text-inherit';
 ---
 
-<a href={`/doi-ngu/${slug}`} class="block flex flex-col group no-underline text-inherit">
+<a href={`/doi-ngu/${slug}`} class={rootClasses}>
   <div class="relative w-full aspect-[4/5] rounded-3xl mb-4 shadow-sm hover-media-container cursor-pointer block">
     <!-- TODO: thay bằng ảnh thật của Founder/Manager -->
     <img 
-      src={imageUrl} 
+      src={images[0]} 
       alt={name} 
       class="absolute inset-0 w-full h-full object-cover"
     />

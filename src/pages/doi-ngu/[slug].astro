@@ -3,6 +3,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Container from '../../components/shared/Container.astro';
 import Badge from '../../components/shared/Badge.astro';
 import Button from '../../components/shared/Button.astro';
+import TypewriterText from '../../components/TypewriterText';
+import ImageShuffleCard from '../../components/ImageShuffleCard';
 import { coreTeam } from '../../data/coreTeam';
 import type { CoreTeamMember } from '../../data/coreTeam';
 
@@ -35,15 +37,7 @@ const bioParagraphs = member.fullBio.split('\n').filter((p: string) => p.trim() 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
         <!-- Left Column: Image -->
         <div class="md:col-span-5">
-          <div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-md">
-            <!-- TODO: thay bằng ảnh thật -->
-            <img 
-              src={member.imageUrl} 
-              alt={member.name} 
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-            <div class="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-brand-950/50 to-transparent"></div>
-          </div>
+          <ImageShuffleCard images={member.images} alt={member.name} client:visible />
         </div>
 
         <!-- Right Column: Info -->
@@ -54,13 +48,7 @@ const bioParagraphs = member.fullBio.split('\n').filter((p: string) => p.trim() 
             {member.name}
           </h1>
 
-          <div class="space-y-4 mb-10">
-            {bioParagraphs.map((paragraph: string) => (
-              <p class="text-base md:text-lg text-neutral-text leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <TypewriterText paragraphs={bioParagraphs} client:visible />
 
           <!-- Contact Info -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 p-6 bg-neutral-surface rounded-2xl border border-neutral-text/5">

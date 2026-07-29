@@ -9,7 +9,7 @@ export interface CoreTeamMember {
   phone: string;
   email: string;
   joinedYear: number;
-  imageUrl: string;
+  images: string[];
 }
 
 export const coreTeam: CoreTeamMember[] = [
@@ -25,7 +25,11 @@ export const coreTeam: CoreTeamMember[] = [
     phone: "0900 000 001",
     email: "khoa@rainyband.vn",
     joinedYear: 2014,
-    imageUrl: "https://placehold.co/500x600/0a1720/0a1720"
+    images: [
+      "https://placehold.co/500x600/0a1720/0a1720",
+      "https://placehold.co/500x600/123240/123240",
+      "https://placehold.co/500x600/1a4655/1a4655"
+    ]
   },
   {
     id: "manager-vocal",
@@ -39,7 +43,10 @@ export const coreTeam: CoreTeamMember[] = [
     phone: "0900 000 002",
     email: "han@rainyband.vn",
     joinedYear: 2018,
-    imageUrl: "https://placehold.co/500x600/123240/123240"
+    images: [
+      "https://placehold.co/500x600/123240/123240",
+      "https://placehold.co/500x600/1a4655/1a4655"
+    ]
   },
   {
     id: "manager-musician",
@@ -53,6 +60,10 @@ export const coreTeam: CoreTeamMember[] = [
     phone: "0900 000 003",
     email: "long@rainyband.vn",
     joinedYear: 2016,
-    imageUrl: "https://placehold.co/500x600/1a4655/1a4655"
+    images: [
+      "https://placehold.co/500x600/1a4655/1a4655",
+      "https://placehold.co/500x600/235a6d/235a6d",
+      "https://placehold.co/500x600/0a1720/0a1720"
+    ]
   }
 ];
