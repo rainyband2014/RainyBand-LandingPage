@@ -26,22 +26,23 @@ File: `coreTeam.ts`
 - Nếu thêm field mới hoặc đổi cấu trúc, cần nhờ dev/agent cập nhật lại component tương ứng để tránh lỗi hiển thị.
 
 ## Cấu hình Booking Form
-Dữ liệu gửi từ Booking Form được chuyển qua một Cloudflare Pages Function (tại `/functions/api/booking.ts`) trước khi gửi lên Google Sheets Web App. Điều này cung cấp 2 lớp bảo vệ:
+Dữ liệu gửi từ Booking Form được chuyển qua một **Astro API Route** chạy trên server **Cloudflare Workers** (tại `src/pages/api/booking.ts`) trước khi gửi lên Google Sheets Web App. Điều này cung cấp 2 lớp bảo vệ:
 1. **Validate server-side:** Kiểm tra dữ liệu (regex SĐT, email hợp lệ, ngày hợp lệ...) ở phía server.
 2. **Honeypot chống spam:** Một field ẩn được thêm vào form để gài bẫy bot, tự động chặn các request spam.
 
 ### Hướng dẫn cấu hình URL đích (Google Sheets)
 Vì lý do bảo mật, URL của Google Apps Script Web App **không lộ** ở client, mà được cấu hình dưới dạng biến môi trường của server Cloudflare.
 
-**Khởi chạy ở Local Dev (wrangler):**
+**Khởi chạy ở Local Dev:**
 - Tạo file `.dev.vars` ở thư mục gốc của project (đã được đưa vào `.gitignore`).
 - Thêm biến `GOOGLE_SHEETS_WEBHOOK_URL=DÁN_URL_CỦA_BẠN_VÀO_ĐÂY`.
+- Khi dùng Cloudflare adapter, lệnh `npm run dev` sẽ tự động đọc file này để test API ở máy local mà không cần chạy `wrangler`.
 
-**Khi deploy lên Cloudflare Pages:**
+**Khi deploy lên Cloudflare Pages / Workers:**
 - Truy cập vào Dashboard của project trên Cloudflare.
-- Mở mục **Settings > Environment variables**.
-- Thêm biến `GOOGLE_SHEETS_WEBHOOK_URL` và dán URL thật vào phần Production (có thể cả Preview).
-- Lưu lại và redeploy để Function nhận biến mới.
+- Mở mục **Settings > Variables and secrets** của ứng dụng.
+- Thêm biến `GOOGLE_SHEETS_WEBHOOK_URL` và dán URL thật vào (có thể chọn lưu an toàn encrypted).
+- Lưu lại và redeploy để server nhận biến mới.
 
 **Test tại Local:**
 - Khi chạy wrangler pages dev -- npm run dev, hệ thống dựng lên 2 server:

@@ -1,38 +1,16 @@
-export interface Env {
-  GOOGLE_SHEETS_WEBHOOK_URL: string;
-}
+import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
 
-export interface EventContext<Env = any, Params = any, Data = any> {
-  request: Request;
-  functionPath: string;
-  waitUntil: (promise: Promise<any>) => void;
-  next: (input?: Request | string, init?: RequestInit) => Promise<Response>;
-  data: Data;
-  env: Env;
-  params: Params;
-}
-
-export type PagesFunction<Env = any, Params = any, Data = any> = (
-  context: EventContext<Env, Params, Data>
-) => Response | Promise<Response>;
-
-
-interface BookingPayload {
-  phone?: string;
-  email?: string;
-  eventType?: string;
-  eventDate?: string;
-  note?: string;
-}
-
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+export const POST: APIRoute = async (context) => {
   try {
     const request = context.request;
-    const env = context.env;
+    
+    // Đọc biến môi trường từ module cloudflare:workers (Cách mới của Astro v6)
+    const webhookUrl = env.GOOGLE_SHEETS_WEBHOOK_URL;
     
     // Parse the request body
     const bodyText = await request.text();
-    let payload: BookingPayload & { website?: string };
+    let payload;
     
     try {
       payload = JSON.parse(bodyText);
@@ -88,17 +66,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }
     }
 
-    // 3. Rate Limit (TODO)
-    // TODO: nếu cần rate limit nghiêm ngặt hơn, cân nhắc dùng Cloudflare KV để lưu timestamp submit gần nhất theo IP
-    // const clientIP = request.headers.get('CF-Connecting-IP');
-
-    // 4. Gửi dữ liệu tới Google Apps Script Webhook
-    if (!env.GOOGLE_SHEETS_WEBHOOK_URL) {
+    // 3. Gửi dữ liệu tới Google Apps Script Webhook
+    if (!webhookUrl) {
        console.error("GOOGLE_SHEETS_WEBHOOK_URL environment variable is missing.");
        return new Response(JSON.stringify({ success: false, error: "Hệ thống chưa được cấu hình hoàn chỉnh." }), { status: 500, headers: { "Content-Type": "application/json" } });
     }
 
-    const appsScriptResponse = await fetch(env.GOOGLE_SHEETS_WEBHOOK_URL, {
+    const appsScriptResponse = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'text/plain;charset=utf-8' // Giữ text/plain để tránh CORS preflight ở Google
@@ -117,14 +91,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
        throw new Error("Apps Script request failed");
     }
 
-    // 5. Trả về thành công
+    // 4. Trả về thành công
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
 
   } catch (error) {
-    console.error("Internal Server Error in booking function:", error);
+    console.error("Internal Server Error in booking API Route:", error);
     return new Response(JSON.stringify({ success: false, error: "Có lỗi hệ thống, vui lòng thử lại sau." }), {
       status: 500,
       headers: { "Content-Type": "application/json" }
