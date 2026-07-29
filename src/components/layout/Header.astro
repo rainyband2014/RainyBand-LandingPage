@@ -1,0 +1,55 @@
+---
+import Container from '../shared/Container.astro';
+import Button from '../shared/Button.astro';
+
+const navItems = [
+  { label: 'Vocal', href: '#', active: true },
+  { label: 'Nhạc công', href: '#' },
+  { label: 'Dịch vụ', href: '#' },
+  { label: 'Showcase', href: '#' },
+  { label: 'Blog', href: '#' },
+  { label: 'Liên hệ', href: '#' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-neutral-surface border-b border-neutral-bg w-full">
+  <Container class="flex items-center justify-between h-20">
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-bold font-display text-brand-900 tracking-tight">
+      Rainy Band
+      <!-- TODO: thay bằng <img> logo SVG sau -->
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center space-x-1">
+      {navItems.map(item => (
+        <a 
+          href={item.href} 
+          class={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+            item.active 
+              ? 'bg-brand-100 text-brand-800' 
+              : 'text-neutral-text hover:text-brand-600 hover:bg-neutral-bg'
+          }`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right Side (CTA + Mobile Toggle) -->
+    <div class="flex items-center space-x-4">
+      <Button href="#booking" variant="primary" class="hidden md:inline-flex">
+        Đặt lịch ngay
+      </Button>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden p-2 text-neutral-text hover:text-brand-600" aria-label="Menu">
+        <!-- Hamburger Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <!-- TODO: sẽ làm mobile menu ở bước sau -->
+      </button>
+    </div>
+  </Container>
+</header>

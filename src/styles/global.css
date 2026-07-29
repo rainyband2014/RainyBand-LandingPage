@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  /* Brand colors - lấy từ logo (marble xanh navy -> teal) */
+  --color-brand-950: #0a1720;
+  --color-brand-900: #0e222c;
+  --color-brand-800: #123240;
+  --color-brand-700: #1a4655;
+  --color-brand-600: #235a6d;
+  --color-brand-500: #2f7288;
+  --color-brand-400: #4a8fa3;
+  --color-brand-300: #7bb0bf;
+  --color-brand-100: #dceaee;
+
+  /* Neutral - nền sáng trung tính, không dùng tông be ấm */
+  --color-neutral-bg: #f6f5f1;
+  --color-neutral-surface: #ffffff;
+  --color-neutral-text: #12212a;
+  --color-neutral-muted: #5b6b72;
+
+  /* Font tạm thời - đơn giản, dễ đổi sau này */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* TODO: thay --font-display bằng font serif/display chính thức sau khi chọn xong */

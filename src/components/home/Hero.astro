@@ -1,0 +1,60 @@
+---
+import Container from '../shared/Container.astro';
+import Button from '../shared/Button.astro';
+import Badge from '../shared/Badge.astro';
+
+const socialLinks = [
+  { label: 'YouTube', href: '#' },
+  { label: 'TikTok', href: '#' },
+  { label: 'Facebook', href: '#' },
+  { label: 'Instagram', href: '#' },
+];
+---
+
+<section class="w-full py-6 md:py-10">
+  <Container>
+    <div class="relative w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden group">
+      <!-- Background Image -->
+      <!-- TODO: thay ảnh placeholder bằng ảnh hero thật -->
+      <img 
+        src="https://placehold.co/1600x1000/0a1720/dceaee?text=Rainy+Band+Hero" 
+        alt="Rainy Band Hero" 
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent"></div>
+
+      <!-- Content -->
+      <div class="absolute inset-0 p-6 md:p-12 lg:p-16 flex flex-col justify-end items-start h-full max-w-4xl">
+        <Badge label="ACOUSTIC & VOCAL CHO SỰ KIỆN CỦA BẠN" class="mb-6 md:mb-8" />
+        
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight md:leading-tight mb-4 md:mb-6">
+          Âm nhạc sống, chạm đúng<br class="hidden md:block"/> cảm xúc từng khoảnh khắc
+        </h1>
+        
+        <p class="text-brand-100/90 text-base md:text-xl lg:text-2xl mb-8 md:mb-10 max-w-2xl leading-relaxed">
+          Rainy Band cung cấp ban nhạc acoustic, vocal và nhạc công chuyên nghiệp cho quán, sự kiện doanh nghiệp và tiệc cưới.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-10 md:mb-16 w-full sm:w-auto">
+          <Button href="#booking" variant="primary" size="lg" class="w-full sm:w-auto">
+            Đặt lịch biểu diễn
+          </Button>
+          <Button href="#media" variant="ghost" size="lg" class="w-full sm:w-auto">
+            Xem media
+          </Button>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex flex-wrap gap-6 mt-auto text-sm md:text-base font-medium">
+          {socialLinks.map(link => (
+            <a href={link.href} class="text-brand-100/70 hover:text-white transition-colors">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
