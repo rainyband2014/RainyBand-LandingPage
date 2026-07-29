@@ -42,3 +42,9 @@ Vì lý do bảo mật, URL của Google Apps Script Web App **không lộ** ở
 - Mở mục **Settings > Environment variables**.
 - Thêm biến `GOOGLE_SHEETS_WEBHOOK_URL` và dán URL thật vào phần Production (có thể cả Preview).
 - Lưu lại và redeploy để Function nhận biến mới.
+
+**Test tại Local:**
+- Khi chạy wrangler pages dev -- npm run dev, hệ thống dựng lên 2 server:
+- - Astro (4321): Chỉ chạy code frontend, không biết thư mục functions/ là gì.
+- - Wrangler (8788): Đứng bọc bên ngoài Astro. Khi có request tới /api/booking, nó sẽ bắt lại và chạy file booking.ts. Nếu request trang web bình thường, nó sẽ tự đẩy về Astro (4321) để lấy giao diện.
+- Cách khắc phục: Bạn chỉ cần đổi địa chỉ trên trình duyệt từ http://localhost:4321 sang: 👉 http://127.0.0.1:8788 (hoặc http://localhost:8788)
