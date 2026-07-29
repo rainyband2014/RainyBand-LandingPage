@@ -1,14 +1,10 @@
 // Triggers animation when elements enter the viewport
 export function initScrollReveal() {
-  console.log("initScrollReveal called"); // DEBUG
-
   // Respect prefers-reduced-motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  console.log(prefersReducedMotion); // DEBUG
   if (prefersReducedMotion) return;
 
   const revealElements = document.querySelectorAll('.reveal');
-  console.log(revealElements.length); // DEBUG
   
   const observerOptions = {
     root: null,
@@ -19,7 +15,6 @@ export function initScrollReveal() {
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        console.log(entry.target); // DEBUG
         const target = entry.target as HTMLElement;
         // Optional delay for staggered animations
         const delay = target.getAttribute('data-delay');

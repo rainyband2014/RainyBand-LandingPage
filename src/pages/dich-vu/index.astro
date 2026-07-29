@@ -9,11 +9,13 @@ import { services } from '../../data/services';
 <PageLayout title="Dịch vụ - Rainy Band">
   <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
     <Container>
-      <Badge label="DỊCH VỤ" tone="dark" class="mb-4" />
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+      <div class="reveal">
+        <Badge label="DỊCH VỤ" tone="dark" class="mb-4" />
+      </div>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6 reveal" data-delay="100">
         Dịch vụ của Rainy Band
       </h1>
-      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl">
+      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl reveal" data-delay="200">
         Từ biểu diễn acoustic tại quán đến trọn gói sự kiện lớn, Rainy Band cung cấp giải pháp âm nhạc linh hoạt và chuyên nghiệp.
       </p>
     </Container>
@@ -22,8 +24,10 @@ import { services } from '../../data/services';
   <section class="w-full py-12 md:py-20 bg-neutral-bg">
     <Container>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-        {services.map(service => (
-          <ServiceCard {...service} />
+        {services.map((service, index) => (
+          <div class="reveal" data-delay={index * 100}>
+            <ServiceCard {...service} />
+          </div>
         ))}
       </div>
     </Container>

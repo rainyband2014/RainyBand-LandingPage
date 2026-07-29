@@ -12,16 +12,17 @@ const rootClasses = className ?? 'w-full';
 ---
 
 <a href={`/vocal/${slug}`} class={`${rootClasses} block group no-underline text-inherit`}>
-  <div class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-sm">
+  <div class="relative w-full aspect-[3/4] rounded-2xl shadow-sm hover-media-container cursor-pointer block">
     <!-- TODO: thay bằng ảnh vocalist thật -->
     <img 
       src={posterImageUrl} 
       alt={name} 
-      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      class="absolute inset-0 w-full h-full object-cover"
     />
-    <div class="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-brand-950/85 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-brand-950/85 to-transparent z-10 pointer-events-none"></div>
+    <div class="hover-media-overlay z-10"></div>
     
-    <div class="absolute inset-0 p-5 flex flex-col justify-between">
+    <div class="absolute inset-0 p-5 flex flex-col justify-between z-20">
       <div class="flex">
         <Badge label={badgeLabel} tone="light" />
       </div>
