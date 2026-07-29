@@ -4,10 +4,10 @@ import type { CoreTeamMember } from '../../data/coreTeam';
 
 interface Props extends CoreTeamMember {}
 
-const { name, roleLabel, bio, imageUrl } = Astro.props;
+const { slug, name, roleLabel, bio, imageUrl } = Astro.props;
 ---
 
-<div class="flex flex-col group">
+<a href={`/doi-ngu/${slug}`} class="block flex flex-col group no-underline text-inherit">
   <div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden mb-4 shadow-sm">
     <!-- TODO: thay bằng ảnh thật của Founder/Manager -->
     <img 
@@ -23,7 +23,7 @@ const { name, roleLabel, bio, imageUrl } = Astro.props;
       </div>
       
       <div class="mt-auto">
-        {/* TODO: cập nhật tên thật của Founder/Manager */}
+        <!-- TODO: cập nhật tên thật của Founder/Manager -->
         <h3 class="font-display text-3xl font-bold text-white tracking-tight">{name}</h3>
       </div>
     </div>
@@ -33,4 +33,4 @@ const { name, roleLabel, bio, imageUrl } = Astro.props;
     <!-- TODO: cập nhật bio thật nếu cần -->
     {bio}
   </p>
-</div>
+</a>

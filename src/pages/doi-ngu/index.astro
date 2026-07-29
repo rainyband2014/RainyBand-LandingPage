@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/shared/Container.astro';
+import Badge from '../../components/shared/Badge.astro';
+import CoreTeam from '../../components/home/CoreTeam.astro';
+---
+
+<PageLayout title="Đội ngũ - Rainy Band">
+  <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
+    <Container>
+      <Badge label="ĐỘI NGŨ" tone="dark" class="mb-4" />
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+        Đội ngũ nòng cốt Rainy Band
+      </h1>
+      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl">
+        Gặp gỡ những con người đứng sau mỗi buổi biểu diễn — từ sáng lập, quản lý vocal đến quản lý nhạc công.
+      </p>
+    </Container>
+  </section>
+
+  <section class="w-full py-16 md:py-24 bg-neutral-bg">
+    <Container>
+      <CoreTeam />
+    </Container>
+  </section>
+</PageLayout>

@@ -1,6 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/layout/Header.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import Showreel from '../components/home/Showreel.astro';
 import InfoStrip from '../components/home/InfoStrip.astro';
@@ -9,20 +8,15 @@ import CoreTeamSection from '../components/home/CoreTeamSection.astro';
 import VocalShowcase from '../components/home/VocalShowcase.astro';
 import MusicianSection from '../components/home/MusicianSection.astro';
 import Booking from '../components/home/Booking.astro';
-import Footer from '../components/layout/Footer.astro';
 ---
 
-<BaseLayout>
-  <Header />
-  <main>
-    <Hero />
-    <Showreel />
-    <InfoStrip />
-    <ClientLogos />
-    <CoreTeamSection />
-    <VocalShowcase />
-    <MusicianSection />
-    <Booking />
-  </main>
-  <Footer />
-</BaseLayout>
+<PageLayout>
+  <Hero />
+  <Showreel />
+  <InfoStrip />
+  <ClientLogos />
+  <CoreTeamSection />
+  <VocalShowcase />
+  <MusicianSection />
+  <Booking />
+</PageLayout>

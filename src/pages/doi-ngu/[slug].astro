@@ -1,0 +1,93 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/shared/Container.astro';
+import Badge from '../../components/shared/Badge.astro';
+import Button from '../../components/shared/Button.astro';
+import { coreTeam } from '../../data/coreTeam';
+import type { CoreTeamMember } from '../../data/coreTeam';
+
+export function getStaticPaths() {
+  return coreTeam.map((member) => ({
+    params: { slug: member.slug },
+    props: { member },
+  }));
+}
+
+interface Props {
+  member: CoreTeamMember;
+}
+
+const { member } = Astro.props;
+
+// Tách fullBio thành các đoạn dựa trên line break
+const bioParagraphs = member.fullBio.split('\n').filter((p: string) => p.trim() !== '');
+---
+
+<PageLayout title={`${member.name} - ${member.roleLabel} | Rainy Band`}>
+  <section class="w-full py-16 md:py-24 bg-neutral-bg">
+    <Container>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
+        <!-- Left Column: Image -->
+        <div class="md:col-span-5">
+          <div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-md">
+            <!-- TODO: thay bằng ảnh thật -->
+            <img 
+              src={member.imageUrl} 
+              alt={member.name} 
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div class="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-brand-950/50 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Info -->
+        <div class="md:col-span-7 flex flex-col">
+          <Badge label={member.roleLabel} tone="dark" class="mb-4 self-start" />
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+            {member.name}
+          </h1>
+
+          <div class="space-y-4 mb-10">
+            {bioParagraphs.map((paragraph: string) => (
+              <p class="text-base md:text-lg text-neutral-text leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <!-- Contact Info -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 p-6 bg-neutral-surface rounded-2xl border border-neutral-text/5">
+            <div>
+              <p class="text-xs font-bold text-neutral-muted uppercase tracking-wider mb-1">Điện thoại</p>
+              <!-- TODO: thay số điện thoại thật -->
+              <p class="text-base text-neutral-text font-medium">{member.phone}</p>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-neutral-muted uppercase tracking-wider mb-1">Email</p>
+              <!-- TODO: thay email thật -->
+              <p class="text-base text-neutral-text font-medium">{member.email}</p>
+            </div>
+          </div>
+
+          <p class="text-sm text-neutral-muted mb-8">
+            Gắn bó từ năm <span class="font-bold text-brand-600">{member.joinedYear}</span>
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button href="/#booking" variant="primary" size="md">
+              Liên hệ đặt lịch
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-16 pt-8 border-t border-neutral-text/10">
+        <a href="/doi-ngu" class="text-sm font-medium text-neutral-muted hover:text-brand-600 transition-colors">
+          &larr; Xem tất cả thành viên
+        </a>
+      </div>
+    </Container>
+  </section>
+</PageLayout>

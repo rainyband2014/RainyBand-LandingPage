@@ -1,0 +1,67 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/shared/Container.astro';
+import Badge from '../../components/shared/Badge.astro';
+import CoreTeam from '../../components/home/CoreTeam.astro';
+import { companyInfo } from '../../data/companyInfo';
+---
+
+<PageLayout title="Giới thiệu - Rainy Band">
+  <!-- Hero nhỏ -->
+  <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
+    <Container>
+      <Badge label="GIỚI THIỆU" tone="dark" class="mb-4" />
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+        Rainy Band — Hành trình từ {companyInfo.foundedYear}
+      </h1>
+      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl">
+        {companyInfo.foundedStory}
+      </p>
+    </Container>
+  </section>
+
+  <!-- Timeline -->
+  <section class="w-full py-12 md:py-20 bg-neutral-bg border-t border-neutral-text/10">
+    <Container>
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 mb-10 md:mb-14 tracking-tight">
+        Các cột mốc quan trọng
+      </h2>
+
+      <!-- TODO: có thể nâng cấp thành timeline đồ họa đẹp hơn sau -->
+      <div class="relative">
+        <!-- Đường kẻ dọc nối các mốc -->
+        <div class="absolute left-[2.25rem] md:left-[3rem] top-0 bottom-0 w-px bg-neutral-text/10 hidden md:block"></div>
+
+        <div class="flex flex-col gap-10 md:gap-12">
+          {companyInfo.milestones.map((milestone) => (
+            <div class="flex gap-6 md:gap-10 items-start">
+              <div class="flex-shrink-0 w-[4.5rem] md:w-[6rem] text-right relative">
+                <span class="text-2xl md:text-3xl font-display font-bold text-brand-600">{milestone.year}</span>
+                <!-- Chấm tròn trên đường kẻ dọc -->
+                <div class="hidden md:block absolute right-[-1.3rem] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-600 border-2 border-neutral-bg"></div>
+              </div>
+              <p class="text-base md:text-lg text-neutral-text leading-relaxed pt-1">
+                {milestone.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Core Team -->
+  <section class="w-full py-16 md:py-24 bg-neutral-surface">
+    <Container>
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight">
+          Những người đứng sau Rainy Band
+        </h2>
+        <a href="/doi-ngu" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2 whitespace-nowrap">
+          Xem chi tiết từng thành viên &rarr;
+        </a>
+      </div>
+      <CoreTeam />
+    </Container>
+  </section>
+</PageLayout>

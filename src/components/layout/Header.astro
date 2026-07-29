@@ -2,13 +2,15 @@
 import Container from '../shared/Container.astro';
 import Button from '../shared/Button.astro';
 
+const currentPath = Astro.url.pathname;
+
 const navItems = [
-  { label: 'Vocal', href: '#', active: true },
-  { label: 'Nhạc công', href: '#' },
-  { label: 'Dịch vụ', href: '#' },
-  { label: 'Showcase', href: '#' },
-  { label: 'Blog', href: '#' },
-  { label: 'Liên hệ', href: '#' },
+  { label: 'Giới thiệu', href: '/gioi-thieu' },
+  { label: 'Đội ngũ', href: '/doi-ngu' },
+  { label: 'Vocal', href: '#' },       // TODO: nối route khi có page Vocal
+  { label: 'Dịch vụ', href: '#' },     // TODO: nối route khi có page Dịch vụ
+  { label: 'Showcase', href: '#' },     // TODO: nối route khi có page Showcase
+  { label: 'Liên hệ', href: '#' },     // TODO: nối route khi có page Liên hệ
 ];
 ---
 
@@ -22,18 +24,21 @@ const navItems = [
 
     <!-- Desktop Nav -->
     <nav class="hidden md:flex items-center space-x-1">
-      {navItems.map(item => (
+      {navItems.map(item => {
+        const isActive = item.href !== '#' && currentPath.startsWith(item.href);
+        return (
         <a 
           href={item.href} 
           class={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-            item.active 
+            isActive 
               ? 'bg-brand-100 text-brand-800' 
               : 'text-neutral-text hover:text-brand-600 hover:bg-neutral-bg'
           }`}
         >
           {item.label}
         </a>
-      ))}
+        );
+      })}
     </nav>
 
     <!-- Right Side (CTA + Mobile Toggle) -->
