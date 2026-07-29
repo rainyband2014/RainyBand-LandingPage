@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Container from '../../components/shared/Container.astro';
+import Badge from '../../components/shared/Badge.astro';
+import VocalCard from '../../components/vocal/VocalCard.astro';
+import { vocalists } from '../../data/vocalists';
+---
+
+<PageLayout title="Vocal - Rainy Band">
+  <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
+    <Container>
+      <Badge label="VOCAL" tone="dark" class="mb-4" />
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6">
+        Đội ngũ vocal Rainy Band
+      </h1>
+      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl">
+        Mỗi giọng hát mang một màu sắc riêng, phù hợp với từng loại sự kiện và không gian biểu diễn.
+      </p>
+    </Container>
+  </section>
+
+  <section class="w-full py-12 md:py-20 bg-neutral-bg">
+    <Container>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {vocalists.map(vocalist => (
+          <VocalCard {...vocalist} />
+        ))}
+      </div>
+    </Container>
+  </section>
+</PageLayout>
