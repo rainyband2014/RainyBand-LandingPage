@@ -2,12 +2,16 @@
 import Badge from '../shared/Badge.astro';
 import type { Musician } from '../../data/musicians';
 
-interface Props extends Musician {}
+interface Props extends Musician {
+  class?: string;
+}
 
-const { name, instrument, instrumentGroup, experienceYears, imageUrl } = Astro.props;
+const { slug, name, instrument, instrumentGroup, experienceYears, imageUrl, class: className } = Astro.props;
+
+const rootClasses = className ?? 'w-64 flex-shrink-0 snap-start';
 ---
 
-<div class="w-64 flex-shrink-0 snap-start flex flex-col group cursor-pointer">
+<a href={`/nhac-cong/${slug}`} class={`${rootClasses} flex flex-col group cursor-pointer no-underline text-inherit`}>
   <div class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 shadow-sm">
     <!-- TODO: thay bằng ảnh thật của nhạc công -->
     <img 
@@ -33,4 +37,4 @@ const { name, instrument, instrumentGroup, experienceYears, imageUrl } = Astro.p
     <Badge label={instrumentGroup} tone="dark" class="mb-2 scale-90 origin-left" />
     <p class="text-base font-bold text-neutral-text">{instrument}</p>
   </div>
-</div>
+</a>
