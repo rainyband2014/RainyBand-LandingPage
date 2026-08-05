@@ -1,42 +1,96 @@
 ---
 import Container from '../shared/Container.astro';
+import Button from '../shared/Button.astro';
 import BookingForm from './BookingForm';
 
-const contactButtons = [
-  { label: 'Gọi', href: '#' },
-  { label: 'Zalo', href: '#' },
-  { label: 'Email', href: '#' },
-  { label: 'Book Âm thanh', href: '#' },
+const contactChecklist = [
+  "Ngày và giờ tổ chức",
+  "Địa điểm biểu diễn",
+  "Loại hình sự kiện",
+  "Số lượng khách mời",
+  "Đội hình mong muốn",
+  "Phong cách âm nhạc",
+  "Thời lượng biểu diễn",
+  "Yêu cầu đặc biệt của chương trình"
 ];
 ---
 
 <section id="booking" class="w-full py-16 md:py-24 bg-brand-950 rounded-t-3xl md:rounded-t-[3rem] mt-8">
   <Container>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-      <!-- Left Column -->
-      <div class="flex flex-col reveal">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">
-          Để lại thông tin để Rainy Band tư vấn và báo giá phù hợp
-        </h2>
-        <p class="text-base md:text-lg text-white/70 mb-10 leading-relaxed max-w-lg">
-          Điền ngắn gọn loại show, ngày dự kiến, địa điểm và mood mong muốn, đội ngũ sẽ liên hệ tư vấn trong thời gian sớm nhất.
+    <!-- CTA heading -->
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">
+        Bạn đang tìm kiếm một ban nhạc<br class="hidden md:block" /> cho chương trình sắp tới?
+      </h2>
+      <p class="text-base md:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto mb-10">
+        Hãy chia sẻ với Rainy Band về không gian, khách mời và cảm xúc mà bạn muốn tạo nên.
+        Chúng tôi sẽ tư vấn đội hình và phong cách biểu diễn phù hợp với chương trình của bạn.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/lien-he" variant="primary" size="lg">
+          Nhận tư vấn đội hình
+        </Button>
+        <Button href="/lien-he" variant="ghost" size="lg">
+          Đặt lịch biểu diễn
+        </Button>
+        <Button href="tel:0332552700" variant="ghost" size="lg">
+          Gọi ngay: 0332 552 700
+        </Button>
+      </div>
+    </div>
+
+    <!-- 2 cột: Thông tin liên hệ + Form -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+      <!-- Left Column: Contact Info -->
+      <div class="flex flex-col reveal" data-delay="100">
+        <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
+          Liên hệ Rainy Band
+        </h3>
+        <p class="text-base text-white/70 leading-relaxed mb-8">
+          Để được tư vấn về đội hình, lịch biểu diễn và chi phí, vui lòng liên hệ trực tiếp với Rainy Band qua:
         </p>
 
-        <!-- TODO: thay href thật cho các kênh liên hệ -->
-        <div class="flex flex-wrap gap-3">
-          {contactButtons.map(btn => (
-            <a 
-              href={btn.href} 
-              class="inline-flex items-center justify-center px-5 py-2.5 bg-transparent border border-white/30 hover:border-white hover:bg-white/10 text-white text-sm font-medium rounded-full transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              {btn.label}
+        <div class="space-y-5 mb-10">
+          <div>
+            <p class="text-xs font-bold text-white/50 uppercase tracking-wider mb-1">Hotline</p>
+            <a href="tel:0332552700" class="text-lg text-white font-medium hover:text-brand-300 transition-colors">
+              0332 552 700
             </a>
-          ))}
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white/50 uppercase tracking-wider mb-1">Fanpage</p>
+            <!-- TODO: thay link Fanpage thật -->
+            <a href="#" class="text-lg text-white font-medium hover:text-brand-300 transition-colors">
+              Rainy Band
+            </a>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white/50 uppercase tracking-wider mb-1">Hình thức liên hệ</p>
+            <p class="text-base text-white/80">Nhắn tin trực tiếp qua Fanpage hoặc gọi điện thoại.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-8">
+          <p class="text-sm text-white/70 leading-relaxed mb-4">
+            Khi liên hệ, khách hàng có thể cung cấp trước các thông tin:
+          </p>
+          <ul class="space-y-2">
+            {contactChecklist.map(item => (
+              <li class="flex items-start gap-2 text-sm text-white/80">
+                <span class="text-brand-300 mt-0.5 flex-shrink-0">•</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="text-sm text-white/70 leading-relaxed mt-6">
+            Rainy Band sẽ phản hồi và tư vấn phương án phù hợp trong thời gian sớm nhất.
+          </p>
         </div>
       </div>
 
-      <!-- Right Column -->
+      <!-- Right Column: Form -->
       <div class="bg-neutral-surface rounded-3xl p-6 md:p-8 lg:p-10 shadow-xl reveal" data-delay="200">
+        <h3 class="text-xl font-display font-bold text-brand-900 mb-6">Gửi yêu cầu tư vấn</h3>
         <BookingForm client:visible />
       </div>
     </div>

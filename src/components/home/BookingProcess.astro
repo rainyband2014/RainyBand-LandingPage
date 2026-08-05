@@ -1,0 +1,86 @@
+---
+import Container from '../shared/Container.astro';
+import Badge from '../shared/Badge.astro';
+
+const steps = [
+  {
+    title: "Gửi thông tin chương trình",
+    description: "Khách hàng cung cấp thời gian, địa điểm, loại hình sự kiện, quy mô khách mời và phong cách âm nhạc mong muốn."
+  },
+  {
+    title: "Tư vấn đội hình",
+    description: "Rainy Band đề xuất đội hình ca sĩ, nhạc công, thời lượng biểu diễn và hình thức chương trình phù hợp."
+  },
+  {
+    title: "Thống nhất nội dung",
+    description: "Hai bên thống nhất danh sách tiết mục, trang phục, thời gian biểu diễn, yêu cầu kỹ thuật và các nội dung liên quan."
+  },
+  {
+    title: "Chuẩn bị và biểu diễn",
+    description: "Rainy Band phối hợp cùng khách hàng hoặc đơn vị tổ chức để chuẩn bị chương trình và mang đến phần trình diễn chỉn chu nhất."
+  }
+];
+---
+
+<section class="w-full py-16 md:py-24 bg-neutral-bg border-t border-neutral-text/10">
+  <Container>
+    <div class="mb-12 md:mb-16 reveal">
+      <Badge label="QUY TRÌNH ĐẶT BAND" tone="dark" class="mb-4" />
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
+        Quy trình đặt band
+      </h2>
+    </div>
+
+    <!-- Desktop: timeline ngang -->
+    <div class="hidden md:grid md:grid-cols-4 gap-6 lg:gap-8">
+      {steps.map((step, index) => (
+        <div class="flex flex-col reveal" data-delay={index * 150}>
+          <!-- Số bước + đường nối -->
+          <div class="flex items-center mb-6">
+            <div class="w-11 h-11 rounded-full bg-brand-600 text-white flex items-center justify-center text-sm font-bold font-display flex-shrink-0 shadow-sm">
+              0{index + 1}
+            </div>
+            {index < steps.length - 1 && (
+              <div class="flex-1 h-[2px] bg-brand-200 ml-3"></div>
+            )}
+          </div>
+          <!-- Card nội dung -->
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-neutral-text/5 flex-grow">
+            <h3 class="text-base lg:text-lg font-display font-bold text-brand-900 mb-2">
+              {step.title}
+            </h3>
+            <p class="text-sm text-neutral-muted leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mobile: timeline dọc -->
+    <div class="md:hidden flex flex-col">
+      {steps.map((step, index) => (
+        <div class="flex items-start reveal" data-delay={index * 100}>
+          <!-- Cột trái: số + đường dọc -->
+          <div class="flex flex-col items-center mr-5 flex-shrink-0">
+            <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center text-sm font-bold font-display shadow-sm">
+              0{index + 1}
+            </div>
+            {index < steps.length - 1 && (
+              <div class="w-[2px] bg-brand-200 flex-1 min-h-[24px] my-2"></div>
+            )}
+          </div>
+          <!-- Card nội dung -->
+          <div class={`bg-white rounded-2xl p-5 shadow-sm border border-neutral-text/5 flex-grow ${index < steps.length - 1 ? 'mb-4' : ''}`}>
+            <h3 class="text-base font-display font-bold text-brand-900 mb-2">
+              {step.title}
+            </h3>
+            <p class="text-sm text-neutral-muted leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
