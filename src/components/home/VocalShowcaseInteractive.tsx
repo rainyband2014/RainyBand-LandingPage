@@ -1,9 +1,46 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { vocalists } from '../../data/vocalists';
 
 export default function VocalShowcaseInteractive() {
   const [selectedId, setSelectedId] = useState<string>(vocalists[0].id);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => {
+      setSelectedId(prevId => {
+        const currentIndex = vocalists.findIndex(v => v.id === prevId);
+        const nextIndex = (currentIndex + 1) % vocalists.length;
+        
+        // Auto scroll carousel if possible
+        if (carouselRef.current) {
+           const nextBtn = carouselRef.current.children[nextIndex] as HTMLElement;
+           if (nextBtn) {
+             const scrollPos = nextBtn.offsetLeft - carouselRef.current.offsetWidth / 2 + nextBtn.offsetWidth / 2;
+             carouselRef.current.scrollTo({ left: Math.max(0, scrollPos), behavior: 'smooth' });
+           }
+        }
+        
+        return vocalists[nextIndex].id;
+      });
+    }, 8000);
+  }, []);
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, [startAutoPlay]);
+
+  const handleMouseEnter = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleMouseLeave = () => {
+    startAutoPlay();
+  };
 
   const selectedVocalist = vocalists.find(v => v.id === selectedId) || vocalists[0];
 
@@ -20,27 +57,33 @@ export default function VocalShowcaseInteractive() {
   };
 
   return (
-    <div className="w-full mt-8 md:mt-12 flex flex-col gap-8 md:gap-10">
+    <div 
+      className="w-full mt-8 md:mt-12 flex flex-col gap-8 md:gap-10"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12">
         {/* Left Column (Poster) */}
         <div className="md:col-span-7 relative w-full aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden group shadow-md">
-          {/* TODO: thay bằng ảnh poster thật */}
-          <img 
-            src={selectedVocalist.posterImageUrl} 
-            alt={selectedVocalist.name} 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out"
-          />
-          <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-brand-950/90 to-transparent"></div>
-          
-          <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-            <p className="text-white/70 text-xs md:text-sm font-bold tracking-widest uppercase mb-2">
-              {selectedVocalist.experienceYears} NĂM KINH NGHIỆM
-            </p>
-            <h3 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-              {selectedVocalist.name}
-            </h3>
+          {/* Poster Container có key để trigger CSS animation khi đổi người */}
+          <div key={`poster-${selectedId}`} className="absolute inset-0 w-full h-full animate-fade-in">
+            {/* TODO: thay bằng ảnh poster thật */}
+            <img 
+              src={selectedVocalist.posterImageUrl} 
+              alt={selectedVocalist.name} 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-brand-950/90 to-transparent"></div>
             
-            <div>
+            <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+              <p className="text-white/70 text-xs md:text-sm font-bold tracking-widest uppercase mb-2">
+                {selectedVocalist.experienceYears} NĂM KINH NGHIỆM
+              </p>
+              <h3 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                {selectedVocalist.name}
+              </h3>
+              
+              <div>
               {/* TODO: Gắn link video thật sau */}
               <button 
                 onClick={() => {}} 
@@ -51,16 +94,17 @@ export default function VocalShowcaseInteractive() {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Right Column (Info Card) */}
         <div className="md:col-span-5 bg-neutral-surface rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-text/5 flex flex-col h-full relative z-10">
-          <div className="mb-6">
+          <div key={`info-${selectedId}`} className="mb-6 animate-fade-in">
             <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-brand-600 text-white mb-6 shadow-sm">
               {selectedVocalist.badgeLabel}
             </span>
             <div className="flex items-center justify-between mb-8">
               <h4 className="text-2xl font-bold text-brand-900">{selectedVocalist.name}</h4>
-              <a href="#" className="text-sm font-medium text-brand-600 hover:underline">
+              <a href={`/vocal/${selectedVocalist.slug}`} className="text-sm font-medium text-brand-600 hover:underline">
                 Xem vocal &rarr;
               </a>
             </div>
@@ -81,7 +125,7 @@ export default function VocalShowcaseInteractive() {
             </div>
           </div>
 
-          <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-neutral-text/10">
+          <div key={`videos-${selectedId}`} className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-neutral-text/10 animate-fade-in" style={{ animationDelay: '100ms' }}>
             {selectedVocalist.videos?.slice(0, 2).map((video) => (
               <div key={video.id} className="relative aspect-video rounded-xl overflow-hidden group cursor-pointer shadow-sm">
                 {/* TODO: thay bằng thumbnail video thật */}

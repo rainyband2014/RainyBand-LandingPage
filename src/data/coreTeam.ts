@@ -44,7 +44,7 @@ export const coreTeam: CoreTeamMember[] = [
     email: "zyzy@rainyband.vn",
     joinedYear: 2023,
     images: [
-      "https://placehold.co/500x600/123240/123240",
+      "/images/vocalists/nam_zyzy.jpg",
       "https://placehold.co/500x600/1a4655/1a4655"
     ]
   },

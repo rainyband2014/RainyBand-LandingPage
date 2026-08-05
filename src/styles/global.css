@@ -112,6 +112,15 @@
     }
   }
 
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
