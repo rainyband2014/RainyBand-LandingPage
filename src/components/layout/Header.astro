@@ -19,9 +19,13 @@ const navItems = [
 <header class="sticky top-0 z-50 bg-neutral-surface border-b border-neutral-bg w-full">
   <Container class="flex items-center justify-between h-20">
     <!-- Logo -->
-    <a href="/" class="text-2xl font-bold font-display text-brand-900 tracking-tight">
-      Rainy Band
-      <!-- TODO: thay bằng <img> logo SVG sau -->
+    <a href="/" class="flex items-center shrink-0">
+      <img
+        src="/images/logos/logo-header.svg"
+        alt="Rainy Band"
+        class="h-12 md:h-14 w-auto object-contain"
+      />
+      <span class="sr-only">Rainy Band</span>
     </a>
 
     <!-- Desktop Nav -->
