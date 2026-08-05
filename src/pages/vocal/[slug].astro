@@ -26,11 +26,22 @@ if (!vocalist) {
 }
 
 const bioParagraphs = vocalist.fullBio.split('\n').filter((p: string) => p.trim() !== '');
+
+const descPrefix = `${vocalist.name} — ${vocalist.badgeLabel}, ${vocalist.experienceYears} năm kinh nghiệm. `;
+let truncatedBio = vocalist.fullBio;
+const maxBioLength = 155 - descPrefix.length - 3;
+if (truncatedBio.length > maxBioLength) {
+  truncatedBio = truncatedBio.substring(0, maxBioLength);
+  const lastSpace = truncatedBio.lastIndexOf(' ');
+  if (lastSpace > 0) truncatedBio = truncatedBio.substring(0, lastSpace);
+  truncatedBio += '...';
+}
+const pageDescription = descPrefix + truncatedBio;
 ---
 
 <PageLayout
   title={`Vocal ${vocalist.name} | Rainy Band`}
-  description={`${vocalist.name} — ${vocalist.badgeLabel}, ${vocalist.experienceYears} năm kinh nghiệm. ${vocalist.fullBio.substring(0, 120)}...`}
+  description={pageDescription}
 >
   <section class="w-full py-16 md:py-24 bg-neutral-bg">
     <Container>

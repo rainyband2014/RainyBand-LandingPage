@@ -83,10 +83,10 @@ export default function TypewriterText({ paragraphs, typingSpeed = 15, className
         // overlay the typed text on top.
         return (
           <div key={index} className={`relative ${textClassName}`}>
-            <p className="opacity-0 pointer-events-none" aria-hidden="true">
+            <p className="opacity-0 pointer-events-none">
               {fullText}
             </p>
-            <p className="absolute top-0 left-0 w-full h-full">
+            <p className="absolute top-0 left-0 w-full h-full" aria-hidden="true">
               {typedText[index]}
               {shouldShowCursor && (
                 <span className="inline-block w-2 h-5 ml-1 bg-brand-600 align-middle animate-pulse"></span>

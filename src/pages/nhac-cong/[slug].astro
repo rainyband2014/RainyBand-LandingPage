@@ -27,11 +27,22 @@ if (!musician) {
 }
 
 const bioParagraphs = musician.fullBio.split('\n').filter((p: string) => p.trim() !== '');
+
+const descPrefix = `${musician.name} — ${musician.instrument}, ${musician.experienceYears} năm kinh nghiệm tại Rainy Band. `;
+let truncatedBio = musician.fullBio;
+const maxBioLength = 155 - descPrefix.length - 3;
+if (truncatedBio.length > maxBioLength) {
+  truncatedBio = truncatedBio.substring(0, maxBioLength);
+  const lastSpace = truncatedBio.lastIndexOf(' ');
+  if (lastSpace > 0) truncatedBio = truncatedBio.substring(0, lastSpace);
+  truncatedBio += '...';
+}
+const pageDescription = descPrefix + truncatedBio;
 ---
 
 <PageLayout
   title={`${musician.name} - ${musician.instrumentGroup} | Rainy Band`}
-  description={`${musician.name} — ${musician.instrument}, ${musician.experienceYears} năm kinh nghiệm tại Rainy Band. ${musician.fullBio.substring(0, 120)}...`}
+  description={pageDescription}
 >
   <section class="w-full py-16 md:py-24 bg-neutral-bg">
     <Container>

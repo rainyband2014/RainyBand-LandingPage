@@ -26,11 +26,22 @@ if (!service) {
 }
 
 const descriptionParagraphs = service.longDescription.split('\n').filter((p: string) => p.trim() !== '');
+
+const descPrefix = `Dịch vụ ${service.title} của Rainy Band. `;
+let truncatedBio = service.longDescription;
+const maxBioLength = 155 - descPrefix.length - 3;
+if (truncatedBio.length > maxBioLength) {
+  truncatedBio = truncatedBio.substring(0, maxBioLength);
+  const lastSpace = truncatedBio.lastIndexOf(' ');
+  if (lastSpace > 0) truncatedBio = truncatedBio.substring(0, lastSpace);
+  truncatedBio += '...';
+}
+const pageDescription = descPrefix + truncatedBio;
 ---
 
 <PageLayout
   title={`${service.title} | Rainy Band`}
-  description={`Dịch vụ ${service.title} của Rainy Band. ${service.longDescription.substring(0, 120)}...`}
+  description={pageDescription}
 >
   <section class="w-full py-16 md:py-24 bg-neutral-bg">
     <Container>

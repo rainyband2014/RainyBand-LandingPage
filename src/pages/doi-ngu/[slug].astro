@@ -29,11 +29,22 @@ if (!member) {
 
 // Tách fullBio thành các đoạn dựa trên line break
 const bioParagraphs = member.fullBio.split('\n').filter((p: string) => p.trim() !== '');
+
+const descPrefix = `${member.name} — ${member.roleLabel} tại Rainy Band. `;
+let truncatedBio = member.fullBio;
+const maxBioLength = 155 - descPrefix.length - 3; // 3 for '...'
+if (truncatedBio.length > maxBioLength) {
+  truncatedBio = truncatedBio.substring(0, maxBioLength);
+  const lastSpace = truncatedBio.lastIndexOf(' ');
+  if (lastSpace > 0) truncatedBio = truncatedBio.substring(0, lastSpace);
+  truncatedBio += '...';
+}
+const pageDescription = descPrefix + truncatedBio;
 ---
 
 <PageLayout
   title={`${member.name} - ${member.roleLabel} | Rainy Band`}
-  description={`${member.name} — ${member.roleLabel} tại Rainy Band. ${member.fullBio.substring(0, 120)}...`}
+  description={pageDescription}
 >
   <section class="w-full py-16 md:py-24 bg-neutral-bg">
     <Container>
