@@ -4,6 +4,21 @@ import Badge from '../shared/Badge.astro';
 import CoreTeam from './CoreTeam.astro';
 import { vocalists } from '../../data/vocalists';
 import { musicians } from '../../data/musicians';
+
+function truncate(text: string, maxLength = 50): string {
+  const clean = text.split('\n')[0];
+  if (clean.length <= maxLength) return clean;
+  const cut = clean.slice(0, maxLength);
+  return cut.slice(0, cut.lastIndexOf(' ')) + '…';
+}
+
+const displayedVocalists = vocalists
+  .filter(v => ['tra-my', 'dai-duong', 'linh-chi'].includes(v.slug))
+  .sort((a, b) => ['tra-my', 'dai-duong', 'linh-chi'].indexOf(a.slug) - ['tra-my', 'dai-duong', 'linh-chi'].indexOf(b.slug));
+
+const displayedMusicians = musicians
+  .filter(m => ['lu-thien', 'truong-zang', 'nguyen-loc'].includes(m.slug))
+  .sort((a, b) => ['lu-thien', 'truong-zang', 'nguyen-loc'].indexOf(a.slug) - ['lu-thien', 'truong-zang', 'nguyen-loc'].indexOf(b.slug));
 ---
 
 <section class="w-full py-16 md:py-24 bg-neutral-bg border-t border-neutral-text/10">
@@ -34,27 +49,27 @@ import { musicians } from '../../data/musicians';
       <div class="mb-6 reveal">
         <h4 class="uppercase text-sm font-bold tracking-wider text-brand-600">Vocal</h4>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {vocalists.map((vocalist, index) => (
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+        {displayedVocalists.map((vocalist, index) => (
           <a href={`/vocal/${vocalist.slug}`} class="block group no-underline text-inherit reveal" data-delay={index * 100}>
             <div class="bg-white rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col overflow-hidden h-full hover:shadow-md transition-shadow">
-              <div class="aspect-[4/5] w-full overflow-hidden relative">
+              <div class="aspect-square w-full overflow-hidden relative">
                 <img
                   src={vocalist.posterImageUrl}
                   alt={vocalist.name}
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div class="p-8 flex flex-col flex-grow">
-                <Badge label={vocalist.badgeLabel} tone="dark" class="self-start mb-4" />
-                <h4 class="text-xl font-bold font-display text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">
+              <div class="p-5 flex flex-col flex-grow">
+                <Badge label={vocalist.badgeLabel} tone="dark" class="self-start mb-3 scale-90 origin-left" />
+                <h4 class="text-lg font-bold font-display text-brand-900 mb-1 group-hover:text-brand-600 transition-colors">
                   {vocalist.name}
                 </h4>
-                <p class="text-sm font-medium text-brand-600 mb-4">
+                <p class="text-[13px] font-medium text-brand-600 mb-3 line-clamp-1">
                   {vocalist.genres}
                 </p>
-                <p class="text-neutral-text leading-relaxed">
-                  {vocalist.fullBio.split('\n\n')[0]}
+                <p class="text-sm text-neutral-text leading-relaxed">
+                  {truncate(vocalist.fullBio)}
                 </p>
               </div>
             </div>
@@ -66,27 +81,27 @@ import { musicians } from '../../data/musicians';
       <div class="mt-12 md:mt-16 pt-12 border-t border-neutral-text/10 mb-6 reveal">
         <h4 class="uppercase text-sm font-bold tracking-wider text-brand-600">Nhạc công</h4>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {musicians.map((musician, index) => (
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+        {displayedMusicians.map((musician, index) => (
           <a href={`/nhac-cong/${musician.slug}`} class="block group no-underline text-inherit reveal" data-delay={index * 100}>
             <div class="bg-white rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col overflow-hidden h-full hover:shadow-md transition-shadow">
-              <div class="aspect-[4/5] w-full overflow-hidden relative">
+              <div class="aspect-square w-full overflow-hidden relative">
                 <img
                   src={musician.imageUrl}
                   alt={musician.name}
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div class="p-8 flex flex-col flex-grow">
-                <Badge label={musician.instrumentGroup} tone="dark" class="self-start mb-4" />
-                <h4 class="text-xl font-bold font-display text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">
+              <div class="p-5 flex flex-col flex-grow">
+                <Badge label={musician.instrumentGroup} tone="dark" class="self-start mb-3 scale-90 origin-left" />
+                <h4 class="text-lg font-bold font-display text-brand-900 mb-1 group-hover:text-brand-600 transition-colors">
                   {musician.name}
                 </h4>
-                <p class="text-sm font-medium text-brand-600 mb-4">
+                <p class="text-[13px] font-medium text-brand-600 mb-3 line-clamp-1">
                   {musician.bio}
                 </p>
-                <p class="text-neutral-text leading-relaxed">
-                  {musician.fullBio.split('\n\n')[0]}
+                <p class="text-sm text-neutral-text leading-relaxed">
+                  {truncate(musician.fullBio)}
                 </p>
               </div>
             </div>
