@@ -16,26 +16,26 @@ export interface Musician {
 export const musicians: Musician[] = [
   {
     id: "musician-1",
-    slug: "quoc-huy",
-    name: "Quốc Huy",
-    instrument: "Piano / Keys",
-    instrumentGroup: "KEYBOARD/PIANO",
+    slug: "lu-thien",
+    name: "Lữ Thiện",
+    instrument: "Bass",
+    instrumentGroup: "BASSIST",
     experienceYears: 5,
-    bio: "Pianist chủ lực, chuyên phối khí và dẫn dắt tiết tấu cho toàn bộ ban nhạc.",
+    bio: "Bassist chủ lực, giữ nền tiết tấu vững chắc cho toàn bộ ban nhạc.",
     // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Quốc Huy đảm nhận vị trí pianist chủ lực của Rainy Band từ những ngày đầu mở rộng đội hình nhạc công. Với nền tảng piano cổ điển kết hợp khả năng chơi keys điện tử linh hoạt, anh là người phối khí chính cho hầu hết các set nhạc của band.\n\nNgoài biểu diễn, Quốc Huy còn phụ trách hòa âm và dẫn tiết tấu trên sân khấu, giúp các thành viên khác giữ vững nhịp và tạo nên màu sắc âm nhạc đặc trưng của Rainy Band.",
+    fullBio: "Lữ Thiện đảm nhận vai trò bassist chính của Rainy Band, chịu trách nhiệm giữ vững nền tiết tấu và kết nối giữa trống với các nhạc cụ giai điệu. Phong cách chơi chắc chắn, không phô trương nhưng luôn đảm bảo tổng thể ban nhạc chặt chẽ.\n\nVới 5 năm kinh nghiệm, Lữ Thiện có khả năng xử lý tốt nhiều thể loại từ acoustic nhẹ nhàng đến các set nhạc sôi động, linh hoạt điều chỉnh theo yêu cầu của từng chương trình.",
     // TODO: thay bằng ảnh thật
     imageUrl: "https://placehold.co/400x520/123240/123240",
     videos: [
       {
         id: "m1-vid1",
-        title: "Piano Solo Cover",
+        title: "Bass Groove Session",
         thumbnailUrl: "https://placehold.co/600x400/123240/123240",
         videoUrl: "" // TODO: thay link thật
       },
       {
         id: "m1-vid2",
-        title: "Acoustic Band Setup",
+        title: "Live Band - Electric Set",
         thumbnailUrl: "https://placehold.co/600x400/1a4655/1a4655",
         videoUrl: "" // TODO: thay link thật
       }
@@ -43,47 +43,53 @@ export const musicians: Musician[] = [
   },
   {
     id: "musician-2",
-    slug: "anh-tuan",
-    name: "Anh Tuấn",
-    instrument: "Cajon/SPD",
-    instrumentGroup: "DRUMMER",
-    experienceYears: 3,
-    bio: "Tay trống đa năng, giữ nhịp chắc tay từ cajon acoustic đến SPD điện tử.",
+    slug: "truong-zang",
+    name: "Trường Zang",
+    instrument: "Electric Guitar",
+    instrumentGroup: "GUITARIST",
+    experienceYears: 4,
+    bio: "Guitarist điện, mang màu sắc hiện đại và điểm nhấn cho các set nhạc sôi động.",
     // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Anh Tuấn là drummer trẻ nhất trong đội hình nhạc công của Rainy Band, nhưng khả năng giữ nhịp và cảm nhạc không hề thua kém. Anh thành thạo cả cajon truyền thống lẫn SPD điện tử, linh hoạt chuyển đổi tuỳ theo yêu cầu của từng show.\n\nSở trường của Anh Tuấn là các thể loại Pop, R&B và Latin, mang đến năng lượng sôi động nhưng vẫn kiểm soát tốt âm lượng cho những không gian nhỏ.",
+    fullBio: "Trường Zang phụ trách guitar điện trong đội hình Electric Band của Rainy Band, nổi bật với lối chơi hiện đại và khả năng tạo điểm nhấn ấn tượng cho các tiết mục sôi động. Anh đặc biệt phù hợp với các chương trình cần chất nhạc trẻ trung, mạnh mẽ.\n\nNgoài biểu diễn, Trường Zang còn tham gia sáng tạo các đoạn solo và phối lại một số bản cover theo phong cách riêng, góp phần tạo nên dấu ấn âm nhạc đặc trưng cho từng chương trình.",
     // TODO: thay bằng ảnh thật
     imageUrl: "https://placehold.co/400x520/1a4655/1a4655",
     videos: [
       {
         id: "m2-vid1",
-        title: "Cajon Groove Tutorial",
+        title: "Electric Guitar Solo - Year End Party",
         thumbnailUrl: "https://placehold.co/600x400/0a1720/0a1720",
+        videoUrl: "" // TODO: thay link thật
+      },
+      {
+        id: "m2-vid2",
+        title: "Guitar Cover Rock Ballad",
+        thumbnailUrl: "https://placehold.co/600x400/2f7288/2f7288",
         videoUrl: "" // TODO: thay link thật
       }
     ]
   },
   {
     id: "musician-3",
-    slug: "bao-trung",
-    name: "Bảo Trung",
-    instrument: "Acoustic/E-Guitar/Bass",
-    instrumentGroup: "GUITARIST",
+    slug: "nguyen-loc",
+    name: "Nguyễn Lộc",
+    instrument: "Drum/Cajon",
+    instrumentGroup: "DRUMMER",
     experienceYears: 6,
-    bio: "Guitarist đa năng nhất đội hình, chơi được cả acoustic, electric và bass.",
+    bio: "Tay trống kỳ cựu, giữ nhịp ổn định từ không gian nhỏ đến sân khấu lớn.",
     // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Bảo Trung là thành viên có thâm niên cao nhất trong đội ngũ nhạc công, gắn bó với Rainy Band từ năm 2018. Điểm mạnh lớn nhất của anh là khả năng chơi đa nhạc cụ — từ acoustic guitar cho set café nhẹ nhàng, electric guitar cho sự kiện sôi động, đến bass guitar khi cần bổ sung tuyến trầm.\n\nVới 6 năm kinh nghiệm biểu diễn liên tục, Bảo Trung có khả năng ứng biến nhanh trên sân khấu và hỗ trợ các thành viên mới hoà nhập với phong cách chơi của band.",
+    fullBio: "Nguyễn Lộc là một trong những nhạc công gắn bó lâu năm nhất với Rainy Band, thành thạo cả bộ trống điện tử lẫn cajon acoustic. Khả năng giữ nhịp ổn định của anh là nền tảng quan trọng giúp ban nhạc duy trì phong độ xuyên suốt chương trình.\n\nVới 6 năm kinh nghiệm biểu diễn tại nhiều loại hình sân khấu, Nguyễn Lộc có thể linh hoạt điều chỉnh cường độ và phong cách chơi trống tuỳ theo quy mô không gian, từ café acoustic nhỏ đến sân khấu sự kiện lớn.",
     // TODO: thay bằng ảnh thật
     imageUrl: "https://placehold.co/400x520/0a1720/0a1720",
     videos: [
       {
         id: "m3-vid1",
-        title: "Acoustic Fingerstyle Cover",
+        title: "Drum Cover - Live Band",
         thumbnailUrl: "https://placehold.co/600x400/2f7288/2f7288",
         videoUrl: "" // TODO: thay link thật
       },
       {
         id: "m3-vid2",
-        title: "Electric Guitar Solo",
+        title: "Cajon Acoustic Session",
         thumbnailUrl: "https://placehold.co/600x400/123240/123240",
         videoUrl: "" // TODO: thay link thật
       }
@@ -91,20 +97,20 @@ export const musicians: Musician[] = [
   },
   {
     id: "musician-4",
-    slug: "huu-phat",
-    name: "Hữu Phát",
-    instrument: "E-Guitar",
-    instrumentGroup: "GUITARIST",
-    experienceYears: 4,
-    bio: "Lead guitarist chuyên electric, tạo điểm nhấn cho các set nhạc sôi động.",
+    slug: "tuan-kiet",
+    name: "Tuấn Kiệt",
+    instrument: "Keyboard/Violin",
+    instrumentGroup: "KEYBOARD/PIANO",
+    experienceYears: 3,
+    bio: "Nhạc công đa năng, kết hợp keyboard và violin tạo chiều sâu cho set nhạc.",
     // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Hữu Phát đảm nhận vị trí lead electric guitar, là người tạo điểm nhấn âm thanh cho các set nhạc cần năng lượng cao như sự kiện khai trương, Year End Party hay tiệc ngoài trời. Phong cách chơi của anh thiên về clean tone và overdrive nhẹ, phù hợp với định hướng acoustic-pop đặc trưng của Rainy Band.\n\nNgoài biểu diễn với band, Hữu Phát còn tham gia hỗ trợ các buổi thu âm demo và sáng tác nhạc nền cho các dự án nội bộ.",
+    fullBio: "Tuấn Kiệt là nhạc công trẻ với khả năng chơi cả keyboard và violin, mang đến chiều sâu và sự tinh tế cho các set nhạc của Rainy Band. Anh thường đảm nhận phần đệm nền và bè phụ, giúp tổng thể âm thanh thêm phong phú.\n\nSự kết hợp giữa keyboard hiện đại và violin cổ điển giúp Tuấn Kiệt tạo ra những mảng màu âm nhạc đa dạng, đặc biệt phù hợp với các set acoustic cần điểm nhấn khác biệt.",
     // TODO: thay bằng ảnh thật
     imageUrl: "https://placehold.co/400x520/2f7288/2f7288",
     videos: [
       {
         id: "m4-vid1",
-        title: "Live Band - Year End Party",
+        title: "Keyboard & Violin Duo",
         thumbnailUrl: "https://placehold.co/600x400/0a1720/0a1720",
         videoUrl: "" // TODO: thay link thật
       }

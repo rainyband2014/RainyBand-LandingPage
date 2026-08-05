@@ -2,9 +2,11 @@
 import Container from '../shared/Container.astro';
 import Badge from '../shared/Badge.astro';
 import CoreTeam from './CoreTeam.astro';
+import { vocalists } from '../../data/vocalists';
+import { musicians } from '../../data/musicians';
 ---
 
-<section class="w-full py-16 md:py-24 bg-neutral-bg">
+<section class="w-full py-16 md:py-24 bg-neutral-bg border-t border-neutral-text/10">
   <Container>
     <div class="mb-12 md:mb-16 reveal">
       <Badge label="ĐỘI NGŨ NGHỆ SĨ" tone="dark" class="mb-4" />
@@ -28,47 +30,68 @@ import CoreTeam from './CoreTeam.astro';
         Thành viên nổi bật
       </h3>
       
-      <!-- TODO: Đây là template placeholder do khách hàng cung cấp — cần thay bằng
-           thông tin nghệ sĩ thật (tên, phong cách, giới thiệu) trước khi lên production. -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="100">
-          <Badge label="Ca sĩ/Nhạc công" tone="dark" class="self-start mb-4" />
-          <h4 class="text-xl font-bold font-display text-brand-900 mb-2">
-            [Tên nghệ sĩ]
-          </h4>
-          <p class="text-sm font-medium text-brand-600 mb-4">
-            [Pop, Ballad, Rock, Acoustic…]
-          </p>
-          <p class="text-neutral-text leading-relaxed">
-            [Mô tả ngắn về kinh nghiệm, thế mạnh giọng hát hoặc khả năng trình diễn.]
-          </p>
-        </div>
+      <!-- Vùng Vocal -->
+      <div class="mb-6 reveal">
+        <h4 class="uppercase text-sm font-bold tracking-wider text-brand-600">Vocal</h4>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {vocalists.map((vocalist, index) => (
+          <a href={`/vocal/${vocalist.slug}`} class="block group no-underline text-inherit reveal" data-delay={index * 100}>
+            <div class="bg-white rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col overflow-hidden h-full hover:shadow-md transition-shadow">
+              <div class="aspect-[4/5] w-full overflow-hidden relative">
+                <img
+                  src={vocalist.posterImageUrl}
+                  alt={vocalist.name}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="p-8 flex flex-col flex-grow">
+                <Badge label={vocalist.badgeLabel} tone="dark" class="self-start mb-4" />
+                <h4 class="text-xl font-bold font-display text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">
+                  {vocalist.name}
+                </h4>
+                <p class="text-sm font-medium text-brand-600 mb-4">
+                  {vocalist.genres}
+                </p>
+                <p class="text-neutral-text leading-relaxed">
+                  {vocalist.fullBio.split('\n\n')[0]}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
 
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="200">
-          <Badge label="Ca sĩ/Nhạc công" tone="dark" class="self-start mb-4" />
-          <h4 class="text-xl font-bold font-display text-brand-900 mb-2">
-            [Tên nghệ sĩ]
-          </h4>
-          <p class="text-sm font-medium text-brand-600 mb-4">
-            [Nhạc Việt, nhạc ngoại, Dance…]
-          </p>
-          <p class="text-neutral-text leading-relaxed">
-            [Mô tả ngắn về dấu ấn cá nhân và kinh nghiệm sân khấu.]
-          </p>
-        </div>
-
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="300">
-          <Badge label="Ca sĩ/Nhạc công" tone="dark" class="self-start mb-4" />
-          <h4 class="text-xl font-bold font-display text-brand-900 mb-2">
-            [Tên nghệ sĩ]
-          </h4>
-          <p class="text-sm font-medium text-brand-600 mb-4">
-            [Acoustic, Jazz, Pop…]
-          </p>
-          <p class="text-neutral-text leading-relaxed">
-            [Mô tả ngắn về chuyên môn và vai trò trong đội hình.]
-          </p>
-        </div>
+      <!-- Vùng Nhạc công -->
+      <div class="mt-12 md:mt-16 pt-12 border-t border-neutral-text/10 mb-6 reveal">
+        <h4 class="uppercase text-sm font-bold tracking-wider text-brand-600">Nhạc công</h4>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {musicians.map((musician, index) => (
+          <a href={`/nhac-cong/${musician.slug}`} class="block group no-underline text-inherit reveal" data-delay={index * 100}>
+            <div class="bg-white rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col overflow-hidden h-full hover:shadow-md transition-shadow">
+              <div class="aspect-[4/5] w-full overflow-hidden relative">
+                <img
+                  src={musician.imageUrl}
+                  alt={musician.name}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="p-8 flex flex-col flex-grow">
+                <Badge label={musician.instrumentGroup} tone="dark" class="self-start mb-4" />
+                <h4 class="text-xl font-bold font-display text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">
+                  {musician.name}
+                </h4>
+                <p class="text-sm font-medium text-brand-600 mb-4">
+                  {musician.bio}
+                </p>
+                <p class="text-neutral-text leading-relaxed">
+                  {musician.fullBio.split('\n\n')[0]}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </Container>
