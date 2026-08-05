@@ -30,8 +30,8 @@ export const vocalists: Vocalist[] = [
     genres: "Dance-Pop, EDM Cover, Nhạc trẻ, Nhạc remix",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "ZyZy là gương mặt trẻ mang phong cách trình diễn hiện đại, phá cách của đội ngũ Vocal Nam Rainy Band. Với năng lượng dồi dào trên sân khấu, ZyZy thường đảm nhận các set nhạc cần sự bùng nổ như khai trương, sự kiện giới trẻ hoặc các chương trình có yếu tố tương tác cao.\n\nKhả năng làm chủ sân khấu cùng gu thẩm mỹ âm nhạc bắt kịp xu hướng giúp ZyZy luôn mang đến những phần trình diễn mới mẻ, phù hợp với các thương hiệu và sự kiện muốn tạo dấu ấn trẻ trung.",
-    posterImageUrl: "https://placehold.co/600x800/123240/123240",
-    avatarImageUrl: "https://placehold.co/80x80/123240/123240",
+    posterImageUrl: "/images/vocalists/nam_zyzy.jpg",
+    avatarImageUrl: "/images/vocalists/nam_zyzy.jpg",
     videos: [
       {
         id: "v1-vid1",
@@ -59,8 +59,8 @@ export const vocalists: Vocalist[] = [
     genres: "Pop Ballad, Nhạc xưa, Acoustic, US-UK Ballad",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Minh Phú là giọng ca nam có kinh nghiệm dày dặn trong các chương trình mang tính trang trọng như tiệc cưới và sự kiện doanh nghiệp. Chất giọng ấm, kỹ thuật xử lý bài hát chắc chắn giúp anh luôn giữ được sự ổn định trong mọi buổi biểu diễn.\n\nVới 5 năm gắn bó cùng nghề, Minh Phú hiểu rõ cách phối hợp cùng ban nhạc để tạo nên một chương trình mạch lạc, phù hợp với không khí và câu chuyện mà khách hàng mong muốn truyền tải.",
-    posterImageUrl: "https://placehold.co/600x800/1a4655/1a4655",
-    avatarImageUrl: "https://placehold.co/80x80/1a4655/1a4655",
+    posterImageUrl: "/images/vocalists/nam_minh_phu.jpg",
+    avatarImageUrl: "/images/vocalists/nam_minh_phu.jpg",
     videos: [
       {
         id: "v2-vid1",
@@ -88,8 +88,8 @@ export const vocalists: Vocalist[] = [
     genres: "Ballad, Bolero hiện đại, Nhạc Trịnh, Acoustic Pop",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Đại Dương là một trong những giọng ca nam kỳ cựu của Rainy Band, sở hữu chất giọng trầm ấm và lối hát tự sự, chân thành. Anh thường đảm nhận các set nhạc cần sự lắng đọng như tiệc cưới, dinner acoustic hoặc những chương trình mang tính chất tri ân, tưởng nhớ.\n\nVới 6 năm gắn bó cùng band, Đại Dương có khả năng dẫn dắt không khí sân khấu một cách tinh tế, biết cách tiết chế cảm xúc để mỗi ca khúc chạm đúng vào câu chuyện mà chương trình muốn kể.",
-    posterImageUrl: "https://placehold.co/600x800/123240/123240",
-    avatarImageUrl: "https://placehold.co/80x80/123240/123240",
+    posterImageUrl: "/images/vocalists/nam_dai_duong.jpg",
+    avatarImageUrl: "/images/vocalists/nam_dai_duong.jpg",
     videos: [
       {
         id: "v3-vid1",
@@ -117,8 +117,8 @@ export const vocalists: Vocalist[] = [
     genres: "Rock ballad, Nhạc trẻ, Acoustic phá cách, US-UK",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Kyo Đức Anh là gương mặt mang màu sắc cá tính trong đội ngũ vocal của Rainy Band, với lối xử lý bài hát phóng khoáng và không ngại thử nghiệm những bản phối mới lạ. Anh thường được lựa chọn cho các sân khấu cần một dấu ấn riêng biệt.\n\nKinh nghiệm biểu diễn tại nhiều không gian từ bar, lounge đến sân khấu ngoài trời giúp Kyo Đức Anh xử lý tốt các tình huống kỹ thuật đa dạng, luôn giữ được phong độ ổn định trên sân khấu.",
-    posterImageUrl: "https://placehold.co/600x800/2f7288/2f7288",
-    avatarImageUrl: "https://placehold.co/80x80/2f7288/2f7288",
+    posterImageUrl: "/images/vocalists/nam_kyo_duc_anh.jpg",
+    avatarImageUrl: "/images/vocalists/nam_kyo_duc_anh.jpg",
     videos: [
       {
         id: "v4-vid1",
@@ -176,8 +176,8 @@ export const vocalists: Vocalist[] = [
     genres: "V-Pop, Dance-Pop, Nhạc trẻ, Nhạc remix",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Linh Chi mang đến năng lượng tươi mới cho đội hình vocal của Rainy Band, với khả năng thích nghi nhanh với nhiều thể loại từ V-Pop, Dance-Pop đến các bản remix sôi động. Cô đặc biệt phù hợp với những chương trình hướng đến đối tượng khán giả trẻ.\n\nPhong cách trình diễn linh hoạt, luôn chủ động tương tác với khán giả giúp Linh Chi trở thành lựa chọn phù hợp cho các sự kiện cần sự bùng nổ và kết nối nhanh.",
-    posterImageUrl: "https://placehold.co/600x800/0a1720/0a1720",
-    avatarImageUrl: "https://placehold.co/80x80/0a1720/0a1720",
+    posterImageUrl: "/images/vocalists/nu_linh_chi.jpg",
+    avatarImageUrl: "/images/vocalists/nu_linh_chi.jpg",
     videos: [
       {
         id: "v6-vid1",
@@ -205,8 +205,8 @@ export const vocalists: Vocalist[] = [
     genres: "Acoustic, Indie Việt, Pop nhẹ, Nhạc xưa",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Hoàng Hà là thành viên trẻ của đội ngũ vocal, mang chất giọng ngọt ngào và cách hát mộc mạc, gần gũi. Cô thường đảm nhận các set acoustic tại café hoặc những buổi tiệc riêng tư cần không khí ấm cúng.\n\nDù mới gia nhập Rainy Band, Hoàng Hà đã nhanh chóng khẳng định phong cách riêng qua những bản acoustic cover đầy cảm xúc, được nhiều khách hàng yêu thích lựa chọn cho các chương trình quy mô nhỏ.",
-    posterImageUrl: "https://placehold.co/600x800/235a6d/235a6d",
-    avatarImageUrl: "https://placehold.co/80x80/235a6d/235a6d",
+    posterImageUrl: "/images/vocalists/nu_hoang_ha.jpg",
+    avatarImageUrl: "/images/vocalists/nu_hoang_ha.jpg",
     videos: [
       {
         id: "v7-vid1",
@@ -234,8 +234,8 @@ export const vocalists: Vocalist[] = [
     genres: "Indie Việt, Acoustic, Ballad nhẹ, Nhạc xưa",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Thảo Linh mang đến chất giọng nhẹ nhàng, giàu cảm xúc, phù hợp với những không gian cần sự tĩnh lặng và kết nối sâu như café acoustic hay private event. Lối hát tự nhiên, không cầu kỳ giúp Thảo Linh dễ dàng chạm đến người nghe.\n\nVới thế mạnh ở dòng indie Việt và acoustic, Thảo Linh thường được lựa chọn cho các chương trình mang tính chất tâm tình, gần gũi giữa nghệ sĩ và khán giả.",
-    posterImageUrl: "https://placehold.co/600x800/1a4655/1a4655",
-    avatarImageUrl: "https://placehold.co/80x80/1a4655/1a4655",
+    posterImageUrl: "/images/vocalists/nu_thao_linh.jpg",
+    avatarImageUrl: "/images/vocalists/nu_thao_linh.jpg",
     videos: [
       {
         id: "v8-vid1",
@@ -263,8 +263,8 @@ export const vocalists: Vocalist[] = [
     genres: "V-Pop, Pop nhẹ, Nhạc trẻ, Acoustic Cover",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "Phạm Phương là thành viên trẻ của đội ngũ Vocal Nữ, mang đến sự tươi mới và năng động cho các chương trình hướng đến đối tượng khán giả trẻ. Chất giọng trong sáng cùng phong cách trình diễn gần gũi giúp cô dễ dàng tạo thiện cảm với khán giả.\n\nDù mới bắt đầu hành trình biểu diễn chuyên nghiệp, Phạm Phương đã nhanh chóng khẳng định được sự tự tin và cảm nhạc tốt qua nhiều chương trình tiệc sinh nhật và sự kiện giới trẻ.",
-    posterImageUrl: "https://placehold.co/600x800/2f7288/2f7288",
-    avatarImageUrl: "https://placehold.co/80x80/2f7288/2f7288",
+    posterImageUrl: "/images/vocalists/nu_pham_phuong.jpg",
+    avatarImageUrl: "/images/vocalists/nu_pham_phuong.jpg",
     videos: [
       {
         id: "v9-vid1",

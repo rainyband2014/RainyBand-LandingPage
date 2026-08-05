@@ -26,9 +26,8 @@ export const coreTeam: CoreTeamMember[] = [
     email: "nghia@rainyband.vn",
     joinedYear: 2014,
     images: [
-      "https://placehold.co/500x600/0a1720/0a1720",
-      "https://placehold.co/500x600/123240/123240",
-      "https://placehold.co/500x600/1a4655/1a4655"
+      "/images/core-team/founder_phan_trung_nghia_1.jpg",
+      "/images/core-team/founder_phan_trung_nghia_2.jpg"
     ]
   },
   {

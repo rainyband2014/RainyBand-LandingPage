@@ -10,12 +10,12 @@ const rootClasses = className ?? 'block flex flex-col group no-underline text-in
 ---
 
 <a href={`/doi-ngu/${slug}`} class={rootClasses}>
-  <div class="relative w-full aspect-[4/5] rounded-3xl mb-4 shadow-sm hover-media-container cursor-pointer block">
+  <div class="relative w-full aspect-[4/5] bg-neutral-bg rounded-3xl mb-4 shadow-sm hover-media-container cursor-pointer block overflow-hidden">
     <!-- TODO: thay bằng ảnh thật của Founder/Manager -->
     <img 
       src={images[0]} 
       alt={name} 
-      class="absolute inset-0 w-full h-full object-cover"
+      class="absolute inset-0 w-full h-full object-contain"
     />
     <div class="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-brand-950/70 to-transparent z-10 pointer-events-none"></div>
     <div class="hover-media-overlay z-10"></div>
