@@ -13,8 +13,8 @@ function truncate(text: string, maxLength = 50): string {
 }
 
 const displayedVocalists = vocalists
-  .filter(v => ['tra-my', 'dai-duong', 'linh-chi'].includes(v.slug))
-  .sort((a, b) => ['tra-my', 'dai-duong', 'linh-chi'].indexOf(a.slug) - ['tra-my', 'dai-duong', 'linh-chi'].indexOf(b.slug));
+  .filter(v => ['zyzy', 'dai-duong', 'linh-chi'].includes(v.slug))
+  .sort((a, b) => ['zyzy', 'dai-duong', 'linh-chi'].indexOf(a.slug) - ['zyzy', 'dai-duong', 'linh-chi'].indexOf(b.slug));
 
 const displayedMusicians = musicians
   .filter(m => ['lu-thien', 'truong-zang', 'nguyen-loc'].includes(m.slug))
