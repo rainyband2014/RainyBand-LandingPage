@@ -3,7 +3,7 @@ import type { Service } from '../../data/services';
 
 interface Props extends Service {}
 
-const { slug, title, shortDescription, suitableFor, imageUrl } = Astro.props;
+const { slug, title, intro, imageUrl } = Astro.props;
 ---
 
 <a href={`/dich-vu/${slug}`} class="block group no-underline text-inherit">
@@ -20,10 +20,7 @@ const { slug, title, shortDescription, suitableFor, imageUrl } = Astro.props;
   <h3 class="text-xl font-display font-bold text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">
     {title}
   </h3>
-  <p class="text-sm md:text-base text-neutral-muted leading-relaxed mb-3">
-    {shortDescription}
-  </p>
-  <p class="text-xs text-brand-600 font-medium">
-    <span class="text-neutral-muted">Phù hợp:</span> {suitableFor}
+  <p class="text-sm md:text-base text-neutral-muted leading-relaxed line-clamp-2">
+    {intro}
   </p>
 </a>

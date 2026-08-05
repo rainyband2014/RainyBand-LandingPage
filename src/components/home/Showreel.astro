@@ -1,39 +1,16 @@
 ---
 import Container from '../shared/Container.astro';
 import Badge from '../shared/Badge.astro';
-import ShowreelCard from './ShowreelCard.astro';
-
-const cards = [
-  {
-    label: "Không gian nhỏ",
-    title: "Café, Rooftop, Bar",
-    description: "Set nhạc phù hợp không gian quán, đa dạng thể loại"
-  },
-  {
-    label: "Kỷ niệm riêng",
-    title: "Sinh nhật, Kỷ niệm",
-    description: "Chọn lọc theo yêu cầu, phù hợp không khí buổi tiệc"
-  },
-  {
-    label: "Sự kiện lớn",
-    title: "Sự kiện, Khai trương",
-    description: "Khuấy động không khí, song ngữ, theo kịch bản chương trình"
-  },
-  {
-    label: "Ẩm thực",
-    title: "Nhà hàng, Quán ăn",
-    description: "Nhạc nền nhẹ nhàng, thư giãn và không ồn ào"
-  }
-];
+import { eventTypes } from '../../data/eventTypes';
 ---
 
 <section class="w-full py-16 md:py-24 bg-neutral-surface">
   <Container>
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-4 reveal">
       <div>
-        <Badge label="SHOWREEL" tone="dark" class="mb-4" />
+        <Badge label="LOẠI HÌNH SỰ KIỆN" tone="dark" class="mb-4" />
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
-          Rainy Band diễn ở đâu?
+          Rainy Band có thể đồng hành cùng bạn tại
         </h2>
       </div>
       <a href="#media" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2">
@@ -41,16 +18,21 @@ const cards = [
       </a>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {cards.map((card, index) => (
-        <div class="reveal" data-delay={index * 100}>
-          <ShowreelCard 
-            label={card.label}
-            title={card.title}
-            description={card.description}
-          />
-        </div>
-      ))}
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6 lg:gap-8">
+      {eventTypes.map((event, index) => {
+        const colSpanClass = index < 3 ? 'md:col-span-2' : 'md:col-span-3';
+        return (
+          <div class={`bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal ${colSpanClass}`} data-delay={index * 100}>
+            <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
+              <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
+              {event.title}
+            </h3>
+            <p class="text-neutral-text leading-relaxed">
+              {event.description}
+            </p>
+          </div>
+        )
+      })}
     </div>
   </Container>
 </section>
