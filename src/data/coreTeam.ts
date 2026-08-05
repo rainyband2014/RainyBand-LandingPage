@@ -32,16 +32,17 @@ export const coreTeam: CoreTeamMember[] = [
   },
   {
     id: "manager-vocal",
-    slug: "ngoc-han",
-    name: "Ngọc Hân",
+    slug: "zyzy",
+    name: "ZyZy",
     role: "manager-vocal",
     roleLabel: "Quản lý Vocal",
     bio: "Phụ trách tuyển chọn, đào tạo và sắp xếp lịch diễn cho đội ngũ vocal.",
-    fullBio: "Ngọc Hân gia nhập Rainy Band từ năm 2018 với vai trò vocal chính, sau đó nhanh chóng đảm nhận thêm trách nhiệm quản lý toàn bộ đội ngũ vocal. Cô phụ trách tuyển chọn giọng hát mới, huấn luyện phong cách trình diễn và sắp xếp lịch diễn sao cho phù hợp với từng loại sự kiện.\n\nVới kinh nghiệm biểu diễn đa dạng từ café acoustic đến sân khấu sự kiện lớn, Ngọc Hân hiểu rõ yêu cầu của từng format show và luôn đảm bảo vocal phù hợp nhất được bố trí cho mỗi booking.",
+    // TODO: thay fullBio bằng nội dung thật
+    fullBio: "ZyZy gia nhập Rainy Band với vai trò vocal chính, mang phong cách trình diễn trẻ trung, hiện đại, sau đó đảm nhận thêm trách nhiệm quản lý toàn bộ đội ngũ vocal. ZyZy phụ trách tuyển chọn giọng hát mới, huấn luyện phong cách trình diễn và sắp xếp lịch diễn sao cho phù hợp với từng loại sự kiện.\n\nVới góc nhìn cập nhật xu hướng và kinh nghiệm biểu diễn tại nhiều sân khấu khác nhau, ZyZy hiểu rõ yêu cầu của từng format show và luôn đảm bảo vocal phù hợp nhất được bố trí cho mỗi booking.",
     // TODO: thay số điện thoại/email thật
     phone: "0900 000 002",
-    email: "han@rainyband.vn",
-    joinedYear: 2018,
+    email: "zyzy@rainyband.vn",
+    joinedYear: 2023,
     images: [
       "https://placehold.co/500x600/123240/123240",
       "https://placehold.co/500x600/1a4655/1a4655"
@@ -49,16 +50,17 @@ export const coreTeam: CoreTeamMember[] = [
   },
   {
     id: "manager-musician",
-    slug: "thanh-long",
-    name: "Thành Long",
+    slug: "lu-thien",
+    name: "Lữ Thiện",
     role: "manager-musician",
     roleLabel: "Quản lý Nhạc công",
     bio: "Phụ trách phối khí, sắp xếp ban nhạc và đảm bảo chất lượng âm thanh từng show.",
-    fullBio: "Thành Long là trụ cột về mặt nhạc cụ của Rainy Band từ năm 2016, chuyên chơi guitar acoustic và keyboard. Anh phụ trách phối khí cho các set nhạc, lựa chọn và sắp xếp đội hình nhạc công phù hợp theo yêu cầu từng sự kiện.\n\nNgoài khả năng biểu diễn, Thành Long còn đảm nhận giám sát kỹ thuật âm thanh tại hiện trường, đảm bảo chất lượng thu phát ổn định và trải nghiệm nghe tốt nhất cho khán giả.",
+    // TODO: thay fullBio bằng nội dung thật
+    fullBio: "Lữ Thiện là trụ cột về mặt nhạc cụ của Rainy Band, đảm nhận vị trí bassist chính và chịu trách nhiệm giữ vững nền tiết tấu cho toàn bộ ban nhạc. Anh phụ trách phối khí cho các set nhạc, lựa chọn và sắp xếp đội hình nhạc công phù hợp theo yêu cầu từng sự kiện.\n\nNgoài khả năng biểu diễn, Lữ Thiện còn đảm nhận giám sát kỹ thuật âm thanh tại hiện trường, đảm bảo chất lượng thu phát ổn định và trải nghiệm nghe tốt nhất cho khán giả.",
     // TODO: thay số điện thoại/email thật
     phone: "0900 000 003",
-    email: "long@rainyband.vn",
-    joinedYear: 2016,
+    email: "luthien@rainyband.vn",
+    joinedYear: 2021,
     images: [
       "https://placehold.co/500x600/1a4655/1a4655",
       "https://placehold.co/500x600/235a6d/235a6d",
