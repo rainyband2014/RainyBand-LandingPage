@@ -1,31 +1,54 @@
 ---
 import Container from '../shared/Container.astro';
+import Badge from '../shared/Badge.astro';
 
 const items = [
   {
-    title: "Gu nhạc",
-    description: "Từ US/UK Hits, V-Pop, Indie Việt đến Acoustic Covers, Ballad, nhạc xưa và Jazz nhẹ nhàng."
+    title: "Kinh nghiệm biểu diễn từ năm 2014",
+    description: "Rainy Band có kinh nghiệm làm việc với nhiều loại hình sân khấu, không gian và đối tượng khán giả khác nhau."
   },
   {
-    title: "Cách chơi",
-    description: "Chuyên nghiệp, linh hoạt theo yêu cầu, trang phục và tiết mục phù hợp từng loại sự kiện."
+    title: "Đội hình linh hoạt",
+    description: "Từ ca sĩ hát cùng guitar đến đội hình full band, Rainy Band có thể điều chỉnh nhân sự theo quy mô chương trình và ngân sách của khách hàng."
   },
   {
-    title: "Định vị",
-    description: "Không chạy theo giá rẻ. Ưu tiên chất lượng âm thanh và cảm xúc trong từng buổi diễn."
+    title: "Dòng nhạc đa dạng",
+    description: "Kho bài hát phong phú với nhạc Việt, nhạc ngoại và nhiều phong cách biểu diễn, đáp ứng được nhiều độ tuổi và nhóm khách mời."
+  },
+  {
+    title: "Chuẩn bị chương trình chỉn chu",
+    description: "Nội dung biểu diễn, danh sách bài hát, trang phục và đội hình được thống nhất trước với khách hàng để phù hợp với concept chung."
+  },
+  {
+    title: "Phối hợp chuyên nghiệp",
+    description: "Rainy Band chủ động làm việc với khách hàng, đơn vị tổ chức sự kiện và bộ phận âm thanh ánh sáng để hạn chế rủi ro trong quá trình biểu diễn."
+  },
+  {
+    title: "Tôn trọng dấu ấn riêng của từng sự kiện",
+    description: "Rainy Band không áp dụng một chương trình giống nhau cho mọi sân khấu. Mỗi tiết mục đều có thể được điều chỉnh để phù hợp với câu chuyện và cảm xúc mà khách hàng mong muốn."
   }
 ];
 ---
 
-<section class="w-full py-12 md:py-16 bg-neutral-bg border-t border-neutral-text/10">
+<section class="w-full py-16 md:py-24 bg-neutral-bg border-t border-neutral-text/10">
   <Container>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+    <div class="mb-12 md:mb-16 reveal">
+      <Badge label="TẠI SAO CHỌN RAINY BAND" tone="dark" class="mb-4" />
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
+        Tại sao nên lựa chọn Rainy Band?
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
       {items.map((item, index) => (
-        <div class="flex flex-col reveal" data-delay={index * 100}>
-          <h3 class="text-lg md:text-xl font-display font-bold text-neutral-text mb-2">
+        <div class="flex flex-col relative reveal bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5" data-delay={index * 100}>
+          <div class="text-6xl md:text-7xl font-display font-black text-brand-300/20 absolute top-4 right-6 pointer-events-none select-none">
+            0{index + 1}
+          </div>
+          <h3 class="text-lg md:text-xl font-display font-bold text-brand-900 mb-3 relative z-10 pt-4">
             {item.title}
           </h3>
-          <p class="text-sm md:text-base text-neutral-muted leading-relaxed">
+          <p class="text-sm md:text-base text-neutral-muted leading-relaxed relative z-10">
             {item.description}
           </p>
         </div>

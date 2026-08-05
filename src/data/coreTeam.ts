@@ -18,9 +18,9 @@ export const coreTeam: CoreTeamMember[] = [
     slug: "phan-trung-nghia",
     name: "Phan Trung Nghĩa",
     role: "founder",
-    roleLabel: "Founder",
-    bio: "Sáng lập và định hướng phong cách âm nhạc, trực tiếp giám sát chất lượng mọi buổi diễn.",
-    fullBio: "Phan Trung Nghĩa là Founder của Rainy Band từ năm 2014, với mong muốn xây dựng một ban nhạc biểu diễn chuyên nghiệp, linh hoạt và luôn đặt trải nghiệm của khách hàng lên hàng đầu. Với tầm nhìn xây dựng một đội nhóm biểu diễn chuyên nghiệp nhưng vẫn giữ được chất riêng, anh từng bước mở rộng đội hình và đa dạng hoá dịch vụ.\n\nHiện tại, Phan Trung Nghĩa trực tiếp giám sát chất lượng âm nhạc và phong cách trình diễn của toàn bộ đội ngũ, đảm bảo mỗi buổi diễn đều mang đến trải nghiệm xứng đáng cho khách hàng.",
+    roleLabel: "Leader – Founder",
+    bio: "Người sáng lập và định hướng phát triển của Rainy Band từ năm 2014.",
+    fullBio: "Với kinh nghiệm biểu diễn và tổ chức đội hình cho nhiều loại hình chương trình, Phan Trung Nghĩa trực tiếp tham gia tư vấn phong cách âm nhạc, lựa chọn nhân sự và xây dựng nội dung biểu diễn phù hợp cho từng sự kiện.\n\nHiện tại, Phan Trung Nghĩa trực tiếp giám sát chất lượng âm nhạc và phong cách trình diễn của toàn bộ đội ngũ, đảm bảo mỗi buổi diễn đều mang đến trải nghiệm xứng đáng cho khách hàng.",
     // TODO: thay số điện thoại/email thật
     phone: "0900 000 001",
     email: "nghia@rainyband.vn",

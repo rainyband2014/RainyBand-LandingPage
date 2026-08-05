@@ -7,12 +7,69 @@ import CoreTeam from './CoreTeam.astro';
 <section class="w-full py-16 md:py-24 bg-neutral-bg">
   <Container>
     <div class="mb-12 md:mb-16 reveal">
-      <Badge label="ĐỘI NGŨ" tone="dark" class="mb-4" />
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight reveal" data-delay="100">
-        Đội ngũ nòng cốt
+      <Badge label="ĐỘI NGŨ NGHỆ SĨ" tone="dark" class="mb-4" />
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight mb-6">
+        Những người tạo nên màu sắc của Rainy Band
       </h2>
+      <div class="max-w-3xl space-y-4 text-base md:text-lg text-neutral-muted leading-relaxed">
+        <p>
+          Rainy Band là tập hợp của các ca sĩ, nhạc công và nghệ sĩ biểu diễn có kinh nghiệm, cùng chung niềm đam mê với âm nhạc và sân khấu.
+        </p>
+        <p>
+          Mỗi thành viên đều sở hữu thế mạnh riêng, từ giọng hát, khả năng trình diễn đến kỹ năng phối hợp trong ban nhạc. Sự kết hợp giữa các cá tính âm nhạc giúp Rainy Band có thể linh hoạt biến hóa theo nhiều phong cách chương trình khác nhau.
+        </p>
+      </div>
     </div>
 
     <CoreTeam />
+
+    <div class="mt-20 pt-16 border-t border-neutral-text/10">
+      <h3 class="text-2xl md:text-3xl font-display font-bold text-brand-900 tracking-tight mb-10 reveal">
+        Thành viên nổi bật
+      </h3>
+      
+      <!-- TODO: Đây là template placeholder do khách hàng cung cấp — cần thay bằng
+           thông tin nghệ sĩ thật (tên, phong cách, giới thiệu) trước khi lên production. -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="100">
+          <Badge label="Ca sĩ/Nhạc công" tone="dark" class="self-start mb-4" />
+          <h4 class="text-xl font-bold font-display text-brand-900 mb-2">
+            [Tên nghệ sĩ]
+          </h4>
+          <p class="text-sm font-medium text-brand-600 mb-4">
+            [Pop, Ballad, Rock, Acoustic…]
+          </p>
+          <p class="text-neutral-text leading-relaxed">
+            [Mô tả ngắn về kinh nghiệm, thế mạnh giọng hát hoặc khả năng trình diễn.]
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="200">
+          <Badge label="Ca sĩ/Nhạc công" tone="dark" class="self-start mb-4" />
+          <h4 class="text-xl font-bold font-display text-brand-900 mb-2">
+            [Tên nghệ sĩ]
+          </h4>
+          <p class="text-sm font-medium text-brand-600 mb-4">
+            [Nhạc Việt, nhạc ngoại, Dance…]
+          </p>
+          <p class="text-neutral-text leading-relaxed">
+            [Mô tả ngắn về dấu ấn cá nhân và kinh nghiệm sân khấu.]
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="300">
+          <Badge label="Ca sĩ/Nhạc công" tone="dark" class="self-start mb-4" />
+          <h4 class="text-xl font-bold font-display text-brand-900 mb-2">
+            [Tên nghệ sĩ]
+          </h4>
+          <p class="text-sm font-medium text-brand-600 mb-4">
+            [Acoustic, Jazz, Pop…]
+          </p>
+          <p class="text-neutral-text leading-relaxed">
+            [Mô tả ngắn về chuyên môn và vai trò trong đội hình.]
+          </p>
+        </div>
+      </div>
+    </div>
   </Container>
 </section>

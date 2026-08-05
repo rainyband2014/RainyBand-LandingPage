@@ -1,21 +1,33 @@
 ---
 import Container from '../shared/Container.astro';
 import Badge from '../shared/Badge.astro';
+import Button from '../shared/Button.astro';
 import HomeMediaCarousel from './HomeMediaCarousel';
 ---
 
 <section id="media" class="w-full py-16 md:py-24 bg-neutral-bg">
   <Container>
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-4">
-      <div>
-        <Badge label="MEDIA" tone="light" class="mb-4" />
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight reveal">
-          Khoảnh khắc đáng nhớ
-        </h2>
+    <div class="mb-10 md:mb-14 reveal">
+      <Badge label="MEDIA" tone="dark" class="mb-4" />
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight mb-6">
+        Cùng xem Rainy Band trên sân khấu
+      </h2>
+      <div class="max-w-3xl space-y-4 text-base md:text-lg text-neutral-muted leading-relaxed mb-8">
+        <p>
+          Mỗi video là một phần không khí mà Rainy Band đã cùng khách hàng và khán giả tạo nên.
+        </p>
+        <p>
+          Từ những bản acoustic nhẹ nhàng đến các tiết mục full band sôi động, Rainy Band luôn cố gắng mang đến sự kết nối chân thật giữa nghệ sĩ, âm nhạc và người nghe.
+        </p>
       </div>
-      <a href="/showcase" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2 reveal" data-delay="100">
-        Xem toàn bộ Showcase &rarr;
-      </a>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <Button href="/showcase" variant="primary">
+          Xem thêm video biểu diễn
+        </Button>
+        <Button href="#" variant="ghost" class="bg-brand-50 text-brand-600 hover:bg-brand-100 hover:text-brand-700">
+          Theo dõi Rainy Band trên Facebook
+        </Button>
+      </div>
     </div>
 
     <div class="reveal" data-delay="200">
