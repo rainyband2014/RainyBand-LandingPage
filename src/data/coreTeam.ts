@@ -15,12 +15,12 @@ export interface CoreTeamMember {
 export const coreTeam: CoreTeamMember[] = [
   {
     id: "founder",
-    slug: "dang-khoa",
-    name: "Đăng Khoa",
+    slug: "phan-trung-nghia",
+    name: "Phan Trung Nghĩa",
     role: "founder",
     roleLabel: "Founder",
     bio: "Sáng lập và định hướng phong cách âm nhạc, trực tiếp giám sát chất lượng mọi buổi diễn.",
-    fullBio: "Đăng Khoa là người sáng lập Rainy Band từ năm 2014, khi còn là sinh viên đam mê guitar acoustic và biểu diễn tại các quán café nhỏ ở TP.HCM. Với tầm nhìn xây dựng một đội nhóm biểu diễn chuyên nghiệp nhưng vẫn giữ được chất riêng, anh từng bước mở rộng đội hình và đa dạng hoá dịch vụ.\n\nHiện tại, Đăng Khoa trực tiếp giám sát chất lượng âm nhạc và phong cách trình diễn của toàn bộ đội ngũ, đảm bảo mỗi buổi diễn đều mang đến trải nghiệm xứng đáng cho khách hàng.",
+    fullBio: "Phan Trung Nghĩa là Founder của Rainy Band từ năm 2014, với mong muốn xây dựng một ban nhạc biểu diễn chuyên nghiệp, linh hoạt và luôn đặt trải nghiệm của khách hàng lên hàng đầu. Với tầm nhìn xây dựng một đội nhóm biểu diễn chuyên nghiệp nhưng vẫn giữ được chất riêng, anh từng bước mở rộng đội hình và đa dạng hoá dịch vụ.\n\nHiện tại, Phan Trung Nghĩa trực tiếp giám sát chất lượng âm nhạc và phong cách trình diễn của toàn bộ đội ngũ, đảm bảo mỗi buổi diễn đều mang đến trải nghiệm xứng đáng cho khách hàng.",
     // TODO: thay số điện thoại/email thật
     phone: "0900 000 001",
     email: "khoa@rainyband.vn",

@@ -6,7 +6,7 @@ export interface CompanyInfo {
 
 export const companyInfo: CompanyInfo = {
   foundedYear: 2014,
-  foundedStory: "Rainy Band được thành lập năm 2014 bởi Đăng Khoa, xuất phát từ đam mê biểu diễn acoustic tại các quán café nhỏ ở TP.HCM. Qua nhiều năm, đội ngũ dần mở rộng với các vocal và nhạc công chuyên nghiệp, phục vụ đa dạng loại hình sự kiện từ tiệc riêng tư đến sân khấu doanh nghiệp.",
+  foundedStory: "Rainy Band được thành lập năm 2014 bởi Founder Phan Trung Nghĩa, với mong muốn xây dựng một ban nhạc biểu diễn chuyên nghiệp, linh hoạt và luôn đặt trải nghiệm của khách hàng lên hàng đầu.",
   milestones: [
     {
       year: 2014,
