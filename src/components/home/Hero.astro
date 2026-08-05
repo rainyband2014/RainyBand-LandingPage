@@ -13,7 +13,7 @@ const socialLinks = [
 
 <section class="w-full py-6 md:py-10">
   <Container>
-    <div class="relative w-full h-[60vh] md:h-[80vh] rounded-3xl overflow-hidden group">
+    <div class="relative w-full min-h-[85vh] md:min-h-[80vh] rounded-3xl overflow-hidden group flex flex-col justify-end">
       <!-- Background Image -->
       <!-- TODO: thay ảnh placeholder này bằng ảnh hero thật (đã bỏ text placeholder) -->
       <img 
@@ -26,7 +26,7 @@ const socialLinks = [
       <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent"></div>
 
       <!-- Content -->
-      <div class="absolute inset-0 p-6 md:p-12 lg:p-16 flex flex-col justify-end items-start h-full max-w-4xl">
+      <div class="relative z-10 p-6 md:p-12 lg:p-16 flex flex-col items-start w-full max-w-4xl pt-20">
         <div class="reveal">
           <Badge label="RAINY BAND" tone="light" class="mb-6 md:mb-8" />
         </div>
@@ -56,7 +56,7 @@ const socialLinks = [
         </div>
 
         <!-- Social Links -->
-        <div class="flex flex-wrap gap-6 mt-auto text-sm md:text-base font-medium">
+        <div class="flex flex-wrap gap-6 mt-6 md:mt-8 text-sm md:text-base font-medium">
           {socialLinks.map(link => (
             <a href={link.href} class="text-brand-100/70 hover:text-white transition-colors">
               {link.label}
