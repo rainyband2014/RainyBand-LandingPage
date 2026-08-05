@@ -27,8 +27,8 @@ import Badge from '../shared/Badge.astro';
       </p>
     </div>
 
-    <!-- 3 Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+    <!-- Sứ mệnh + Tầm nhìn: 2 cột cân đối -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
       <!-- Card 1: Sứ mệnh -->
       <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="500">
         <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
@@ -50,24 +50,39 @@ import Badge from '../shared/Badge.astro';
           Trở thành một trong những đơn vị cung cấp ban nhạc và nghệ sĩ biểu diễn uy tín, chuyên nghiệp, có khả năng đáp ứng linh hoạt nhiều loại hình sự kiện tại Việt Nam.
         </p>
       </div>
+    </div>
 
-      <!-- Card 3: Định hướng phát triển -->
-      <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="700">
-        <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
-          <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
-          Định hướng phát triển
-        </h3>
-        <p class="text-neutral-text leading-relaxed mb-4">
-          Rainy Band không ngừng nâng cao chất lượng chuyên môn, mở rộng đội ngũ nghệ sĩ và đa dạng hóa các dòng nhạc biểu diễn. Trong thời gian tới, Rainy Band hướng đến:
-        </p>
-        <ul class="list-disc pl-5 space-y-2 text-neutral-text">
-          <li>Xây dựng nhiều đội hình biểu diễn phù hợp với từng quy mô sự kiện.</li>
-          <li>Phát triển kho bài hát Việt Nam và quốc tế đa dạng.</li>
-          <li>Kết hợp giữa âm nhạc truyền thống, acoustic và phong cách điện tử hiện đại.</li>
-          <li>Nâng cao trải nghiệm tư vấn, chuẩn bị và phối hợp cùng khách hàng.</li>
-          <li>Trở thành đối tác âm nhạc lâu dài của các doanh nghiệp, nhà hàng, đơn vị tổ chức sự kiện và địa điểm giải trí.</li>
-        </ul>
-      </div>
+    <!-- Định hướng phát triển: full-width, list chia 2 cột để cân đối mật độ nội dung -->
+    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-neutral-text/5 reveal" data-delay="700">
+      <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
+        <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
+        Định hướng phát triển
+      </h3>
+      <p class="text-neutral-text leading-relaxed mb-6 max-w-3xl">
+        Rainy Band không ngừng nâng cao chất lượng chuyên môn, mở rộng đội ngũ nghệ sĩ và đa dạng hóa các dòng nhạc biểu diễn. Trong thời gian tới, Rainy Band hướng đến:
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
+          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
+          Xây dựng nhiều đội hình biểu diễn phù hợp với từng quy mô sự kiện.
+        </li>
+        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
+          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
+          Phát triển kho bài hát Việt Nam và quốc tế đa dạng.
+        </li>
+        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
+          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
+          Kết hợp giữa âm nhạc truyền thống, acoustic và phong cách điện tử hiện đại.
+        </li>
+        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
+          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
+          Nâng cao trải nghiệm tư vấn, chuẩn bị và phối hợp cùng khách hàng.
+        </li>
+        <li class="flex items-start gap-3 text-neutral-text leading-relaxed sm:col-span-2">
+          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
+          Trở thành đối tác âm nhạc lâu dài của các doanh nghiệp, nhà hàng, đơn vị tổ chức sự kiện và địa điểm giải trí.
+        </li>
+      </ul>
     </div>
   </Container>
 </section>

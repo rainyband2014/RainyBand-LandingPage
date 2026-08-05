@@ -23,7 +23,7 @@ export const coreTeam: CoreTeamMember[] = [
     fullBio: "Phan Trung Nghĩa là Founder của Rainy Band từ năm 2014, với mong muốn xây dựng một ban nhạc biểu diễn chuyên nghiệp, linh hoạt và luôn đặt trải nghiệm của khách hàng lên hàng đầu. Với tầm nhìn xây dựng một đội nhóm biểu diễn chuyên nghiệp nhưng vẫn giữ được chất riêng, anh từng bước mở rộng đội hình và đa dạng hoá dịch vụ.\n\nHiện tại, Phan Trung Nghĩa trực tiếp giám sát chất lượng âm nhạc và phong cách trình diễn của toàn bộ đội ngũ, đảm bảo mỗi buổi diễn đều mang đến trải nghiệm xứng đáng cho khách hàng.",
     // TODO: thay số điện thoại/email thật
     phone: "0900 000 001",
-    email: "khoa@rainyband.vn",
+    email: "nghia@rainyband.vn",
     joinedYear: 2014,
     images: [
       "https://placehold.co/500x600/0a1720/0a1720",
