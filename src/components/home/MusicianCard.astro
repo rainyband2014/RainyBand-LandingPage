@@ -1,41 +1,148 @@
 ---
-import Badge from '../shared/Badge.astro';
-import { instrumentToneMap, instrumentGradientMap } from '../../data/musicians';
-import type { Musician } from '../../data/musicians';
+import Badge from "../shared/Badge.astro";
+import {
+  instrumentToneMap,
+  instrumentGradientMap,
+} from "../../data/musicians";
+import type { Musician } from "../../data/musicians";
 
 interface Props extends Musician {
   class?: string;
+  delay?: number;
 }
 
-const { slug, name, instrument, instrumentGroup, experienceYears, imageUrl, class: className } = Astro.props;
+const {
+  slug,
+  name,
+  instrument,
+  instrumentGroup,
+  experienceYears,
+  imageUrl,
+  class: className,
+  delay = 0,
+} = Astro.props;
 
-const rootClasses = className ?? 'w-64 flex-shrink-0 snap-start';
+const rootClasses =
+  className ?? "w-64 flex-shrink-0 snap-start";
 ---
 
-<a href={`/nhac-cong/${slug}`} class={`${rootClasses} flex flex-col group cursor-pointer no-underline text-inherit`}>
-  <div class="relative w-full aspect-[4/5] bg-neutral-bg rounded-2xl mb-4 shadow-sm hover-media-container block cursor-pointer overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
-    <!-- TODO: thay bằng ảnh thật của nhạc công -->
-    <img 
-      src={imageUrl} 
-      alt={name} 
-      class="absolute inset-0 w-full h-full object-contain"
-    />
-    <div class={`absolute inset-0 bg-gradient-to-t ${instrumentGradientMap[instrumentGroup] ?? 'from-black/80 via-black/20 to-transparent'} z-10 pointer-events-none`}></div>
-    <div class="hover-media-overlay z-10"></div>
-    
-    <div class="absolute inset-0 p-4 flex flex-col items-center justify-end z-20">
-      <p class="text-white/90 text-[10px] font-bold tracking-widest uppercase mb-auto bg-black/25 px-2 py-1 rounded-md backdrop-blur-sm border border-white/10">
+<a
+  href={`/nhac-cong/${slug}`}
+  class={`${rootClasses} musician-flip-card flex flex-col group cursor-pointer no-underline text-inherit`}
+  style={`--flip-delay: ${delay}ms`}
+>
+  <div class="flip-inner">
+    <div
+      class="relative w-full aspect-[4/5] bg-neutral-bg rounded-2xl mb-4 shadow-sm hover-media-container block cursor-pointer overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1"
+    >
+      <!-- TODO: thay bằng ảnh thật của nhạc công -->
+      <img
+        src={imageUrl}
+        alt={`${name} - ${instrument}`}
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div
+        class={`absolute inset-0 bg-gradient-to-t ${instrumentGradientMap[instrumentGroup] ?? "from-black/80 via-black/20 to-transparent"} z-10 pointer-events-none`}
+      >
+      </div>
+      <div class="hover-media-overlay z-10">
+      </div>
+
+      <span
+        class="absolute top-3 left-3 z-20 text-white text-[10px] font-bold tracking-widest uppercase bg-black/40 px-2.5 py-1 rounded-md backdrop-blur-sm"
+      >
         {experienceYears} NĂM KINH NGHIỆM
-      </p>
-      
-      <h3 class="font-display text-3xl md:text-4xl font-bold text-white uppercase text-center mb-2 drop-shadow-md tracking-tight leading-none">
-        <!-- TODO: cập nhật tên nhạc công thật -->
-        {name}
-      </h3>
+      </span>
+
+      <div
+        class="absolute inset-x-0 bottom-0 p-4 z-20"
+      >
+        <h3
+          class="font-display text-2xl md:text-3xl font-bold text-white uppercase text-center drop-shadow-md tracking-tight leading-none"
+        >
+          <!-- TODO: cập nhật tên nhạc công thật -->
+          {name}
+        </h3>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-start px-1">
+      <Badge
+        label={instrumentGroup}
+        tone={instrumentToneMap[
+          instrumentGroup
+        ] ?? "dark"}
+        class="mb-2"
+      />
     </div>
   </div>
-  
-  <div class="flex flex-col items-start px-1">
-    <Badge label={instrumentGroup} tone={instrumentToneMap[instrumentGroup] ?? 'dark'} class="mb-2 scale-90 origin-left" />
-  </div>
 </a>
+
+<style>
+  .musician-flip-card {
+    perspective: 1200px;
+  }
+
+  .musician-flip-card .flip-inner {
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transform: rotateY(-72deg);
+    opacity: 0;
+    transition:
+      transform 0.75s
+        cubic-bezier(0.22, 0.9, 0.34, 1),
+      opacity 0.5s ease;
+    transition-delay: var(--flip-delay, 0ms);
+    will-change: transform, opacity;
+  }
+
+  .musician-flip-card.is-flipped .flip-inner {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .musician-flip-card .flip-inner {
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const initMusicianFlipCards = () => {
+    const cards =
+      document.querySelectorAll<HTMLElement>(
+        ".musician-flip-card:not(.is-flipped)",
+      );
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(
+              "is-flipped",
+            );
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -60px 0px",
+      },
+    );
+
+    cards.forEach((card) =>
+      observer.observe(card),
+    );
+  };
+
+  initMusicianFlipCards();
+  document.addEventListener(
+    "astro:page-load",
+    initMusicianFlipCards,
+  );
+</script>

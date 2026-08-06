@@ -51,49 +51,59 @@ const team2 = musicians.filter(
     <Container>
       <!-- Team 1 -->
       <div
-        class="flex items-end justify-between gap-4 mb-8 md:mb-10 reveal"
+        class="bg-white rounded-3xl border border-neutral-text/5 shadow-sm p-5 sm:p-8 md:p-10 reveal"
       >
-        <div>
+        <div
+          class="flex items-end justify-between gap-4 mb-8 md:mb-10"
+        >
+          <div>
+            <span
+              class="inline-block text-xs font-bold tracking-widest text-brand-600 uppercase mb-2"
+            >
+              Đội hình 01
+            </span>
+          </div>
           <span
-            class="inline-block text-xs font-bold tracking-widest text-brand-600 uppercase mb-2"
+            class="text-sm font-medium text-neutral-muted whitespace-nowrap pb-1"
           >
-            Đội hình 01
+            {
+              team1.length
+                .toString()
+                .padStart(2, "0")
+            } thành viên
           </span>
         </div>
-        <span
-          class="text-sm font-medium text-neutral-muted whitespace-nowrap pb-1"
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
           {
-            team1.length
-              .toString()
-              .padStart(2, "0")
-          } thành viên
-        </span>
-      </div>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-      >
-        {
-          team1.map((musician, index) => (
-            <div
-              class="reveal"
-              data-delay={Math.min(
-                index * 100,
-                500,
-              )}
-            >
+            team1.map((musician, index) => (
               <MusicianCard
                 {...musician}
                 class="w-full"
+                delay={Math.min(
+                  index * 100,
+                  500,
+                )}
               />
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
+        <p
+          class="mt-6 md:mt-8 text-sm md:text-base text-neutral-muted leading-relaxed max-w-3xl"
+        >
+          Đội hình quy tụ những nhạc công giàu
+          kinh nghiệm, phối hợp ăn ý giữa bass,
+          guitar, keyboard và trống — phù hợp
+          cho các chương trình cần một dàn nhạc
+          đầy đủ, âm thanh chắc chắn và giàu
+          năng lượng.
+        </p>
       </div>
 
       <!-- Divider -->
       <div
-        class="relative mt-16 md:mt-20 mb-8 md:mb-10 reveal"
+        class="relative my-10 md:my-14 reveal"
       >
         <div
           class="absolute inset-0 flex items-center"
@@ -116,44 +126,53 @@ const team2 = musicians.filter(
 
       <!-- Team 2 -->
       <div
-        class="flex items-end justify-between gap-4 mb-8 md:mb-10 reveal"
+        class="bg-white rounded-3xl border border-neutral-text/5 shadow-sm p-5 sm:p-8 md:p-10 reveal"
       >
-        <div>
+        <div
+          class="flex items-end justify-between gap-4 mb-8 md:mb-10"
+        >
+          <div>
+            <span
+              class="inline-block text-xs font-bold tracking-widest text-brand-600 uppercase mb-2"
+            >
+              Đội hình 02
+            </span>
+          </div>
           <span
-            class="inline-block text-xs font-bold tracking-widest text-brand-600 uppercase mb-2"
+            class="text-sm font-medium text-neutral-muted whitespace-nowrap pb-1"
           >
-            Đội hình 02
+            {
+              team2.length
+                .toString()
+                .padStart(2, "0")
+            } thành viên
           </span>
         </div>
-        <span
-          class="text-sm font-medium text-neutral-muted whitespace-nowrap pb-1"
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
           {
-            team2.length
-              .toString()
-              .padStart(2, "0")
-          } thành viên
-        </span>
-      </div>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-      >
-        {
-          team2.map((musician, index) => (
-            <div
-              class="reveal"
-              data-delay={Math.min(
-                index * 100,
-                500,
-              )}
-            >
+            team2.map((musician, index) => (
               <MusicianCard
                 {...musician}
                 class="w-full"
+                delay={Math.min(
+                  index * 100,
+                  500,
+                )}
               />
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
+        <p
+          class="mt-6 md:mt-8 text-sm md:text-base text-neutral-muted leading-relaxed max-w-3xl"
+        >
+          Đội hình linh hoạt, thiên về những
+          tiết mục nhẹ nhàng và tinh tế — thích
+          hợp cho không gian acoustic, tiệc
+          riêng tư hoặc các chương trình cần sự
+          gần gũi, ấm cúng.
+        </p>
       </div>
     </Container>
   </section>
