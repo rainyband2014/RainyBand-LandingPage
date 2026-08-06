@@ -63,8 +63,8 @@ const hasRealLogos = logos.length > 0;
 
     {
       hasRealLogos ? (
-        <div class="relative flex overflow-hidden w-full select-none gap-8 md:gap-12 mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)">
-          <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12">
+        <div class="relative flex overflow-hidden w-full select-none gap-4 md:gap-6 mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)">
+          <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-4 md:gap-6">
             {logos.map((logo) => (
               <div class="flex items-center justify-center flex-shrink-0">
                 <img
@@ -78,7 +78,7 @@ const hasRealLogos = logos.length > 0;
             ))}
           </div>
           <div
-            class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12"
+            class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-4 md:gap-6"
             aria-hidden="true"
           >
             {logos.map((logo) => (
