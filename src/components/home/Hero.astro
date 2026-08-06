@@ -1,100 +1,188 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
-import Container from '../shared/Container.astro';
-import Button from '../shared/Button.astro';
-import Badge from '../shared/Badge.astro';
+import Container from "../shared/Container.astro";
+import Button from "../shared/Button.astro";
+import Badge from "../shared/Badge.astro";
 
 const socialLinks = [
-  { label: 'YouTube', href: '#' },
-  { label: 'TikTok', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'Instagram', href: '#' },
+  { label: "YouTube", href: "#" },
+  { label: "TikTok", href: "#" },
+  { label: "Facebook", href: "#" },
+  { label: "Instagram", href: "#" },
 ];
 
-let heroImages: string[] = [];
-try {
-  const baseDir = path.join(process.cwd(), 'public', 'images', 'services');
-  const folders = ['cafe', 'event', 'nha-hang'];
-  for (const folder of folders) {
-    const folderPath = path.join(baseDir, folder);
-    if (fs.existsSync(folderPath)) {
-      const files = fs.readdirSync(folderPath);
-      for (const file of files) {
-        if (file.match(/\.(jpg|jpeg|png|webp)$/i)) {
-          heroImages.push(`/images/services/${folder}/${file}`);
-        }
-      }
-    }
+// Ảnh dịch vụ vẫn nằm trong public/images/services/{cafe,event,nha-hang}/.
+// Khai báo cứng tên file thay vì đọc thư mục lúc runtime (fs.readdirSync) —
+// tránh lỗi "không tìm thấy thư mục" khi build/deploy (giống lỗi ClientLogos trước đây),
+// đồng thời không cần di chuyển ảnh khỏi public/.
+const SERVICE_FOLDERS: Record<string, number> =
+  {
+    cafe: 5,
+    event: 7,
+    "nha-hang": 8,
+  };
+
+const allServiceImages: string[] =
+  Object.entries(SERVICE_FOLDERS).flatMap(
+    ([folder, count]) =>
+      Array.from(
+        { length: count },
+        (_, i) =>
+          `/images/services/${folder}/${folder}-${i + 1}.jpg`,
+      ),
+  );
+
+// Số ảnh tối đa hiển thị trong slideshow (tránh tải quá nhiều ảnh nặng cho hero)
+const MAX_SLIDES = 8;
+
+function shuffle<T>(arr: T[]): T[] {
+  const array = [...arr];
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(
+      Math.random() * (i + 1),
+    );
+    [array[i], array[j]] = [array[j], array[i]];
   }
-} catch (e) {
-  console.error("Error reading hero images:", e);
+  return array;
 }
 
+let heroImages: string[] = shuffle(
+  allServiceImages,
+).slice(0, MAX_SLIDES);
+
 if (heroImages.length === 0) {
-  heroImages = ["https://placehold.co/1600x1000/0a1720/0a1720"];
+  heroImages = [
+    "https://placehold.co/1600x1000/0a1720/0a1720",
+  ];
 }
 ---
 
-<section id="hero-slideshow" class="w-full py-6 md:py-10">
+<section
+  id="hero-slideshow"
+  class="w-full py-6 md:py-10"
+>
   <Container>
-    <div class="relative w-full min-h-[85vh] md:min-h-[80vh] rounded-3xl overflow-hidden group flex flex-col justify-end">
+    <div
+      class="relative w-full min-h-[85vh] md:min-h-[80vh] rounded-3xl overflow-hidden group flex flex-col justify-end"
+    >
       <!-- Background Images (Slideshow) -->
       <div class="absolute inset-0 z-0">
-        {heroImages.map((src, index) => (
-          <img 
-            src={src} 
-            alt={`Rainy Band Hero ${index + 1}`}
-            class={`hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out ${index === 0 ? 'opacity-100 is-active' : 'opacity-0'}`}
-            loading={index === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-          />
-        ))}
+        {
+          heroImages.map((src, index) => (
+            <img
+              src={src}
+              alt={`Rainy Band Hero ${index + 1}`}
+              class={`hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out ${index === 0 ? "opacity-100 is-active" : "opacity-0"}`}
+              loading={
+                index === 0 ? "eager" : "lazy"
+              }
+              decoding="async"
+            />
+          ))
+        }
       </div>
 
       <!-- Dark Overlay -->
-      <div class="absolute inset-0 bg-black/45 z-[1]"></div>
+      <div
+        class="absolute inset-0 bg-black/60 z-[1]"
+      >
+      </div>
 
       <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent z-[2]"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/30 to-transparent z-[2]"
+      >
+      </div>
 
       <!-- Content -->
-      <div class="relative z-10 p-6 md:p-12 lg:p-16 flex flex-col items-start w-full max-w-4xl pt-20">
+      <div
+        class="relative z-10 p-6 md:p-12 lg:p-16 flex flex-col items-start w-full max-w-4xl pt-20"
+      >
         <div class="reveal">
-          <Badge label="RAINY BAND" tone="light" class="mb-6 md:mb-8" />
+          <Badge
+            label="RAINY BAND"
+            tone="light"
+            class="mb-6 md:mb-8"
+          />
         </div>
-        
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-snug md:leading-snug mb-4 md:mb-6 reveal" data-delay="100">
-          Âm nhạc chuyên nghiệp – Cảm xúc trọn vẹn cho mọi sự kiện
+
+        <h1
+          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-snug md:leading-snug mb-4 md:mb-6 reveal"
+          data-delay="100"
+        >
+          Âm nhạc chuyên nghiệp – Cảm xúc trọn
+          vẹn cho mọi sự kiện
         </h1>
-        
-        <p class="text-brand-100/90 text-base md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-3xl leading-relaxed reveal" data-delay="200">
-          Từ những buổi tiệc riêng tư ấm cúng đến các sân khấu sự kiện sôi động, Rainy Band mang đến những màn trình diễn được đầu tư chỉn chu, phù hợp với không gian, đối tượng khách mời và tinh thần riêng của từng chương trình.
+
+        <p
+          class="text-brand-100/90 text-base md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-3xl leading-relaxed reveal"
+          data-delay="200"
+        >
+          Từ những buổi tiệc riêng tư ấm cúng
+          đến các sân khấu sự kiện sôi động,
+          Rainy Band mang đến những màn trình
+          diễn được đầu tư chỉn chu, phù hợp với
+          không gian, đối tượng khách mời và
+          tinh thần riêng của từng chương trình.
         </p>
 
-        <div class="flex flex-wrap gap-3 mb-8 md:mb-10 text-xs md:text-sm font-medium text-white/80 reveal" data-delay="300">
-          <span class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5">Acoustic Band</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5">Electric Band</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5">Ca sĩ biểu diễn</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5">Âm nhạc sự kiện</span>
+        <div
+          class="flex flex-wrap gap-3 mb-8 md:mb-10 text-xs md:text-sm font-medium text-white/80 reveal"
+          data-delay="300"
+        >
+          <span
+            class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5"
+            >Acoustic Band</span
+          >
+          <span
+            class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5"
+            >Electric Band</span
+          >
+          <span
+            class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5"
+            >Ca sĩ biểu diễn</span
+          >
+          <span
+            class="px-3 py-1 bg-white/10 rounded-full backdrop-blur-sm border border-white/5"
+            >Âm nhạc sự kiện</span
+          >
         </div>
-        
-        <div class="flex flex-col sm:flex-row gap-4 mb-10 md:mb-16 w-full sm:w-auto reveal" data-delay="400">
-          <Button href="/#booking" variant="primary" size="lg" class="w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98]">
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 mb-10 md:mb-16 w-full sm:w-auto reveal"
+          data-delay="400"
+        >
+          <Button
+            href="/#booking"
+            variant="primary"
+            size="lg"
+            class="w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98]"
+          >
             Tư vấn và đặt lịch biểu diễn
           </Button>
-          <Button href="#media" variant="ghost" size="lg" class="w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98]">
+          <Button
+            href="#media"
+            variant="ghost"
+            size="lg"
+            class="w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98]"
+          >
             Xem các màn trình diễn
           </Button>
         </div>
 
         <!-- Social Links -->
-        <div class="flex flex-wrap gap-6 mt-6 md:mt-8 text-sm md:text-base font-medium">
-          {socialLinks.map(link => (
-            <a href={link.href} class="text-brand-100/70 hover:text-white transition-colors">
-              {link.label}
-            </a>
-          ))}
+        <div
+          class="flex flex-wrap gap-6 mt-6 md:mt-8 text-sm md:text-base font-medium"
+        >
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-brand-100/70 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -102,30 +190,101 @@ if (heroImages.length === 0) {
 </section>
 
 <script>
+  function shuffleClient<T>(arr: T[]): T[] {
+    const array = [...arr];
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(
+        Math.random() * (i + 1),
+      );
+      [array[i], array[j]] = [
+        array[j],
+        array[i],
+      ];
+    }
+    return array;
+  }
+
   function initHeroSlideshow() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches
+    ) {
       return;
     }
-    const section = document.getElementById('hero-slideshow');
+    const section = document.getElementById(
+      "hero-slideshow",
+    );
     if (!section) return;
-    const slides = section.querySelectorAll('.hero-slide');
+    const slides = Array.from(
+      section.querySelectorAll<HTMLImageElement>(
+        ".hero-slide",
+      ),
+    );
     if (slides.length <= 1) return;
 
+    // Xáo lại thứ tự ảnh mỗi lần tải trang, để mỗi lượt xem là một trình tự
+    // ngẫu nhiên khác nhau (kể cả khi trang được build tĩnh / cache CDN).
+    const originalSrcs = slides.map(
+      (slide) => slide.src,
+    );
+    const shuffledSrcs =
+      shuffleClient(originalSrcs);
+    slides.forEach((slide, i) => {
+      slide.src = shuffledSrcs[i];
+    });
+
     let currentIndex = 0;
-    setInterval(() => {
-      slides[currentIndex].classList.remove('is-active', 'opacity-100');
-      slides[currentIndex].classList.add('opacity-0');
-      
-      currentIndex = (currentIndex + 1) % slides.length;
-      
-      slides[currentIndex].classList.remove('opacity-0');
-      slides[currentIndex].classList.add('is-active', 'opacity-100');
+    slides.forEach((slide, i) => {
+      slide.classList.toggle(
+        "is-active",
+        i === 0,
+      );
+      slide.classList.toggle(
+        "opacity-100",
+        i === 0,
+      );
+      slide.classList.toggle(
+        "opacity-0",
+        i !== 0,
+      );
+    });
+
+    const interval = setInterval(() => {
+      slides[currentIndex].classList.remove(
+        "is-active",
+        "opacity-100",
+      );
+      slides[currentIndex].classList.add(
+        "opacity-0",
+      );
+
+      currentIndex =
+        (currentIndex + 1) % slides.length;
+
+      slides[currentIndex].classList.remove(
+        "opacity-0",
+      );
+      slides[currentIndex].classList.add(
+        "is-active",
+        "opacity-100",
+      );
     }, 5000);
+
+    // Dọn interval khi rời trang (View Transitions)
+    document.addEventListener(
+      "astro:before-swap",
+      () => clearInterval(interval),
+      { once: true },
+    );
   }
-  
+
   // Initialize on load
   initHeroSlideshow();
-  
+
   // Astro View Transitions support
-  document.addEventListener('astro:page-load', initHeroSlideshow);
+  document.addEventListener(
+    "astro:page-load",
+    initHeroSlideshow,
+  );
 </script>
