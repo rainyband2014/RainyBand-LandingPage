@@ -32,7 +32,7 @@ export const services: Service[] = [
     detailsList: ["Ca sĩ", "Guitar điện", "Bass", "Keyboard", "Drum", "Các nhạc cụ hoặc nghệ sĩ bổ sung theo concept"],
     suitableForIntro: "Phù hợp cho:",
     suitableFor: ["Sự kiện doanh nghiệp", "Tiệc cuối năm", "Khai trương", "Lễ ra mắt sản phẩm", "Festival", "Sân khấu ngoài trời", "Chương trình giải trí công cộng"],
-    imageUrl: "/images/services/event/event-1.jpg"
+    imageUrl: "/images/services/event/event-7.jpg"
   },
   {
     id: "service-3",
@@ -44,6 +44,6 @@ export const services: Service[] = [
     suitableForIntro: "",
     suitableFor: [],
     closingNote: "Rainy Band sẽ tư vấn lựa chọn giọng ca dựa trên concept, danh sách bài hát, đối tượng khách mời và không khí mà khách hàng mong muốn.",
-    imageUrl: "/images/services/event/event-2.jpg"
+    imageUrl: "/images/services/nha-hang/nha-hang-7.jpg"
   }
 ];

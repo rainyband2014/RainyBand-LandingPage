@@ -74,5 +74,82 @@ export const showcaseItems: ShowcaseItem[] = [
     title: "Live Band Acoustic Session",
     thumbnailUrl: "/images/services/cafe/cafe-4.jpg",
     videoUrl: "" // TODO: thay link thật
+  },
+  {
+    id: "sc-10",
+    type: 'image',
+    category: 'cafe-acoustic',
+    title: "Không gian acoustic ấm cúng tại quán café",
+    thumbnailUrl: "/images/services/cafe/cafe-1.jpg"
+  },
+  {
+    id: "sc-11",
+    type: 'image',
+    category: 'acoustic-live',
+    title: "Trình diễn acoustic đầy cảm xúc",
+    thumbnailUrl: "/images/services/cafe/cafe-5.jpg"
+  },
+  {
+    id: "sc-12",
+    type: 'image',
+    category: 'corporate',
+    title: "Sự kiện ra mắt sản phẩm doanh nghiệp",
+    thumbnailUrl: "/images/services/event/event-1.jpg"
+  },
+  {
+    id: "sc-13",
+    type: 'image',
+    category: 'private-party',
+    title: "Tiệc riêng tư ấm cúng",
+    thumbnailUrl: "/images/services/event/event-2.jpg"
+  },
+  {
+    id: "sc-14",
+    type: 'image',
+    category: 'wedding',
+    title: "Khoảnh khắc lễ cưới tại nhà hàng",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-2.jpg"
+  },
+  {
+    id: "sc-15",
+    type: 'image',
+    category: 'wedding',
+    title: "Tiệc cưới sang trọng",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-3.jpg"
+  },
+  {
+    id: "sc-16",
+    type: 'image',
+    category: 'private-party',
+    title: "Không gian tiệc gia đình ấm áp",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-4.jpg"
+  },
+  {
+    id: "sc-17",
+    type: 'image',
+    category: 'wedding',
+    title: "Sân khấu tiệc cưới lung linh",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-5.jpg"
+  },
+  {
+    id: "sc-18",
+    type: 'image',
+    category: 'electric-full-band',
+    title: "Ban nhạc điện tử biểu diễn tại nhà hàng",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-6.jpg"
+  },
+  {
+    id: "sc-19",
+    type: 'image',
+    category: 'nhac-viet',
+    title: "Đêm nhạc Việt tại nhà hàng",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-7.jpg"
+  },
+  {
+    id: "sc-20",
+    type: 'image',
+    category: 'wedding',
+    title: "Khoảnh khắc đáng nhớ trong đêm tiệc cưới",
+    thumbnailUrl: "/images/services/nha-hang/nha-hang-8.jpg"
   }
 ];
