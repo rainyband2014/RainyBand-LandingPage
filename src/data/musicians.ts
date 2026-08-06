@@ -23,11 +23,9 @@ export const musicians: Musician[] = [
     instrument: "Bass",
     instrumentGroup: "BASSIST",
     team: "team-1",
-    // TODO: xác nhận lại số năm kinh nghiệm thật
     experienceYears: 4,
     bio: "Bassist Team 1, giữ nhịp điệu ổn định và kết nối chặt chẽ với trống trong từng set nhạc.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Sang Lê đảm nhận vị trí bassist của Team 1 tại Rainy Band, phụ trách giữ nền tiết tấu và tạo sự gắn kết vững chắc giữa các nhạc cụ trong ban nhạc. Phong cách chơi ổn định, tinh tế và luôn ưu tiên sự hài hòa cho tổng thể tiết mục.\n\nVới kinh nghiệm biểu diễn đa dạng thể loại, Sang Lê có thể linh hoạt xử lý từ những set nhạc acoustic nhẹ nhàng đến các chương trình sôi động, đảm bảo nền nhạc luôn chắc chắn xuyên suốt chương trình.",
+    fullBio: "Với hơn 4 năm kinh nghiệm biểu diễn, Sang Lê là bassist mang đến nền groove chắc chắn cùng khả năng giữ nhịp ổn định trong nhiều thể loại âm nhạc. Từng góp mặt tại nhiều sân khấu lớn nhỏ, từ acoustic, cà phê đến các sự kiện và chương trình biểu diễn, Sang luôn thể hiện sự chỉn chu, tinh thần làm việc chuyên nghiệp và khả năng phối hợp ăn ý với các thành viên trong ban nhạc. Sự linh hoạt trong cách chơi cùng nguồn năng lượng tích cực trên sân khấu giúp Sang trở thành một mắt xích quan trọng, góp phần tạo nên những màn trình diễn trọn vẹn và giàu cảm xúc.",
     imageUrl: "/images/musicians/team-1/bass_sang_le.jpg",
     videos: []
   },
@@ -38,10 +36,9 @@ export const musicians: Musician[] = [
     instrument: "Guitar",
     instrumentGroup: "GUITARIST",
     team: "team-1",
-    experienceYears: 5,
+    experienceYears: 6,
     bio: "Guitarist Team 1, mang màu sắc linh hoạt và điểm nhấn tinh tế cho từng tiết mục.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Lữ Thiện đảm nhận vị trí guitarist của Team 1 tại Rainy Band, phụ trách phần đệm và tạo điểm nhấn giai điệu cho các tiết mục biểu diễn. Với khả năng xử lý đa dạng thể loại, anh linh hoạt điều chỉnh phong cách chơi phù hợp theo yêu cầu từng chương trình.\n\nVới 5 năm kinh nghiệm biểu diễn, Lữ Thiện tự tin đảm nhận nhiều format từ acoustic nhẹ nhàng đến các set nhạc sôi động, luôn đảm bảo chất lượng âm thanh ổn định trong từng buổi diễn.",
+    fullBio: "Với hơn 6 năm kinh nghiệm biểu diễn tại nhiều sân khấu lớn nhỏ, Lữ Thiện là guitarist sở hữu phong cách biểu diễn linh hoạt và khả năng thích nghi với đa dạng thể loại âm nhạc. Bên cạnh vị trí line-up chính Guitar, Lữ Thiện còn có thể đảm nhiệm các vai trò khác như Keyboard, Bass, Cajon,… giúp ban nhạc dễ dàng đáp ứng nhiều mô hình biểu diễn khác nhau. Không chỉ là một nhạc công, anh còn có thế mạnh trong việc chiêu mộ nhân sự, xây dựng đội hình và quản lý show, góp phần đảm bảo sự chuyên nghiệp và vận hành hiệu quả cho mỗi chương trình.",
     imageUrl: "/images/musicians/team-1/guitar_lu_thien.jpg",
     videos: []
   },
@@ -52,10 +49,9 @@ export const musicians: Musician[] = [
     instrument: "Keyboard",
     instrumentGroup: "KEYBOARD/PIANO",
     team: "team-1",
-    experienceYears: 4,
+    experienceYears: 8,
     bio: "Keyboardist Team 1, tạo chiều sâu và màu sắc hòa âm cho từng set nhạc.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Trường Zang phụ trách keyboard trong đội hình Team 1 của Rainy Band, mang đến phần đệm nền và hòa âm phong phú cho các tiết mục biểu diễn. Anh đặc biệt chú trọng vào việc tạo chiều sâu âm thanh, giúp tổng thể ban nhạc thêm trọn vẹn.\n\nVới 4 năm kinh nghiệm, Trường Zang linh hoạt xử lý nhiều thể loại nhạc khác nhau, từ những bản ballad nhẹ nhàng đến các tiết mục sôi động đòi hỏi kỹ thuật cao.",
+    fullBio: "Với hơn 8 năm kinh nghiệm biểu diễn tại các sân khấu lớn nhỏ, Trường Giang là Keyboardist/Pianist sở hữu nền tảng âm nhạc vững chắc cùng khả năng xử lý linh hoạt trong nhiều phong cách biểu diễn. Bên cạnh vị trí line-up chính Keyboard/Piano, Trường Giang còn có thể đảm nhiệm nhiều nhạc cụ khác như Guitar, Bass và Drum, mang đến sự linh hoạt trong việc xây dựng đội hình và đáp ứng đa dạng yêu cầu sân khấu. Với tư duy hòa âm tốt, khả năng cảm nhạc nhạy bén cùng kinh nghiệm biểu diễn dày dặn, Trường Giang luôn góp phần tạo nên những màn trình diễn chuyên nghiệp, chỉn chu và giàu cảm xúc trong từng tiết mục.",
     imageUrl: "/images/musicians/team-1/key_truong_zang.jpg",
     videos: []
   },
@@ -66,11 +62,9 @@ export const musicians: Musician[] = [
     instrument: "SPD (Sample Pad)",
     instrumentGroup: "SPD/DRUMMER",
     team: "team-1",
-    // TODO: xác nhận lại số năm kinh nghiệm thật
-    experienceYears: 3,
+    experienceYears: 5,
     bio: "SPD/Drummer Team 1, giữ nhịp chắc chắn với thiết bị sample pad hiện đại.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Nhật Khôi đảm nhận vị trí SPD (Sample Pad) của Team 1 tại Rainy Band, kết hợp giữa yếu tố điện tử hiện đại và nhịp điệu sống động cho từng tiết mục. Anh phụ trách giữ nhịp chính, đảm bảo tiết tấu ổn định xuyên suốt chương trình.\n\nVới kinh nghiệm biểu diễn tại nhiều loại hình sân khấu, Nhật Khôi có thể linh hoạt điều chỉnh âm thanh và hiệu ứng sample pad phù hợp với từng không gian, từ sự kiện nhỏ đến sân khấu lớn.",
+    fullBio: "Có người tạo nên giai điệu, còn Nhật Khôi là người thổi nhịp tim cho sân khấu. Với hơn 5 năm kinh nghiệm biểu diễn, Nhật Khôi linh hoạt giữa trống Jazz, SPD và Cajon, luôn biết cách biến từng nhịp đánh thành nguồn năng lượng lan tỏa đến cả ban nhạc lẫn khán giả. Dù ở sân khấu acoustic, sự kiện hay chương trình lớn, Khôi luôn mang đến tinh thần máu lửa, khả năng làm chủ nhịp điệu và một màn trình diễn để lại dấu ấn cho khán giả sau mỗi lần hạ dùi.",
     imageUrl: "/images/musicians/team-1/spd_nhat_khoi.jpg",
     videos: []
   },
@@ -83,11 +77,9 @@ export const musicians: Musician[] = [
     instrument: "Bass",
     instrumentGroup: "BASSIST",
     team: "team-2",
-    // TODO: xác nhận lại số năm kinh nghiệm thật
-    experienceYears: 3,
+    experienceYears: 4,
     bio: "Bassist Team 2, giữ nền tiết tấu vững chắc cho toàn bộ đội hình.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Ngọc Thiện đảm nhận vị trí bassist của Team 2 tại Rainy Band, chịu trách nhiệm giữ vững nền nhịp điệu và kết nối các nhạc cụ trong ban nhạc. Phong cách chơi chắc chắn, tập trung vào sự ổn định cho tổng thể tiết mục.\n\nVới kinh nghiệm biểu diễn đa dạng, Ngọc Thiện linh hoạt xử lý nhiều thể loại nhạc, đảm bảo nền tảng âm thanh luôn vững vàng trong mọi chương trình.",
+    fullBio: "Không quá phô trương, nhưng luôn là người giữ vững “xương sống” của ban nhạc, Ngọc Thiện mang theo hơn 4 năm kinh nghiệm biểu diễn trên nhiều sân khấu lớn nhỏ. Với lối chơi chắc tay, cảm nhịp tốt và khả năng hòa quyện cùng các thành viên, Thiện luôn tạo nên một nền bass ổn định và đầy chiều sâu. Sự bình tĩnh trên sân khấu cùng tinh thần làm việc chuyên nghiệp giúp mỗi tiết mục trở nên liền mạch, giàu năng lượng và cảm xúc.",
     imageUrl: "/images/musicians/team-2/bass_ngoc_thien.jpg",
     videos: []
   },
@@ -98,10 +90,9 @@ export const musicians: Musician[] = [
     instrument: "Guitar",
     instrumentGroup: "GUITARIST",
     team: "team-2",
-    experienceYears: 6,
+    experienceYears: 5,
     bio: "Guitarist Team 2, giàu kinh nghiệm với khả năng biến hoá linh hoạt qua nhiều thể loại.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Nguyễn Lộc đảm nhận vị trí guitarist của Team 2 tại Rainy Band, mang đến phần đệm và giai điệu tinh tế cho các tiết mục biểu diễn. Với nhiều năm gắn bó, anh am hiểu sâu sắc cách phối hợp cùng ban nhạc để tạo nên tổng thể hài hòa.\n\nVới 6 năm kinh nghiệm biểu diễn tại nhiều loại hình sân khấu, Nguyễn Lộc có thể linh hoạt điều chỉnh phong cách chơi guitar tuỳ theo quy mô không gian, từ café acoustic nhỏ đến sân khấu sự kiện lớn.",
+    fullBio: "Với hơn 5 năm kinh nghiệm đồng hành cùng nhiều sân khấu lớn nhỏ, Nguyễn Lộc là guitarist sở hữu lối chơi chắc chắn, tinh tế và giàu cảm xúc. Khả năng xử lý linh hoạt trong nhiều dòng nhạc giúp Lộc luôn tạo nên những giai điệu hài hòa, góp phần nâng tầm mỗi tiết mục biểu diễn. Không chỉ chú trọng kỹ thuật, Lộc còn đề cao sự kết nối với các thành viên trong ban nhạc để mang đến những màn trình diễn đồng đều và chuyên nghiệp. Sự nhiệt huyết, chỉn chu và tinh thần không ngừng học hỏi chính là những yếu tố giúp Nguyễn Lộc luôn để lại dấu ấn trên mỗi sân khấu.",
     imageUrl: "/images/musicians/team-2/guitar_nguyen_loc.jpg",
     videos: []
   },
@@ -112,11 +103,9 @@ export const musicians: Musician[] = [
     instrument: "Keyboard",
     instrumentGroup: "KEYBOARD/PIANO",
     team: "team-2",
-    // TODO: xác nhận lại số năm kinh nghiệm thật
-    experienceYears: 3,
+    experienceYears: 5,
     bio: "Keyboardist Team 2, mang đến hòa âm phong phú và điểm nhấn tinh tế.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Thanh An phụ trách keyboard trong đội hình Team 2 của Rainy Band, đảm nhận phần đệm nền và hòa âm cho các tiết mục biểu diễn. Phong cách chơi tinh tế, chú trọng sự hài hòa giữa các nhạc cụ trong ban nhạc.\n\nVới kinh nghiệm biểu diễn đa dạng thể loại, Thanh An linh hoạt xử lý từ những bản acoustic nhẹ nhàng đến các set nhạc sôi động, góp phần tạo nên chất lượng âm thanh ổn định cho chương trình.",
+    fullBio: "Có những giai điệu không cần quá nổi bật nhưng lại là chất keo kết nối cả ban nhạc — và đó chính là vai trò mà Thành An đảm nhiệm suốt hơn 5 năm biểu diễn. Với khả năng tạo không gian âm nhạc, xử lý hòa âm linh hoạt và bắt nhịp nhanh cùng đồng đội, An luôn góp phần thổi hồn vào từng tiết mục. Mỗi lần chạm phím là một lần mang đến chiều sâu, cảm xúc và màu sắc riêng cho sân khấu.",
     imageUrl: "/images/musicians/team-2/key_thanh_an.jpg",
     videos: []
   },
@@ -127,11 +116,9 @@ export const musicians: Musician[] = [
     instrument: "SPD (Sample Pad)",
     instrumentGroup: "SPD/DRUMMER",
     team: "team-2",
-    // TODO: xác nhận lại số năm kinh nghiệm thật
-    experienceYears: 3,
+    experienceYears: 4,
     bio: "SPD/Drummer Team 2, giữ nhịp ổn định với thiết bị sample pad hiện đại.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Ngọc Lâm đảm nhận vị trí SPD (Sample Pad) của Team 2 tại Rainy Band, kết hợp yếu tố điện tử hiện đại với nhịp điệu sống động cho từng tiết mục. Anh phụ trách giữ nhịp chính, đảm bảo tiết tấu ổn định xuyên suốt chương trình.\n\nVới kinh nghiệm biểu diễn tại nhiều sân khấu khác nhau, Ngọc Lâm linh hoạt điều chỉnh âm thanh và hiệu ứng sample pad phù hợp với từng không gian biểu diễn.",
+    fullBio: "Đằng sau mỗi tiết mục bùng nổ là một nhịp trống vững vàng, và Ngọc Lâm đã làm điều đó suốt hơn 4 năm trên nhiều sân khấu khác nhau. Với lối chơi chắc tay, cảm nhịp tốt và khả năng khuấy động không khí đúng lúc, Lâm luôn mang đến nguồn năng lượng tích cực cho ban nhạc. Sự máu lửa trên sân khấu cùng tinh thần làm việc chuyên nghiệp giúp mỗi màn trình diễn trở nên trọn vẹn và đáng nhớ.",
     imageUrl: "/images/musicians/team-2/spd_ngoc_lam.jpg",
     videos: []
   }
