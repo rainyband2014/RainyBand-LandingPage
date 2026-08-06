@@ -23,12 +23,15 @@ const isRingsIcon = (index: number) => index % icons.length === 3;
 // Các cặp class idle/active dùng chung cho cả hover thật (group-hover) lẫn
 // hiệu ứng "spotlight" tự động chạy bằng JS bên dưới — đảm bảo 2 hiệu ứng
 // trông giống hệt nhau: thẻ chuyển sang nền tối như thẻ mẫu ban đầu.
-// Lưu ý: bg-white / bg-brand-900 KHÔNG nằm trong 2 mảng này nữa.
-// Background giờ được điều khiển hoàn toàn bằng CSS thuần (xem <style> bên dưới)
-// thông qua thuộc tính data-active, để đảm bảo transition màu nền luôn mượt,
-// không phụ thuộc vào việc Tailwind add/remove class nền cùng lúc với các class khác.
-const CARD_IDLE = ['text-neutral-text', 'border-neutral-text/[0.06]', 'shadow-sm'];
-const CARD_ACTIVE = ['text-white', 'border-brand-900', 'shadow-lg', 'shadow-brand-900/25', '-translate-y-1'];
+// QUAN TRỌNG: TẤT CẢ thuộc tính (bg, chữ, icon, border, shadow) đều nằm
+// trong CÙNG một mảng, được swap CÙNG lúc bởi CÙNG một hàm applyActive().
+// Trước đây background được tách ra dùng cơ chế CSS [data-active] riêng,
+// độc lập với classList JS điều khiển chữ/icon — 2 cơ chế tách rời này có
+// thể mất đồng bộ (nền đổi màu nhưng chữ thì không). Gộp lại 1 cơ chế duy
+// nhất đảm bảo mọi thuộc tính luôn đồng bộ tuyệt đối. Transition mượt được
+// đảm bảo riêng bằng CSS !important ở <style> bên dưới.
+const CARD_IDLE = ['bg-white', 'text-neutral-text', 'border-neutral-text/[0.06]', 'shadow-sm'];
+const CARD_ACTIVE = ['bg-brand-900', 'text-white', 'border-brand-900', 'shadow-lg', 'shadow-brand-900/25', '-translate-y-1'];
 const ICON_IDLE = ['bg-brand-600/[0.08]', 'text-brand-600'];
 const ICON_ACTIVE = ['bg-white/10', 'text-white'];
 const TITLE_IDLE = ['text-brand-900'];
@@ -213,10 +216,23 @@ const NUMBER_ACTIVE = ['text-white/30'];
       clearAllActive();
     };
 
-    // Tạm dừng loop khi người dùng chủ động rê chuột vào khu vực,
-    // để không "đánh nhau" với hiệu ứng hover thật (group-hover đã tự lo).
-    grid.addEventListener('mouseenter', stop);
-    grid.addEventListener('mouseleave', start);
+    // Tạm dừng loop khi người dùng chủ động rê chuột vào khu vực, để không
+    // "đánh nhau" với hiệu ứng hover thật (group-hover đã tự lo).
+    // CHỈ áp dụng cho thiết bị có hover thật (chuột/trackpad). Trên thiết bị
+    // cảm ứng (mobile/tablet), nhiều trình duyệt vẫn giả lập sự kiện
+    // "mouseenter" khi chạm nhưng gần như không bao giờ bắn "mouseleave"
+    // tương ứng (vì không có thao tác rê chuột ra) — điều này khiến loop
+    // bị dừng (stop) đúng lúc một card đang active, xoá các class JS điều
+    // khiển màu chữ/icon/border (clearAllActive) trong khi nền tối vẫn có
+    // thể còn do CSS [data-active]/:hover, gây lệch pha: nền đổi màu nhưng
+    // chữ thì không. Trên thiết bị cảm ứng, bỏ qua hoàn toàn cơ chế pause
+    // để loop luôn chạy trọn vẹn và đồng bộ.
+    const supportsRealHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (supportsRealHover) {
+      grid.addEventListener('mouseenter', stop);
+      grid.addEventListener('mouseleave', start);
+    }
 
     start();
 

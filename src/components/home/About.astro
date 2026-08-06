@@ -1,88 +1,354 @@
 ---
-import Container from '../shared/Container.astro';
-import Badge from '../shared/Badge.astro';
+import Container from "../shared/Container.astro";
+import Badge from "../shared/Badge.astro";
 ---
 
-<section class="w-full py-16 md:py-24 bg-neutral-surface">
+<section
+  class="relative w-full py-16 md:py-24 bg-neutral-surface overflow-hidden"
+>
+  <!-- Decorative accents, đồng bộ ngôn ngữ thị giác với các section khác -->
+  <div
+    class="pointer-events-none absolute -top-32 -right-16 w-[26rem] h-[26rem] rounded-full bg-brand-600/[0.05] blur-3xl"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute bottom-0 -left-24 w-[20rem] h-[20rem] rounded-full bg-brand-600/[0.04] blur-3xl"
+  >
+  </div>
+
   <Container>
-    <div class="reveal">
-      <Badge label="GIỚI THIỆU" tone="dark" class="mb-4" />
-    </div>
+    <div class="relative">
+      <div
+        class="relative flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 mb-8 md:mb-12"
+      >
+        <div class="reveal">
+          <Badge
+            label="GIỚI THIỆU"
+            tone="dark"
+            class="mb-4"
+          />
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight max-w-3xl"
+            data-delay="100"
+          >
+            Hơn một thập kỷ đồng hành cùng những
+            sân khấu đầy cảm xúc
+          </h2>
+        </div>
 
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight mb-8 md:mb-12 max-w-3xl reveal" data-delay="100">
-      Hơn một thập kỷ đồng hành cùng những sân khấu đầy cảm xúc
-    </h2>
+        <!-- Stat "10+" có nhãn rõ ràng, lấy từ chính nội dung ("hơn 10 năm hoạt động") -->
+        <div
+          class="flex items-baseline gap-3 md:flex-col md:items-end md:gap-0.5 shrink-0 reveal"
+          data-delay="150"
+        >
+          <span
+            class="font-display font-bold text-brand-900 text-4xl md:text-5xl leading-none"
+            >10+</span
+          >
+          <span
+            class="text-xs md:text-sm font-semibold tracking-wider text-neutral-muted uppercase"
+            >Năm đồng hành</span
+          >
+        </div>
+      </div>
 
-    <div class="space-y-6 text-base md:text-lg text-neutral-text leading-relaxed max-w-4xl mb-16">
-      <p class="reveal" data-delay="200">
-        Rainy Band được thành lập từ năm 2014 bởi Founder Phan Trung Nghĩa, với mong muốn xây dựng một ban nhạc biểu diễn chuyên nghiệp, linh hoạt và luôn đặt trải nghiệm của khách hàng lên hàng đầu.
-      </p>
-      
-      <p class="reveal" data-delay="300">
-        Trải qua hơn 10 năm hoạt động, Rainy Band đã biểu diễn tại nhiều chương trình, sự kiện, nhà hàng, tiệc cưới và không gian âm nhạc khác nhau. Mỗi sân khấu là một câu chuyện riêng, vì vậy Rainy Band luôn chú trọng lựa chọn đội hình, phong cách biểu diễn và danh sách bài hát phù hợp với từng chương trình.
-      </p>
-      
-      <p class="reveal" data-delay="400">
-        Không chỉ mang đến âm nhạc, Rainy Band mong muốn tạo nên một không gian kết nối, nơi nghệ sĩ và khán giả có thể cùng nhau chia sẻ những khoảnh khắc đáng nhớ.
-      </p>
-    </div>
+      <div
+        class="relative space-y-5 max-w-4xl mb-16 md:mb-20"
+      >
+        <p
+          class="reveal text-lg md:text-xl font-medium text-brand-900 leading-relaxed"
+          data-delay="200"
+        >
+          Rainy Band được thành lập từ năm 2014
+          bởi Founder Phan Trung Nghĩa, với mong
+          muốn xây dựng một ban nhạc biểu diễn
+          chuyên nghiệp, linh hoạt và luôn đặt
+          trải nghiệm của khách hàng lên hàng
+          đầu.
+        </p>
 
-    <!-- Sứ mệnh + Tầm nhìn: 2 cột cân đối -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
-      <!-- Card 1: Sứ mệnh -->
-      <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="500">
-        <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
-          <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
-          Sứ mệnh
-        </h3>
-        <p class="text-neutral-text leading-relaxed">
-          Mang âm nhạc chất lượng và những màn trình diễn giàu cảm xúc đến với đa dạng không gian, chương trình và đối tượng khán giả. Rainy Band hướng đến việc giúp mỗi sự kiện trở nên trọn vẹn hơn thông qua âm nhạc được chuẩn bị kỹ lưỡng, đội ngũ biểu diễn chuyên nghiệp và tinh thần phục vụ tận tâm.
+        <p
+          class="reveal text-base md:text-lg text-neutral-text leading-relaxed"
+          data-delay="300"
+        >
+          Trải qua hơn 10 năm hoạt động, Rainy
+          Band đã biểu diễn tại nhiều chương
+          trình, sự kiện, nhà hàng, tiệc cưới và
+          không gian âm nhạc khác nhau. Mỗi sân
+          khấu là một câu chuyện riêng, vì vậy
+          Rainy Band luôn chú trọng lựa chọn đội
+          hình, phong cách biểu diễn và danh
+          sách bài hát phù hợp với từng chương
+          trình.
+        </p>
+
+        <p
+          class="reveal text-base md:text-lg text-neutral-text leading-relaxed"
+          data-delay="400"
+        >
+          Không chỉ mang đến âm nhạc, Rainy Band
+          mong muốn tạo nên một không gian kết
+          nối, nơi nghệ sĩ và khán giả có thể
+          cùng nhau chia sẻ những khoảnh khắc
+          đáng nhớ.
         </p>
       </div>
 
-      <!-- Card 2: Tầm nhìn -->
-      <div class="bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal" data-delay="600">
-        <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
-          <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
-          Tầm nhìn
-        </h3>
-        <p class="text-neutral-text leading-relaxed">
-          Trở thành một trong những đơn vị cung cấp ban nhạc và nghệ sĩ biểu diễn uy tín, chuyên nghiệp, có khả năng đáp ứng linh hoạt nhiều loại hình sự kiện tại Việt Nam.
-        </p>
-      </div>
-    </div>
+      <!-- Sứ mệnh + Tầm nhìn: 2 cột, cố tình lệch tông sáng/tối để tạo điểm nhấn thị giác -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8"
+      >
+        <!-- Card 1: Sứ mệnh (sáng) -->
+        <div
+          class="about-card group will-change-transform bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/[0.06] flex flex-col reveal hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-900/10"
+          data-delay="500"
+        >
+          <div
+            class="about-icon flex items-center justify-center w-12 h-12 rounded-full bg-brand-600/[0.08] text-brand-600 mb-5 group-hover:bg-brand-600 group-hover:text-white"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <circle cx="12" cy="12" r="8.5"
+              ></circle>
+              <circle cx="12" cy="12" r="4.5"
+              ></circle>
+              <circle
+                cx="12"
+                cy="12"
+                r="0.8"
+                fill="currentColor"
+                stroke="none"></circle>
+            </svg>
+          </div>
+          <h3
+            class="text-xl font-bold font-display text-brand-900 mb-3"
+          >
+            Sứ mệnh
+          </h3>
+          <p
+            class="text-neutral-text leading-relaxed"
+          >
+            Mang âm nhạc chất lượng và những màn
+            trình diễn giàu cảm xúc đến với đa
+            dạng không gian, chương trình và đối
+            tượng khán giả. Rainy Band hướng đến
+            việc giúp mỗi sự kiện trở nên trọn
+            vẹn hơn thông qua âm nhạc được chuẩn
+            bị kỹ lưỡng, đội ngũ biểu diễn
+            chuyên nghiệp và tinh thần phục vụ
+            tận tâm.
+          </p>
+        </div>
 
-    <!-- Định hướng phát triển: full-width, list chia 2 cột để cân đối mật độ nội dung -->
-    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-neutral-text/5 reveal" data-delay="700">
-      <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
-        <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
-        Định hướng phát triển
-      </h3>
-      <p class="text-neutral-text leading-relaxed mb-6 max-w-3xl">
-        Rainy Band không ngừng nâng cao chất lượng chuyên môn, mở rộng đội ngũ nghệ sĩ và đa dạng hóa các dòng nhạc biểu diễn. Trong thời gian tới, Rainy Band hướng đến:
-      </p>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
-          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
-          Xây dựng nhiều đội hình biểu diễn phù hợp với từng quy mô sự kiện.
-        </li>
-        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
-          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
-          Phát triển kho bài hát Việt Nam và quốc tế đa dạng.
-        </li>
-        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
-          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
-          Kết hợp giữa âm nhạc truyền thống, acoustic và phong cách điện tử hiện đại.
-        </li>
-        <li class="flex items-start gap-3 text-neutral-text leading-relaxed">
-          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
-          Nâng cao trải nghiệm tư vấn, chuẩn bị và phối hợp cùng khách hàng.
-        </li>
-        <li class="flex items-start gap-3 text-neutral-text leading-relaxed sm:col-span-2">
-          <span class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-600 mt-2.5"></span>
-          Trở thành đối tác âm nhạc lâu dài của các doanh nghiệp, nhà hàng, đơn vị tổ chức sự kiện và địa điểm giải trí.
-        </li>
-      </ul>
+        <!-- Card 2: Tầm nhìn (tối, làm điểm nhấn) -->
+        <div
+          class="about-card group will-change-transform bg-brand-900 p-8 rounded-3xl shadow-sm border border-brand-900 flex flex-col reveal hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-900/25"
+          data-delay="600"
+        >
+          <div
+            class="about-icon flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white mb-5 group-hover:bg-white group-hover:text-brand-900"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5"
+            >
+              <path
+                d="M2 12s3.8-6.5 10-6.5S22 12 22 12s-3.8 6.5-10 6.5S2 12 2 12Z"
+              ></path>
+              <circle cx="12" cy="12" r="2.6"
+              ></circle>
+            </svg>
+          </div>
+          <h3
+            class="text-xl font-bold font-display text-white mb-3"
+          >
+            Tầm nhìn
+          </h3>
+          <p
+            class="text-white/70 leading-relaxed"
+          >
+            Trở thành một trong những đơn vị
+            cung cấp ban nhạc và nghệ sĩ biểu
+            diễn uy tín, chuyên nghiệp, có khả
+            năng đáp ứng linh hoạt nhiều loại
+            hình sự kiện tại Việt Nam.
+          </p>
+        </div>
+      </div>
+
+      <!-- Định hướng phát triển: full-width, list chia 2 cột để cân đối mật độ nội dung -->
+      <div
+        class="about-card group will-change-transform bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-neutral-text/[0.06] reveal hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-900/10"
+        data-delay="700"
+      >
+        <div
+          class="about-icon flex items-center justify-center w-12 h-12 rounded-full bg-brand-600/[0.08] text-brand-600 mb-5 group-hover:bg-brand-600 group-hover:text-white"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-5 h-5"
+          >
+            <path d="M3 17l6-6 4 4 8-8"></path>
+            <path d="M15 7h6v6"></path>
+          </svg>
+        </div>
+        <h3
+          class="text-xl font-bold font-display text-brand-900 mb-4"
+        >
+          Định hướng phát triển
+        </h3>
+        <p
+          class="text-neutral-text leading-relaxed mb-6 max-w-3xl"
+        >
+          Rainy Band không ngừng nâng cao chất
+          lượng chuyên môn, mở rộng đội ngũ nghệ
+          sĩ và đa dạng hóa các dòng nhạc biểu
+          diễn. Trong thời gian tới, Rainy Band
+          hướng đến:
+        </p>
+        <ul
+          class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4"
+        >
+          <li
+            class="flex items-start gap-3 text-neutral-text leading-relaxed"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="flex-shrink-0 w-5 h-5 mt-0.5 text-brand-600"
+            >
+              <circle cx="12" cy="12" r="9"
+              ></circle>
+              <path d="M8 12.3l2.5 2.5L16 9"
+              ></path>
+            </svg>
+            Xây dựng nhiều đội hình biểu diễn phù
+            hợp với từng quy mô sự kiện.
+          </li>
+          <li
+            class="flex items-start gap-3 text-neutral-text leading-relaxed"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="flex-shrink-0 w-5 h-5 mt-0.5 text-brand-600"
+            >
+              <circle cx="12" cy="12" r="9"
+              ></circle>
+              <path d="M8 12.3l2.5 2.5L16 9"
+              ></path>
+            </svg>
+            Phát triển kho bài hát Việt Nam và quốc
+            tế đa dạng.
+          </li>
+          <li
+            class="flex items-start gap-3 text-neutral-text leading-relaxed"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="flex-shrink-0 w-5 h-5 mt-0.5 text-brand-600"
+            >
+              <circle cx="12" cy="12" r="9"
+              ></circle>
+              <path d="M8 12.3l2.5 2.5L16 9"
+              ></path>
+            </svg>
+            Kết hợp giữa âm nhạc truyền thống, acoustic
+            và phong cách điện tử hiện đại.
+          </li>
+          <li
+            class="flex items-start gap-3 text-neutral-text leading-relaxed"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="flex-shrink-0 w-5 h-5 mt-0.5 text-brand-600"
+            >
+              <circle cx="12" cy="12" r="9"
+              ></circle>
+              <path d="M8 12.3l2.5 2.5L16 9"
+              ></path>
+            </svg>
+            Nâng cao trải nghiệm tư vấn, chuẩn bị
+            và phối hợp cùng khách hàng.
+          </li>
+          <li
+            class="flex items-start gap-3 text-neutral-text leading-relaxed sm:col-span-2"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="flex-shrink-0 w-5 h-5 mt-0.5 text-brand-600"
+            >
+              <circle cx="12" cy="12" r="9"
+              ></circle>
+              <path d="M8 12.3l2.5 2.5L16 9"
+              ></path>
+            </svg>
+            Trở thành đối tác âm nhạc lâu dài của
+            các doanh nghiệp, nhà hàng, đơn vị tổ
+            chức sự kiện và địa điểm giải trí.
+          </li>
+        </ul>
+      </div>
     </div>
   </Container>
 </section>
+
+<style>
+  /*
+    Transition ở đây bắt chước y hệt Showreel.astro: duration 1100ms, easing
+    ease-in-out. Vẫn cần !important vì nếu script "reveal" (hiệu ứng cuộn-
+    xuất-hiện) của site gán style.transition trực tiếp bằng JS, inline style
+    đó sẽ đè lên class Tailwind khiến hover bị giật/tức thì.
+  */
+  .about-card {
+    transition:
+      transform 1100ms ease-in-out,
+      box-shadow 1100ms ease-in-out !important;
+  }
+
+  .about-icon {
+    transition:
+      background-color 1100ms ease-in-out,
+      color 1100ms ease-in-out !important;
+  }
+</style>

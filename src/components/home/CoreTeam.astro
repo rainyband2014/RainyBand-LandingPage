@@ -1,12 +1,19 @@
 ---
-import CoreTeamCard from './CoreTeamCard.astro';
-import { coreTeam } from '../../data/coreTeam';
+import CoreTeamCard from "./CoreTeamCard.astro";
+import { coreTeam } from "../../data/coreTeam";
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 max-w-3xl mx-auto">
-  {coreTeam.map((member, index) => (
-    <div class="reveal" data-delay={index * 100}>
-      <CoreTeamCard {...member} />
-    </div>
-  ))}
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto"
+>
+  {
+    coreTeam.map((member, index) => (
+      <div
+        class="reveal"
+        data-delay={index * 100}
+      >
+        <CoreTeamCard {...member} />
+      </div>
+    ))
+  }
 </div>

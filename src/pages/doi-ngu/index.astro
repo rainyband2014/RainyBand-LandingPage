@@ -1,35 +1,61 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import Container from '../../components/shared/Container.astro';
-import Badge from '../../components/shared/Badge.astro';
-import TypewriterText from '../../components/TypewriterText';
-import CoreTeam from '../../components/home/CoreTeam.astro';
+import PageLayout from "../../layouts/PageLayout.astro";
+import Container from "../../components/shared/Container.astro";
+import Badge from "../../components/shared/Badge.astro";
+import TypewriterText from "../../components/TypewriterText";
+import CoreTeam from "../../components/home/CoreTeam.astro";
 ---
 
 <PageLayout
   title="Đội ngũ nòng cốt | Rainy Band"
   description="Gặp gỡ đội ngũ nòng cốt Rainy Band — từ sáng lập, quản lý vocal đến quản lý nhạc công, những người đứng sau mỗi buổi biểu diễn."
 >
-  <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
+  <section
+    class="relative w-full pt-16 pb-10 md:pt-24 md:pb-14 bg-neutral-bg overflow-hidden"
+  >
+    <!-- Decorative background accent, đồng bộ với các section khác trong site -->
+    <div
+      class="pointer-events-none absolute -top-24 -left-24 w-[24rem] h-[24rem] rounded-full bg-brand-600/[0.04] blur-3xl"
+    >
+    </div>
+
     <Container>
-      <div class="reveal">
-        <Badge label="ĐỘI NGŨ" tone="dark" class="mb-4" />
+      <div class="relative reveal">
+        <Badge
+          label="ĐỘI NGŨ"
+          tone="dark"
+          class="mb-4"
+        />
       </div>
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6 reveal" data-delay="100">
+      <h1
+        class="relative text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6 max-w-3xl reveal"
+        data-delay="100"
+      >
         Đội ngũ nòng cốt Rainy Band
       </h1>
-      <div class="reveal" data-delay="200">
-        <TypewriterText 
-          paragraphs={["Gặp gỡ những con người đứng sau mỗi buổi biểu diễn — từ sáng lập, quản lý vocal đến quản lý nhạc công."]} 
-          className="max-w-3xl" 
-          textClassName="text-base md:text-xl text-neutral-muted leading-relaxed" 
-          client:visible 
+      <div
+        class="relative reveal"
+        data-delay="200"
+      >
+        <TypewriterText
+          paragraphs={[
+            "Gặp gỡ những con người đứng sau mỗi buổi biểu diễn — từ sáng lập, quản lý vocal đến quản lý nhạc công.",
+          ]}
+          className="max-w-3xl"
+          textClassName="text-base md:text-xl text-neutral-muted leading-relaxed"
+          client:visible
         />
       </div>
     </Container>
   </section>
 
-  <section class="w-full py-16 md:py-24 bg-neutral-bg">
+  <section
+    class="relative w-full py-14 md:py-20 bg-neutral-surface overflow-hidden"
+  >
+    <div
+      class="pointer-events-none absolute -bottom-24 -right-24 w-[24rem] h-[24rem] rounded-full bg-brand-600/[0.04] blur-3xl"
+    >
+    </div>
     <Container>
       <CoreTeam />
     </Container>
