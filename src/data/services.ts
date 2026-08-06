@@ -21,7 +21,7 @@ export const services: Service[] = [
     detailsList: ["Ca sĩ", "Guitar", "Keyboard", "Cajon", "Violin hoặc nhạc cụ bổ sung theo yêu cầu"],
     suitableForIntro: "Phù hợp cho:",
     suitableFor: ["Cafe acoustic", "Tiệc sinh nhật", "Tiệc kỷ niệm", "Private party", "Tiệc cưới", "Sự kiện có không gian ấm cúng"],
-    imageUrl: "https://placehold.co/800x600/123240/123240"
+    imageUrl: "/images/services/cafe/cafe-1.jpg"
   },
   {
     id: "service-2",
@@ -32,7 +32,7 @@ export const services: Service[] = [
     detailsList: ["Ca sĩ", "Guitar điện", "Bass", "Keyboard", "Drum", "Các nhạc cụ hoặc nghệ sĩ bổ sung theo concept"],
     suitableForIntro: "Phù hợp cho:",
     suitableFor: ["Sự kiện doanh nghiệp", "Tiệc cuối năm", "Khai trương", "Lễ ra mắt sản phẩm", "Festival", "Sân khấu ngoài trời", "Chương trình giải trí công cộng"],
-    imageUrl: "https://placehold.co/800x600/1a4655/1a4655"
+    imageUrl: "/images/services/event/event-1.jpg"
   },
   {
     id: "service-3",
@@ -44,6 +44,6 @@ export const services: Service[] = [
     suitableForIntro: "",
     suitableFor: [],
     closingNote: "Rainy Band sẽ tư vấn lựa chọn giọng ca dựa trên concept, danh sách bài hát, đối tượng khách mời và không khí mà khách hàng mong muốn.",
-    imageUrl: "https://placehold.co/800x600/0e222c/0e222c"
+    imageUrl: "/images/services/event/event-2.jpg"
   }
 ];

@@ -1,43 +1,105 @@
 ---
-import Container from '../shared/Container.astro';
+import Container from "../shared/Container.astro";
 
-// Array of 6 placeholders
-const logos = Array.from({ length: 6 }, (_, i) => ({
-  id: i + 1,
-  url: "https://placehold.co/120x48/e5e5e5/999999?text=Logo",
-  alt: `Client Logo ${i + 1}`
-}));
+// Đặt ảnh đối tác tại: src/assets/doi-tac/*.{png,jpg,jpeg,webp,svg}
+// import.meta.glob được Vite giải quyết NGAY LÚC BUILD (không phải lúc chạy),
+// nên hoạt động đồng nhất ở astro dev, astro build, SSR, container, serverless...
+// Không còn phụ thuộc fs.readdirSync / process.cwd() / import.meta.url lúc runtime.
+const logoModules = import.meta.glob<{
+  default: ImageMetadata;
+}>(
+  "/src/assets/doi-tac/*.{png,jpg,jpeg,webp,svg}",
+  { eager: true },
+);
+
+function prettifyAlt(fileName: string): string {
+  const withoutExt = fileName.replace(
+    /\.[^.]+$/,
+    "",
+  );
+  const withoutPrefix = withoutExt.replace(
+    /^doitac[_-]?/i,
+    "",
+  );
+  const spaced = withoutPrefix
+    .replace(/[_-]+/g, " ")
+    .trim();
+  const titleCased = spaced.replace(
+    /\b\w/g,
+    (c) => c.toUpperCase(),
+  );
+  return `Đối tác ${titleCased || withoutExt}`;
+}
+
+let logos: {
+  id: number;
+  src: ImageMetadata;
+  alt: string;
+}[] = Object.entries(logoModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([filePath, mod], index) => {
+    const fileName =
+      filePath.split("/").pop() ?? "";
+    return {
+      id: index + 1,
+      src: mod.default,
+      alt: prettifyAlt(fileName),
+    };
+  });
+
+// Fallback nếu chưa có ảnh nào trong thư mục
+const hasRealLogos = logos.length > 0;
 ---
 
-<section class="w-full py-12 md:py-16 bg-neutral-bg">
+<section
+  class="w-full py-12 md:py-16 bg-neutral-bg"
+>
   <Container>
-    <h2 class="text-center text-sm font-medium text-neutral-muted mb-8">
+    <h2
+      class="text-center text-sm font-medium text-neutral-muted mb-8"
+    >
       Đối tác đã đồng hành cùng Rainy Band
     </h2>
-    
-    <div class="relative flex overflow-hidden w-full select-none gap-8 md:gap-12 mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)">
-      <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12">
-        {logos.map(logo => (
-          <div class="flex items-center justify-center flex-shrink-0">
-            <img 
-              src={logo.url} 
-              alt={logo.alt} 
-              class="opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain w-[120px] h-[48px]"
-            />
+
+    {
+      hasRealLogos ? (
+        <div class="relative flex overflow-hidden w-full select-none gap-8 md:gap-12 mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)">
+          <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12">
+            {logos.map((logo) => (
+              <div class="flex items-center justify-center flex-shrink-0">
+                <img
+                  src={logo.src.src}
+                  width={logo.src.width}
+                  height={logo.src.height}
+                  alt={logo.alt}
+                  class="opacity-80 hover:opacity-100 transition-opacity duration-300 object-contain w-[180px] h-[72px] md:w-[200px] md:h-[80px]"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12" aria-hidden="true">
-        {logos.map(logo => (
-          <div class="flex items-center justify-center flex-shrink-0">
-            <img 
-              src={logo.url} 
-              alt={logo.alt} 
-              class="opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain w-[120px] h-[48px]"
-            />
+          <div
+            class="flex flex-shrink-0 animate-marquee items-center justify-around min-w-full gap-8 md:gap-12"
+            aria-hidden="true"
+          >
+            {logos.map((logo) => (
+              <div class="flex items-center justify-center flex-shrink-0">
+                <img
+                  src={logo.src.src}
+                  width={logo.src.width}
+                  height={logo.src.height}
+                  alt={logo.alt}
+                  class="opacity-60 hover:opacity-100 transition-opacity duration-300 object-contain w-[150px] h-[64px] md:w-[180px] md:h-[76px]"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      ) : (
+        <p class="text-center text-xs text-neutral-muted">
+          Chưa có logo đối tác nào trong
+          src/assets/doi-tac
+        </p>
+      )
+    }
   </Container>
 </section>

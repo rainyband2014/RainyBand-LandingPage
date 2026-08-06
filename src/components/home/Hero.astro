@@ -1,4 +1,6 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Container from '../shared/Container.astro';
 import Button from '../shared/Button.astro';
 import Badge from '../shared/Badge.astro';
@@ -9,21 +11,52 @@ const socialLinks = [
   { label: 'Facebook', href: '#' },
   { label: 'Instagram', href: '#' },
 ];
+
+let heroImages: string[] = [];
+try {
+  const baseDir = path.join(process.cwd(), 'public', 'images', 'services');
+  const folders = ['cafe', 'event', 'nha-hang'];
+  for (const folder of folders) {
+    const folderPath = path.join(baseDir, folder);
+    if (fs.existsSync(folderPath)) {
+      const files = fs.readdirSync(folderPath);
+      for (const file of files) {
+        if (file.match(/\.(jpg|jpeg|png|webp)$/i)) {
+          heroImages.push(`/images/services/${folder}/${file}`);
+        }
+      }
+    }
+  }
+} catch (e) {
+  console.error("Error reading hero images:", e);
+}
+
+if (heroImages.length === 0) {
+  heroImages = ["https://placehold.co/1600x1000/0a1720/0a1720"];
+}
 ---
 
-<section class="w-full py-6 md:py-10">
+<section id="hero-slideshow" class="w-full py-6 md:py-10">
   <Container>
     <div class="relative w-full min-h-[85vh] md:min-h-[80vh] rounded-3xl overflow-hidden group flex flex-col justify-end">
-      <!-- Background Image -->
-      <!-- TODO: thay ảnh placeholder này bằng ảnh hero thật (đã bỏ text placeholder) -->
-      <img 
-        src="https://placehold.co/1600x1000/0a1720/0a1720" 
-        alt="Rainy Band Hero" 
-        class="absolute inset-0 w-full h-full object-cover"
-      />
+      <!-- Background Images (Slideshow) -->
+      <div class="absolute inset-0 z-0">
+        {heroImages.map((src, index) => (
+          <img 
+            src={src} 
+            alt={`Rainy Band Hero ${index + 1}`}
+            class={`hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out ${index === 0 ? 'opacity-100 is-active' : 'opacity-0'}`}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        ))}
+      </div>
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black/45 z-[1]"></div>
 
       <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent z-[2]"></div>
 
       <!-- Content -->
       <div class="relative z-10 p-6 md:p-12 lg:p-16 flex flex-col items-start w-full max-w-4xl pt-20">
@@ -67,3 +100,32 @@ const socialLinks = [
     </div>
   </Container>
 </section>
+
+<script>
+  function initHeroSlideshow() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+    const section = document.getElementById('hero-slideshow');
+    if (!section) return;
+    const slides = section.querySelectorAll('.hero-slide');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    setInterval(() => {
+      slides[currentIndex].classList.remove('is-active', 'opacity-100');
+      slides[currentIndex].classList.add('opacity-0');
+      
+      currentIndex = (currentIndex + 1) % slides.length;
+      
+      slides[currentIndex].classList.remove('opacity-0');
+      slides[currentIndex].classList.add('is-active', 'opacity-100');
+    }, 5000);
+  }
+  
+  // Initialize on load
+  initHeroSlideshow();
+  
+  // Astro View Transitions support
+  document.addEventListener('astro:page-load', initHeroSlideshow);
+</script>
