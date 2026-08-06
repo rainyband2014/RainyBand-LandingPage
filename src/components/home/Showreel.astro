@@ -2,32 +2,128 @@
 import Container from '../shared/Container.astro';
 import Badge from '../shared/Badge.astro';
 import { eventTypes } from '../../data/eventTypes';
+
+// Icon minh hoạ cho từng loại hình sự kiện, gán theo thứ tự trong eventTypes.
+// Nếu bạn thêm/bớt loại hình trong data/eventTypes.ts, icon sẽ tự lặp lại theo chu kỳ.
+const icons = [
+  // 0. Sự kiện doanh nghiệp - vali
+  'M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 8h16a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a1 1 0 0 1 1-1Z M3 13h18',
+  // 1. Private Event - trái tim
+  'M20.8 8.6c0 4.4-8.8 10.2-8.8 10.2S3.2 13 3.2 8.6a4.6 4.6 0 0 1 8.8-1.9 4.6 4.6 0 0 1 8.8 1.9Z',
+  // 2. Public Event - loa / sân khấu
+  'M3 10v4a1 1 0 0 0 1 1h3l4 4V5L7 9H4a1 1 0 0 0-1 1Z M16 8a4 4 0 0 1 0 8 M19 5a8 8 0 0 1 0 14',
+  // 3. Nhà hàng & tiệc cưới - icon nhẫn cưới riêng (2 hình tròn), xem bên dưới
+  '',
+  // 4. Cafe Acoustic - ly cafe
+  'M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z M17 10h1.5a2.5 2.5 0 0 1 0 5H17 M7 4v2 M10.5 3.5v3 M14 4v2',
+];
+
+const isRingsIcon = (index: number) => index % icons.length === 3;
+
+// Các cặp class idle/active dùng chung cho cả hover thật (group-hover) lẫn
+// hiệu ứng "spotlight" tự động chạy bằng JS bên dưới — đảm bảo 2 hiệu ứng
+// trông giống hệt nhau: thẻ chuyển sang nền tối như thẻ mẫu ban đầu.
+// Lưu ý: bg-white / bg-brand-900 KHÔNG nằm trong 2 mảng này nữa.
+// Background giờ được điều khiển hoàn toàn bằng CSS thuần (xem <style> bên dưới)
+// thông qua thuộc tính data-active, để đảm bảo transition màu nền luôn mượt,
+// không phụ thuộc vào việc Tailwind add/remove class nền cùng lúc với các class khác.
+const CARD_IDLE = ['text-neutral-text', 'border-neutral-text/[0.06]', 'shadow-sm'];
+const CARD_ACTIVE = ['text-white', 'border-brand-900', 'shadow-lg', 'shadow-brand-900/25', '-translate-y-1'];
+const ICON_IDLE = ['bg-brand-600/[0.08]', 'text-brand-600'];
+const ICON_ACTIVE = ['bg-white/10', 'text-white'];
+const TITLE_IDLE = ['text-brand-900'];
+const TITLE_ACTIVE = ['text-white'];
+const DESC_IDLE = ['text-neutral-muted'];
+const DESC_ACTIVE = ['text-white/70'];
+const NUMBER_IDLE = ['text-neutral-text/15'];
+const NUMBER_ACTIVE = ['text-white/30'];
 ---
 
-<section class="w-full py-16 md:py-24 bg-neutral-surface">
+<section class="relative w-full py-16 md:py-24 bg-neutral-surface overflow-hidden">
+  <!-- Decorative background accent -->
+  <div class="pointer-events-none absolute -top-24 -right-24 w-[24rem] h-[24rem] rounded-full bg-brand-600/[0.04] blur-3xl"></div>
+
   <Container>
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-4 reveal">
+    <div class="relative flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-4 reveal">
       <div>
         <Badge label="LOẠI HÌNH SỰ KIỆN" tone="dark" class="mb-4" />
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight max-w-2xl">
           Rainy Band có thể đồng hành cùng bạn tại
         </h2>
       </div>
-      <a href="#media" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2">
-        Xem tất cả media &rarr;
+      <a
+        href="#media"
+        class="group inline-flex items-center gap-2 self-start md:self-auto text-brand-900 hover:text-white text-sm font-semibold px-5 py-2.5 rounded-full border border-brand-900/15 hover:bg-brand-900 transition-colors duration-300"
+      >
+        Xem tất cả media
+        <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-6 lg:gap-8">
+    <div id="event-types-grid" class="grid grid-cols-1 md:grid-cols-6 gap-6 lg:gap-8">
       {eventTypes.map((event, index) => {
         const colSpanClass = index < 3 ? 'md:col-span-2' : 'md:col-span-3';
+        const icon = icons[index % icons.length];
+        const orderLabel = String(index + 1).padStart(2, '0');
+
         return (
-          <div class={`bg-white p-8 rounded-3xl shadow-sm border border-neutral-text/5 flex flex-col reveal ${colSpanClass}`} data-delay={index * 100}>
-            <h3 class="text-xl font-bold font-display text-brand-900 mb-4 flex items-center">
-              <span class="w-8 h-[2px] bg-brand-600 mr-3 reveal-line"></span>
+          <div
+            class:list={[
+              'event-card group relative flex flex-col rounded-3xl p-8 reveal border',
+              'transition-all duration-[1100ms] ease-in-out will-change-transform',
+              colSpanClass,
+              ...CARD_IDLE,
+              'hover:text-white hover:border-brand-900 hover:shadow-lg hover:shadow-brand-900/25 hover:-translate-y-1',
+            ]}
+            data-delay={index * 100}
+          >
+            <!-- Số thứ tự -->
+            <span
+              class:list={[
+                'event-card-number absolute top-7 right-7 text-xs font-semibold tracking-wider tabular-nums transition-colors duration-[1100ms] ease-in-out',
+                ...NUMBER_IDLE,
+                'group-hover:text-white/30',
+              ]}
+            >
+              {orderLabel}
+            </span>
+
+            <!-- Icon -->
+            <div
+              class:list={[
+                'event-card-icon flex items-center justify-center w-12 h-12 rounded-full mb-5 transition-colors duration-[1100ms] ease-in-out',
+                ...ICON_IDLE,
+                'group-hover:bg-white/10 group-hover:text-white',
+              ]}
+            >
+              {isRingsIcon(index) ? (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="w-5 h-5">
+                  <circle cx="9" cy="14" r="4.2" />
+                  <circle cx="15" cy="14" r="4.2" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                  <path d={icon} />
+                </svg>
+              )}
+            </div>
+
+            <h3
+              class:list={[
+                'event-card-title text-xl font-bold font-display mb-3 transition-colors duration-[1100ms] ease-in-out',
+                ...TITLE_IDLE,
+                'group-hover:text-white',
+              ]}
+            >
               {event.title}
             </h3>
-            <p class="text-neutral-text leading-relaxed">
+            <p
+              class:list={[
+                'event-card-desc leading-relaxed transition-colors duration-[1100ms] ease-in-out',
+                ...DESC_IDLE,
+                'group-hover:text-white/70',
+              ]}
+            >
               {event.description}
             </p>
           </div>
@@ -36,3 +132,103 @@ import { eventTypes } from '../../data/eventTypes';
     </div>
   </Container>
 </section>
+
+<style>
+  /*
+    Background của event-card được xử lý bằng CSS thuần (không dùng class
+    bg-white / bg-brand-900 do Tailwind sinh ra) để đảm bảo transition màu
+    nền luôn chạy mượt, dù được kích hoạt bởi hover thật (:hover) hay bởi
+    hiệu ứng "spotlight" tự động chạy bằng JS (thuộc tính [data-active]).
+  */
+  .event-card {
+    background-color: var(--color-white, #ffffff);
+    transition: background-color 1100ms ease-in-out;
+  }
+
+  .event-card:hover,
+  .event-card[data-active] {
+    background-color: var(--color-brand-900);
+  }
+</style>
+
+<script define:vars={{ CARD_IDLE, CARD_ACTIVE, ICON_IDLE, ICON_ACTIVE, TITLE_IDLE, TITLE_ACTIVE, DESC_IDLE, DESC_ACTIVE, NUMBER_IDLE, NUMBER_ACTIVE }}>
+  function initEventTypesLoop() {
+    const grid = document.getElementById('event-types-grid');
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('.event-card'));
+    if (cards.length === 0) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    const swap = (el, idleClasses, activeClasses, active) => {
+      if (!el) return;
+      if (active) {
+        el.classList.remove(...idleClasses);
+        el.classList.add(...activeClasses);
+      } else {
+        el.classList.remove(...activeClasses);
+        el.classList.add(...idleClasses);
+      }
+    };
+
+    const applyActive = (card, active) => {
+      card.toggleAttribute('data-active', active);
+      swap(card, CARD_IDLE, CARD_ACTIVE, active);
+      swap(card.querySelector('.event-card-icon'), ICON_IDLE, ICON_ACTIVE, active);
+      swap(card.querySelector('.event-card-title'), TITLE_IDLE, TITLE_ACTIVE, active);
+      swap(card.querySelector('.event-card-desc'), DESC_IDLE, DESC_ACTIVE, active);
+      swap(card.querySelector('.event-card-number'), NUMBER_IDLE, NUMBER_ACTIVE, active);
+    };
+
+    const setActive = (index) => {
+      cards.forEach((card, i) => applyActive(card, i === index));
+    };
+
+    const clearAllActive = () => {
+      cards.forEach((card) => applyActive(card, false));
+    };
+
+    if (prefersReducedMotion) return;
+
+    let currentIndex = 0;
+    let intervalId = null;
+
+    const start = () => {
+      if (intervalId) return;
+      setActive(currentIndex);
+      intervalId = setInterval(() => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        setActive(currentIndex);
+      }, 2600);
+    };
+
+    const stop = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      clearAllActive();
+    };
+
+    // Tạm dừng loop khi người dùng chủ động rê chuột vào khu vực,
+    // để không "đánh nhau" với hiệu ứng hover thật (group-hover đã tự lo).
+    grid.addEventListener('mouseenter', stop);
+    grid.addEventListener('mouseleave', start);
+
+    start();
+
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        if (intervalId) clearInterval(intervalId);
+      },
+      { once: true },
+    );
+  }
+
+  initEventTypesLoop();
+  document.addEventListener('astro:page-load', initEventTypesLoop);
+</script>
