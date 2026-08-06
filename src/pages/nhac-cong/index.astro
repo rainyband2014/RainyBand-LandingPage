@@ -1,56 +1,159 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import Container from '../../components/shared/Container.astro';
-import Badge from '../../components/shared/Badge.astro';
-import MusicianCard from '../../components/home/MusicianCard.astro';
-import { musicians } from '../../data/musicians';
+import PageLayout from "../../layouts/PageLayout.astro";
+import Container from "../../components/shared/Container.astro";
+import Badge from "../../components/shared/Badge.astro";
+import MusicianCard from "../../components/home/MusicianCard.astro";
+import { musicians } from "../../data/musicians";
 
-const team1 = musicians.filter(m => m.team === 'team-1');
-const team2 = musicians.filter(m => m.team === 'team-2');
+const team1 = musicians.filter(
+  (m) => m.team === "team-1",
+);
+const team2 = musicians.filter(
+  (m) => m.team === "team-2",
+);
 ---
 
 <PageLayout
   title="Đội ngũ Nhạc công | Rainy Band"
   description="Đội ngũ nhạc công chuyên nghiệp của Rainy Band — guitar, keyboard, cajon, bass và nhiều hơn nữa, sẵn sàng cho mọi sân khấu sự kiện."
 >
-  <section class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg">
+  <section
+    class="w-full pt-16 pb-12 md:pt-24 md:pb-16 bg-neutral-bg"
+  >
     <Container>
       <div class="reveal">
-        <Badge label="NHẠC CÔNG" tone="dark" class="mb-4" />
+        <Badge
+          label="NHẠC CÔNG"
+          tone="dark"
+          class="mb-4"
+        />
       </div>
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6 reveal" data-delay="100">
+      <h1
+        class="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-6 reveal"
+        data-delay="100"
+      >
         Đội ngũ nhạc công Rainy Band
       </h1>
-      <p class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl reveal" data-delay="200">
-        Những nhạc công chuyên nghiệp, đa năng và giàu kinh nghiệm biểu diễn sân khấu lẫn phòng thu.
+      <p
+        class="text-base md:text-xl text-neutral-muted leading-relaxed max-w-3xl reveal"
+        data-delay="200"
+      >
+        Những nhạc công chuyên nghiệp, đa năng
+        và giàu kinh nghiệm biểu diễn sân khấu
+        lẫn phòng thu.
       </p>
     </Container>
   </section>
 
-  <section class="w-full py-12 md:py-20 bg-neutral-bg">
+  <section
+    class="w-full py-12 md:py-20 bg-neutral-bg"
+  >
     <Container>
       <!-- Team 1 -->
-      <div class="mb-6 reveal">
-        <h4 class="uppercase text-sm font-bold tracking-wider text-brand-600">Team 1</h4>
+      <div
+        class="flex items-end justify-between gap-4 mb-8 md:mb-10 reveal"
+      >
+        <div>
+          <span
+            class="inline-block text-xs font-bold tracking-widest text-brand-600 uppercase mb-2"
+          >
+            Đội hình 01
+          </span>
+        </div>
+        <span
+          class="text-sm font-medium text-neutral-muted whitespace-nowrap pb-1"
+        >
+          {
+            team1.length
+              .toString()
+              .padStart(2, "0")
+          } thành viên
+        </span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {team1.map((musician, index) => (
-          <div class="reveal" data-delay={Math.min(index * 100, 500)}>
-            <MusicianCard {...musician} class="w-full" />
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+      >
+        {
+          team1.map((musician, index) => (
+            <div
+              class="reveal"
+              data-delay={Math.min(
+                index * 100,
+                500,
+              )}
+            >
+              <MusicianCard
+                {...musician}
+                class="w-full"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Divider -->
+      <div
+        class="relative mt-16 md:mt-20 mb-8 md:mb-10 reveal"
+      >
+        <div
+          class="absolute inset-0 flex items-center"
+        >
+          <div
+            class="w-full border-t border-neutral-text/10"
+          >
           </div>
-        ))}
+        </div>
+        <div
+          class="relative flex justify-center"
+        >
+          <span
+            class="bg-neutral-bg px-4 text-xs font-bold tracking-widest text-neutral-muted uppercase"
+          >
+            ・・・
+          </span>
+        </div>
       </div>
 
       <!-- Team 2 -->
-      <div class="mt-12 md:mt-16 pt-12 border-t border-neutral-text/10 mb-6 reveal">
-        <h4 class="uppercase text-sm font-bold tracking-wider text-brand-600">Team 2</h4>
+      <div
+        class="flex items-end justify-between gap-4 mb-8 md:mb-10 reveal"
+      >
+        <div>
+          <span
+            class="inline-block text-xs font-bold tracking-widest text-brand-600 uppercase mb-2"
+          >
+            Đội hình 02
+          </span>
+        </div>
+        <span
+          class="text-sm font-medium text-neutral-muted whitespace-nowrap pb-1"
+        >
+          {
+            team2.length
+              .toString()
+              .padStart(2, "0")
+          } thành viên
+        </span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {team2.map((musician, index) => (
-          <div class="reveal" data-delay={Math.min(index * 100, 500)}>
-            <MusicianCard {...musician} class="w-full" />
-          </div>
-        ))}
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+      >
+        {
+          team2.map((musician, index) => (
+            <div
+              class="reveal"
+              data-delay={Math.min(
+                index * 100,
+                500,
+              )}
+            >
+              <MusicianCard
+                {...musician}
+                class="w-full"
+              />
+            </div>
+          ))
+        }
       </div>
     </Container>
   </section>

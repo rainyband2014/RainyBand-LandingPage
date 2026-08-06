@@ -1,6 +1,6 @@
 ---
 import Badge from '../shared/Badge.astro';
-import { instrumentToneMap } from '../../data/musicians';
+import { instrumentToneMap, instrumentGradientMap } from '../../data/musicians';
 import type { Musician } from '../../data/musicians';
 
 interface Props extends Musician {
@@ -13,14 +13,14 @@ const rootClasses = className ?? 'w-64 flex-shrink-0 snap-start';
 ---
 
 <a href={`/nhac-cong/${slug}`} class={`${rootClasses} flex flex-col group cursor-pointer no-underline text-inherit`}>
-  <div class="relative w-full aspect-[4/5] bg-neutral-bg rounded-2xl mb-4 shadow-sm hover-media-container block cursor-pointer overflow-hidden">
+  <div class="relative w-full aspect-[4/5] bg-neutral-bg rounded-2xl mb-4 shadow-sm hover-media-container block cursor-pointer overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
     <!-- TODO: thay bằng ảnh thật của nhạc công -->
     <img 
       src={imageUrl} 
       alt={name} 
       class="absolute inset-0 w-full h-full object-contain"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none"></div>
+    <div class={`absolute inset-0 bg-gradient-to-t ${instrumentGradientMap[instrumentGroup] ?? 'from-black/80 via-black/20 to-transparent'} z-10 pointer-events-none`}></div>
     <div class="hover-media-overlay z-10"></div>
     
     <div class="absolute inset-0 p-4 flex flex-col items-center justify-end z-20">

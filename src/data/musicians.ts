@@ -143,3 +143,11 @@ export const instrumentToneMap: Record<string, 'amber' | 'teal' | 'violet' | 'ro
   'KEYBOARD/PIANO': 'violet',
   'SPD/DRUMMER': 'rose',
 };
+
+// Gradient overlay nhẹ, chỉ ánh màu ở đáy ảnh — tránh phủ mảng màu lớn (đã giảm so với bản trước)
+export const instrumentGradientMap: Record<string, string> = {
+  'BASSIST': 'from-amber-950/90 via-black/50 to-transparent',
+  'GUITARIST': 'from-brand-950/90 via-black/50 to-transparent',
+  'KEYBOARD/PIANO': 'from-violet-950/90 via-black/50 to-transparent',
+  'SPD/DRUMMER': 'from-rose-950/90 via-black/50 to-transparent',
+};
