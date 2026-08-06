@@ -3,7 +3,7 @@ import Container from '../shared/Container.astro';
 import Badge from '../shared/Badge.astro';
 import CoreTeam from './CoreTeam.astro';
 import { vocalists } from '../../data/vocalists';
-import { musicians } from '../../data/musicians';
+import { musicians, instrumentToneMap } from '../../data/musicians';
 
 function truncate(text: string, maxLength = 50): string {
   const clean = text.split('\n')[0];
@@ -93,7 +93,7 @@ const displayedMusicians = musicians
                 />
               </div>
               <div class="p-5 flex flex-col flex-grow">
-                <Badge label={musician.instrumentGroup} tone="dark" class="self-start mb-3 scale-90 origin-left" />
+                <Badge label={musician.instrumentGroup} tone={instrumentToneMap[musician.instrumentGroup] ?? 'dark'} class="self-start mb-3 scale-90 origin-left" />
                 <h4 class="text-lg font-bold font-display text-brand-900 mb-1 group-hover:text-brand-600 transition-colors">
                   {musician.name}
                 </h4>

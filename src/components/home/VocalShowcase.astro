@@ -1,25 +1,42 @@
 ---
-import Container from '../shared/Container.astro';
-import Badge from '../shared/Badge.astro';
-import VocalShowcaseInteractive from './VocalShowcaseInteractive';
+import Container from "../shared/Container.astro";
+import Badge from "../shared/Badge.astro";
+import VocalShowcaseInteractive from "./VocalShowcaseInteractive";
 ---
 
-<section class="w-full py-16 md:py-24 bg-neutral-bg">
+<section
+  class="w-full py-16 md:py-24 bg-neutral-bg"
+>
   <Container>
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal">
+    <div
+      class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal"
+    >
       <div>
-        <Badge label="VOCAL SHOWCASE" tone="dark" class="mb-4" />
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight">
-          Đa dạng vocal cho nhiều format<br class="hidden md:block"/> và thể loại nhạc
+        <Badge
+          label="VOCAL SHOWCASE"
+          tone="dark"
+          class="mb-4"
+        />
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand-900 tracking-tight"
+        >
+          Đa dạng vocal cho nhiều phong cách<br
+            class="hidden md:block"
+          /> và thể loại nhạc
         </h2>
       </div>
-      <a href="#media" class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2 whitespace-nowrap">
+      <a
+        href="#media"
+        class="text-neutral-muted hover:text-brand-600 hover:underline text-sm font-medium transition-colors mb-1 md:mb-2 whitespace-nowrap"
+      >
         Xem vocal media &rarr;
       </a>
     </div>
 
     <div class="reveal" data-delay="100">
-      <VocalShowcaseInteractive client:visible />
+      <VocalShowcaseInteractive
+        client:visible
+      />
     </div>
   </Container>
 </section>

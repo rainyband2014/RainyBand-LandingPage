@@ -1,5 +1,6 @@
 ---
 import Badge from '../shared/Badge.astro';
+import { instrumentToneMap } from '../../data/musicians';
 import type { Musician } from '../../data/musicians';
 
 interface Props extends Musician {
@@ -35,7 +36,6 @@ const rootClasses = className ?? 'w-64 flex-shrink-0 snap-start';
   </div>
   
   <div class="flex flex-col items-start px-1">
-    <Badge label={instrumentGroup} tone="dark" class="mb-2 scale-90 origin-left" />
-    <p class="text-base font-bold text-neutral-text">{instrument}</p>
+    <Badge label={instrumentGroup} tone={instrumentToneMap[instrumentGroup] ?? 'dark'} class="mb-2 scale-90 origin-left" />
   </div>
 </a>

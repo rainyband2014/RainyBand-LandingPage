@@ -1,7 +1,7 @@
 ---
 interface Props {
   label: string;
-  tone?: 'dark' | 'light';
+  tone?: 'dark' | 'light' | 'amber' | 'violet' | 'rose' | 'teal';
   class?: string;
 }
 
@@ -10,6 +10,10 @@ const { label, tone = 'dark', class: className = '' } = Astro.props;
 const toneStyles = {
   dark: "bg-brand-600 text-white",
   light: "bg-white/10 text-white backdrop-blur-sm",
+  amber: "bg-amber-500 text-white",
+  violet: "bg-violet-500 text-white",
+  rose: "bg-rose-500 text-white",
+  teal: "bg-brand-600 text-white",
 };
 ---
 

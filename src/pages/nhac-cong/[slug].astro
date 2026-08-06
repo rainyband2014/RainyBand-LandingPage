@@ -4,7 +4,7 @@ import Container from '../../components/shared/Container.astro';
 import Badge from '../../components/shared/Badge.astro';
 import Button from '../../components/shared/Button.astro';
 import TypewriterText from '../../components/TypewriterText';
-import { musicians } from '../../data/musicians';
+import { musicians, instrumentToneMap } from '../../data/musicians';
 import type { Musician } from '../../data/musicians';
 
 export const prerender = true;
@@ -62,7 +62,7 @@ const pageDescription = descPrefix + truncatedBio;
 
         <!-- Right Column: Info -->
         <div class="md:col-span-7 flex flex-col">
-          <Badge label={musician.instrumentGroup} tone="dark" class="mb-4 self-start" />
+          <Badge label={musician.instrumentGroup} tone={instrumentToneMap[musician.instrumentGroup] ?? 'dark'} class="mb-4 self-start" />
           
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-900 tracking-tight mb-4">
             {musician.name}
