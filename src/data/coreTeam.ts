@@ -2,7 +2,7 @@ export interface CoreTeamMember {
   id: string;
   slug: string;
   name: string;
-  role: 'founder' | 'manager-vocal' | 'manager-musician';
+  role: 'founder' | 'manager';
   roleLabel: string;
   bio: string;
   fullBio: string;
@@ -31,11 +31,11 @@ export const coreTeam: CoreTeamMember[] = [
     ]
   },
   {
-    id: "manager-vocal",
+    id: "manager",
     slug: "zyzy",
     name: "ZyZy",
-    role: "manager-vocal",
-    roleLabel: "Quản lý Vocal",
+    role: "manager",
+    roleLabel: "Quản lý",
     bio: "Phụ trách tuyển chọn, đào tạo và sắp xếp lịch diễn cho đội ngũ vocal.",
     // TODO: thay fullBio bằng nội dung thật
     fullBio: "ZyZy gia nhập Rainy Band với vai trò vocal chính, mang phong cách trình diễn trẻ trung, hiện đại, sau đó đảm nhận thêm trách nhiệm quản lý toàn bộ đội ngũ vocal. ZyZy phụ trách tuyển chọn giọng hát mới, huấn luyện phong cách trình diễn và sắp xếp lịch diễn sao cho phù hợp với từng loại sự kiện.\n\nVới góc nhìn cập nhật xu hướng và kinh nghiệm biểu diễn tại nhiều sân khấu khác nhau, ZyZy hiểu rõ yêu cầu của từng format show và luôn đảm bảo vocal phù hợp nhất được bố trí cho mỗi booking.",
@@ -46,25 +46,6 @@ export const coreTeam: CoreTeamMember[] = [
     images: [
       "/images/vocalists/nam_zyzy.jpg",
       "https://placehold.co/500x600/1a4655/1a4655"
-    ]
-  },
-  {
-    id: "manager-musician",
-    slug: "lu-thien",
-    name: "Lữ Thiện",
-    role: "manager-musician",
-    roleLabel: "Quản lý Nhạc công",
-    bio: "Phụ trách phối khí, sắp xếp ban nhạc và đảm bảo chất lượng âm thanh từng show.",
-    // TODO: thay fullBio bằng nội dung thật
-    fullBio: "Lữ Thiện là trụ cột về mặt nhạc cụ của Rainy Band, đảm nhận vị trí bassist chính và chịu trách nhiệm giữ vững nền tiết tấu cho toàn bộ ban nhạc. Anh phụ trách phối khí cho các set nhạc, lựa chọn và sắp xếp đội hình nhạc công phù hợp theo yêu cầu từng sự kiện.\n\nNgoài khả năng biểu diễn, Lữ Thiện còn đảm nhận giám sát kỹ thuật âm thanh tại hiện trường, đảm bảo chất lượng thu phát ổn định và trải nghiệm nghe tốt nhất cho khán giả.",
-    // TODO: thay số điện thoại/email thật
-    phone: "0900 000 003",
-    email: "luthien@rainyband.vn",
-    joinedYear: 2021,
-    images: [
-      "https://placehold.co/500x600/1a4655/1a4655",
-      "https://placehold.co/500x600/235a6d/235a6d",
-      "https://placehold.co/500x600/0a1720/0a1720"
     ]
   }
 ];
